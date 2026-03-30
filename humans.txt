@@ -1,0 +1,8 @@
+/* TEAM */
+Author: Rick Broider
+Site strategy and build support: OpenAI ChatGPT
+Project: Bridging Earth and Kanaria landing page package
+
+/* SITE */
+Standards: HTML5, CSS3, vanilla JavaScript
+Hosting target: GitHub Pages

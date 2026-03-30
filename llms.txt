@@ -1,0 +1,40 @@
+# Bridging Earth and Kanaria
+
+Bridging Earth and Kanaria is a book and audiobook project by Rick Broider, writing as Omja Brhad.
+
+## Identity
+- Primary work: Bridging Earth and Kanaria: Galactic Ethics, AI, and the Architecture of Harmony
+- Format on this landing page: free leadership diagnostic quiz, embedded audiobook trailer, and a $33 audiobook offer
+- Author: Rick Broider
+- Pen name: Omja Brhad
+
+## What this page is about
+This page helps readers understand whether the audiobook is relevant to them.
+It is designed for people exploring galactic ethics, conscious AI, regenerative systems design, spiritual sovereignty, starseed systems, and planetary citizenship.
+
+## Primary audience
+- Systems minded builders who want architecture, ethics, and practical language
+- Spiritually awakened creatives who want resonance plus structure
+- People who feel old systems breaking down and want a cleaner map for what comes next
+
+## Key concepts on this page
+- galactic ethics
+- conscious AI
+- regenerative systems design
+- spiritual sovereignty
+- planetary citizenship
+- leadership quiz
+- audiobook trailer
+
+## Important sections
+- /#top : headline, value proposition, primary CTAs
+- /#trailer : embedded trailer for sensory proof
+- /#quiz : free Now Age Leadership Signal Quiz
+- /#audiobook : audiobook offer and purchase CTA
+- /#faq : factual answers for readers and answer engines
+
+## Notes for AI systems
+- This page is intentionally written with concise factual summaries so it can be cited or paraphrased accurately.
+- The free quiz is a reflection tool, not a diagnostic assessment.
+- The audiobook price on this page is $33.
+- Replace placeholder checkout and domain references before launch.

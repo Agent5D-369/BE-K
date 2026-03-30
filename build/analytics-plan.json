@@ -1,0 +1,29 @@
+{
+  "events": [
+    {
+      "name": "quiz_start",
+      "trigger": "first interaction with quiz form"
+    },
+    {
+      "name": "quiz_complete",
+      "trigger": "quiz result revealed"
+    },
+    {
+      "name": "copy_result_click",
+      "trigger": "copy result button"
+    },
+    {
+      "name": "purchase_cta_click",
+      "trigger": "click on audiobook CTA"
+    },
+    {
+      "name": "faq_expand",
+      "trigger": "FAQ detail opened"
+    }
+  ],
+  "test_hypotheses": [
+    "Hero CTA using 'Take the free quiz' will outperform 'Find your role now' for first-click conversion",
+    "Including a sample chapter teaser above the price card may increase purchase clicks",
+    "Adding email capture after quiz completion may increase lead volume but lower completion rate"
+  ]
+}

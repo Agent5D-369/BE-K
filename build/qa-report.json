@@ -1,0 +1,22 @@
+{
+  "fonts_used": [
+    "Inter",
+    "Fraunces"
+  ],
+  "mobile_body_text_min_16px": true,
+  "small_ui_text_min_14px": true,
+  "no_em_dash_in_site_copy": true,
+  "placeholders_clearly_labeled": true,
+  "offer_validity_checked": true,
+  "buyer_psychology_mapped": true,
+  "proof_hierarchy_honest": true,
+  "diagnostic_funnel_considered": true,
+  "share_loop_considered": true,
+  "mobile_first_layout": true,
+  "legal_pages_included": true,
+  "deployment_path_clear": true,
+  "notes": [
+    "Exact purchase URL still required before launch",
+    "Legal pages are placeholders and should be reviewed"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "assets": [
+    {
+      "path": "assets/css/styles.css",
+      "type": "stylesheet"
+    },
+    {
+      "path": "assets/js/script.js",
+      "type": "script"
+    },
+    {
+      "path": "assets/images/",
+      "type": "directory"
+    }
+  ]
+}

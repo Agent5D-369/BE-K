@@ -1,0 +1,20 @@
+{
+  "assets": [
+    {
+      "asset_id": "home-hero-cosmic-field",
+      "filename": "home-hero-cosmic-field-16x9-v1.jpg",
+      "page": "index.html",
+      "section": "hero",
+      "placement": "og-image",
+      "required": true
+    },
+    {
+      "asset_id": "quiz-share-card",
+      "filename": "quiz-share-card-square-v1.jpg",
+      "page": "index.html",
+      "section": "quiz",
+      "placement": "social-sharing",
+      "required": true
+    }
+  ]
+}
