@@ -613,3 +613,74 @@ button, input, label, summary, audio { font: inherit; }
   .footer-grid { padding-bottom: calc(5rem + env(safe-area-inset-bottom)); }
   .container { width: min(calc(100% - 1.2rem), var(--container)); }
 }
+
+
+.hero-grid-clean {
+  align-items: center;
+}
+.hero-copy {
+  max-width: 41rem;
+}
+.hero-copy h1 {
+  max-width: 10ch;
+  text-wrap: balance;
+}
+.hero-support {
+  color: var(--text);
+  font-size: 1rem;
+  max-width: 40rem;
+  margin: 0 0 0.2rem;
+}
+.hero-tertiary {
+  margin: -0.2rem 0 1rem;
+  font-size: 0.96rem;
+}
+.hero-tertiary a {
+  font-weight: 700;
+}
+.hero-stack-clean {
+  gap: 0.7rem;
+}
+.hero-figure-clean {
+  padding: 0.4rem;
+  background: rgba(255,255,255,0.04);
+}
+.hero-figure-clean::after {
+  inset: auto 6% 0;
+  height: 34%;
+}
+.hero-figure-badge {
+  display: none;
+}
+.hero-book-cover {
+  right: 0.9rem;
+  bottom: 0.8rem;
+  width: clamp(108px, 18%, 170px);
+  transform: rotate(-3deg);
+}
+.hero-visual-note {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+.offer-card .button[aria-disabled="true"] {
+  opacity: 0.82;
+}
+@media (max-width: 960px) {
+  .hero { padding-top: clamp(3rem, 6vw, 5rem); }
+  .hero-copy h1 { max-width: 12ch; }
+}
+@media (max-width: 720px) {
+  .hero-copy h1 { max-width: 11ch; }
+  .hero-support {
+    font-size: 0.98rem;
+  }
+  .hero-actions {
+    margin: 1.15rem 0 0.9rem;
+  }
+  .hero-book-cover {
+    width: 104px;
+    right: 0.7rem;
+    bottom: 0.7rem;
+  }
+}
