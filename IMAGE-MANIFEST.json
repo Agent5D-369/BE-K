@@ -20,7 +20,7 @@
   "images": [
     {
       "asset_id": "hero-aft-desktop",
-      "filename": "bek-hero-desktop.webp",
+      "filename": "bek-atf-desktop.webp",
       "page": "index.html",
       "section": "hero",
       "placement": "primary hero visual",
@@ -32,7 +32,7 @@
     },
     {
       "asset_id": "hero-aft-mobile",
-      "filename": "bek-hero-mobile.webp",
+      "filename": "bek-atf-mobile.webp",
       "page": "index.html",
       "section": "hero",
       "placement": "mobile hero crop",

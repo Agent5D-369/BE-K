@@ -695,162 +695,134 @@ button, input, label, summary, audio { font: inherit; }
   background: rgba(6, 10, 23, 0.72);
   border-bottom: 1px solid rgba(255,255,255,0.08);
 }
+
 .hero-immersive {
   position: relative;
   overflow: clip;
+  min-height: clamp(37rem, 82vh, 51rem);
+  display: grid;
+  align-items: center;
   padding-top: clamp(2.6rem, 6vw, 4.5rem);
   padding-bottom: clamp(2.5rem, 6vw, 4.8rem);
   background:
-    radial-gradient(circle at 72% 36%, rgba(242, 175, 73, 0.25), transparent 28%),
-    radial-gradient(circle at 18% 18%, rgba(109, 217, 255, 0.14), transparent 22%),
-    linear-gradient(180deg, #090d1d 0%, #0a1228 40%, #08111f 100%);
+    linear-gradient(90deg, rgba(4,10,22,0.94) 0%, rgba(4,10,22,0.88) 22%, rgba(4,10,22,0.58) 44%, rgba(4,10,22,0.22) 62%, rgba(4,10,22,0.10) 100%),
+    linear-gradient(180deg, rgba(4,10,22,0.26) 0%, rgba(4,10,22,0.18) 55%, rgba(4,10,22,0.42) 100%),
+    url('../images/bek-atf-desktop.webp') center center / cover no-repeat;
 }
 .hero-immersive::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(7,16,29,0.84) 0%, rgba(7,16,29,0.68) 38%, rgba(7,16,29,0.14) 62%, rgba(7,16,29,0.02) 100%);
+  background:
+    radial-gradient(circle at 68% 40%, rgba(247, 186, 84, 0.28), transparent 24%),
+    radial-gradient(circle at 18% 20%, rgba(98, 187, 255, 0.10), transparent 18%);
   pointer-events: none;
 }
 .hero-grid-immersive {
   position: relative;
   z-index: 1;
-  grid-template-columns: minmax(0, 0.9fr) minmax(360px, 1.1fr);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
   align-items: center;
-  gap: clamp(1.5rem, 4vw, 3rem);
+  min-height: inherit;
 }
 .hero-copy-immersive {
-  max-width: 33rem;
+  max-width: 36rem;
   padding: 0.6rem 0;
 }
 .hero-copy-immersive h1 {
-  max-width: 8.8ch;
-  font-size: clamp(3rem, 6.8vw, 5.7rem);
-  line-height: 0.96;
-  letter-spacing: -0.04em;
+  max-width: 7.2ch;
+  font-size: clamp(3.2rem, 7vw, 6rem);
+  line-height: 0.95;
+  letter-spacing: -0.045em;
   margin: 0 0 1rem;
   color: #f6ead0;
-  text-shadow: 0 8px 30px rgba(0,0,0,0.28);
+  text-shadow: 0 8px 30px rgba(0,0,0,0.34);
 }
 .hero-lede-immersive {
-  max-width: 20ch;
-  font-size: clamp(1.18rem, 2vw, 1.6rem);
-  line-height: 1.32;
-  color: rgba(244, 246, 252, 0.95);
-  margin: 0 0 1.3rem;
+  max-width: 19ch;
+  font-size: clamp(1.2rem, 2.1vw, 1.7rem);
+  line-height: 1.26;
+  color: rgba(246, 248, 252, 0.98);
+  margin: 0 0 1.35rem;
+  text-wrap: balance;
 }
-.hero-actions-immersive {
-  margin: 0 0 0.75rem;
-}
+.hero-actions-immersive { margin: 0 0 0.7rem; }
 .button-hero {
-  min-width: 13rem;
-  min-height: 64px;
-  padding: 1rem 1.7rem;
-  font-size: 1.05rem;
-  background: linear-gradient(180deg, #f7d88b 0%, #dfb45b 48%, #be8533 100%);
-  box-shadow: 0 18px 40px rgba(201, 148, 60, 0.28), inset 0 1px 0 rgba(255,255,255,0.45);
+  min-width: 16rem;
+  min-height: 76px;
+  padding: 1rem 2rem;
+  font-size: 1.45rem;
+  font-weight: 800;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #f8da8d 0%, #e5bb63 54%, #c98a33 100%);
+  color: #121212;
+  box-shadow: 0 18px 44px rgba(201, 148, 60, 0.30), inset 0 1px 0 rgba(255,255,255,0.45);
 }
 .hero-trailer-link {
-  margin: 0;
-  font-size: 1.06rem;
+  margin: 0.15rem 0 0;
+  font-size: 1.15rem;
+  font-weight: 700;
 }
 .hero-trailer-link a {
-  color: rgba(221, 239, 255, 0.96);
-  font-weight: 600;
+  color: rgba(234, 244, 255, 0.98);
   text-decoration: none;
 }
 .hero-trailer-link a:hover { text-decoration: underline; }
 .hero-meta-immersive {
-  margin: 1rem 0 0;
-  color: rgba(197, 209, 230, 0.92);
-  font-size: 0.95rem;
-  max-width: 34rem;
+  margin: 1.05rem 0 0;
+  color: rgba(207, 219, 238, 0.95);
+  font-size: 1rem;
 }
-.hero-visual-immersive {
-  position: relative;
-  justify-self: end;
-  width: min(100%, 58rem);
-}
-.hero-visual-immersive::after {
-  content: "";
-  position: absolute;
-  inset: auto 6% -4% 10%;
-  height: 20%;
-  background: radial-gradient(ellipse at center, rgba(244, 173, 70, 0.22), rgba(244, 173, 70, 0));
-  filter: blur(26px);
-  pointer-events: none;
-}
-.hero-art-immersive {
-  display: block;
-  width: 100%;
-  height: auto;
-  aspect-ratio: 836 / 914;
-  object-fit: cover;
-  border-radius: 0;
-  box-shadow: none;
-  filter: saturate(1.06) contrast(1.03);
-}
-@media (max-width: 1100px) {
-  .hero-grid-immersive {
-    grid-template-columns: minmax(0, 0.95fr) minmax(300px, 1.05fr);
-  }
-  .hero-copy-immersive h1 { max-width: 9.3ch; font-size: clamp(2.7rem, 7vw, 4.7rem); }
-}
+.hero-visual-immersive,
+.hero-art-immersive { display: none; }
 @media (max-width: 960px) {
-  .hero-immersive { padding-top: 2.2rem; }
-  .hero-grid-immersive {
-    grid-template-columns: 1fr;
-    gap: 1.2rem;
+  .hero-immersive {
+    min-height: clamp(40rem, 95svh, 56rem);
+    background:
+      linear-gradient(180deg, rgba(4,10,22,0.72) 0%, rgba(4,10,22,0.34) 38%, rgba(4,10,22,0.64) 100%),
+      linear-gradient(90deg, rgba(4,10,22,0.38) 0%, rgba(4,10,22,0.18) 100%),
+      url('../images/bek-atf-mobile.webp') center top / cover no-repeat;
   }
-  .hero-copy-immersive {
-    max-width: 100%;
-    order: 1;
-  }
-  .hero-copy-immersive h1 { max-width: 10.5ch; }
-  .hero-lede-immersive { max-width: 28ch; }
-  .hero-visual-immersive {
-    order: 2;
-    width: min(100%, 32rem);
-    justify-self: center;
-  }
+  .hero-copy-immersive { max-width: 100%; }
+  .hero-copy-immersive h1 { max-width: 8ch; font-size: clamp(3rem, 10vw, 4.9rem); }
 }
 @media (max-width: 720px) {
   .hero-immersive {
-    padding-top: 1.6rem;
-    padding-bottom: 2.2rem;
-  }
-  .hero-immersive::before {
-    background: linear-gradient(180deg, rgba(7,16,29,0.48) 0%, rgba(7,16,29,0.24) 28%, rgba(7,16,29,0.18) 42%, rgba(7,16,29,0.68) 100%);
+    min-height: 100svh;
+    padding-top: 1.4rem;
+    padding-bottom: 2rem;
+    background:
+      linear-gradient(180deg, rgba(4,10,22,0.66) 0%, rgba(4,10,22,0.18) 27%, rgba(4,10,22,0.22) 52%, rgba(4,10,22,0.72) 100%),
+      linear-gradient(90deg, rgba(4,10,22,0.20) 0%, rgba(4,10,22,0.08) 100%),
+      url('../images/bek-atf-mobile.webp') center top / cover no-repeat;
   }
   .hero-copy-immersive {
-    text-align: center;
-    max-width: 100%;
+    text-align: left;
+    align-self: end;
+    padding-bottom: 0.25rem;
   }
   .hero-copy-immersive h1 {
-    max-width: 9ch;
-    margin-left: auto;
-    margin-right: auto;
-    font-size: clamp(2.6rem, 12vw, 4rem);
+    max-width: 7.6ch;
+    font-size: clamp(2.85rem, 13.4vw, 4.4rem);
+    margin-bottom: 0.8rem;
   }
-  .hero-lede-immersive,
-  .hero-meta-immersive {
-    max-width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .hero-actions-immersive {
-    justify-content: center;
+  .hero-lede-immersive {
+    max-width: 14ch;
+    font-size: clamp(1.1rem, 5.2vw, 1.35rem);
+    margin-bottom: 1rem;
   }
   .button-hero {
-    width: min(100%, 20rem);
+    width: min(100%, 16.5rem);
+    min-height: 72px;
+    font-size: 1.3rem;
   }
-  .hero-visual-immersive {
-    width: min(100%, 25rem);
+  .hero-trailer-link {
+    font-size: 1.02rem;
   }
-  .hero-art-immersive {
-    aspect-ratio: 4 / 5;
-    border-radius: 24px;
-    box-shadow: 0 18px 60px rgba(0,0,0,0.35);
+  .hero-meta-immersive {
+    max-width: 18rem;
+    font-size: 0.96rem;
   }
 }
 
