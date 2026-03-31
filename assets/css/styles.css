@@ -684,3 +684,172 @@ button, input, label, summary, audio { font: inherit; }
     bottom: 0.7rem;
   }
 }
+
+
+/* v7 immersive ATF */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  backdrop-filter: blur(14px);
+  background: rgba(6, 10, 23, 0.72);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.hero-immersive {
+  position: relative;
+  overflow: clip;
+  padding-top: clamp(2.6rem, 6vw, 4.5rem);
+  padding-bottom: clamp(2.5rem, 6vw, 4.8rem);
+  background:
+    radial-gradient(circle at 72% 36%, rgba(242, 175, 73, 0.25), transparent 28%),
+    radial-gradient(circle at 18% 18%, rgba(109, 217, 255, 0.14), transparent 22%),
+    linear-gradient(180deg, #090d1d 0%, #0a1228 40%, #08111f 100%);
+}
+.hero-immersive::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(7,16,29,0.84) 0%, rgba(7,16,29,0.68) 38%, rgba(7,16,29,0.14) 62%, rgba(7,16,29,0.02) 100%);
+  pointer-events: none;
+}
+.hero-grid-immersive {
+  position: relative;
+  z-index: 1;
+  grid-template-columns: minmax(0, 0.9fr) minmax(360px, 1.1fr);
+  align-items: center;
+  gap: clamp(1.5rem, 4vw, 3rem);
+}
+.hero-copy-immersive {
+  max-width: 33rem;
+  padding: 0.6rem 0;
+}
+.hero-copy-immersive h1 {
+  max-width: 8.8ch;
+  font-size: clamp(3rem, 6.8vw, 5.7rem);
+  line-height: 0.96;
+  letter-spacing: -0.04em;
+  margin: 0 0 1rem;
+  color: #f6ead0;
+  text-shadow: 0 8px 30px rgba(0,0,0,0.28);
+}
+.hero-lede-immersive {
+  max-width: 20ch;
+  font-size: clamp(1.18rem, 2vw, 1.6rem);
+  line-height: 1.32;
+  color: rgba(244, 246, 252, 0.95);
+  margin: 0 0 1.3rem;
+}
+.hero-actions-immersive {
+  margin: 0 0 0.75rem;
+}
+.button-hero {
+  min-width: 13rem;
+  min-height: 64px;
+  padding: 1rem 1.7rem;
+  font-size: 1.05rem;
+  background: linear-gradient(180deg, #f7d88b 0%, #dfb45b 48%, #be8533 100%);
+  box-shadow: 0 18px 40px rgba(201, 148, 60, 0.28), inset 0 1px 0 rgba(255,255,255,0.45);
+}
+.hero-trailer-link {
+  margin: 0;
+  font-size: 1.06rem;
+}
+.hero-trailer-link a {
+  color: rgba(221, 239, 255, 0.96);
+  font-weight: 600;
+  text-decoration: none;
+}
+.hero-trailer-link a:hover { text-decoration: underline; }
+.hero-meta-immersive {
+  margin: 1rem 0 0;
+  color: rgba(197, 209, 230, 0.92);
+  font-size: 0.95rem;
+  max-width: 34rem;
+}
+.hero-visual-immersive {
+  position: relative;
+  justify-self: end;
+  width: min(100%, 58rem);
+}
+.hero-visual-immersive::after {
+  content: "";
+  position: absolute;
+  inset: auto 6% -4% 10%;
+  height: 20%;
+  background: radial-gradient(ellipse at center, rgba(244, 173, 70, 0.22), rgba(244, 173, 70, 0));
+  filter: blur(26px);
+  pointer-events: none;
+}
+.hero-art-immersive {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 836 / 914;
+  object-fit: cover;
+  border-radius: 0;
+  box-shadow: none;
+  filter: saturate(1.06) contrast(1.03);
+}
+@media (max-width: 1100px) {
+  .hero-grid-immersive {
+    grid-template-columns: minmax(0, 0.95fr) minmax(300px, 1.05fr);
+  }
+  .hero-copy-immersive h1 { max-width: 9.3ch; font-size: clamp(2.7rem, 7vw, 4.7rem); }
+}
+@media (max-width: 960px) {
+  .hero-immersive { padding-top: 2.2rem; }
+  .hero-grid-immersive {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+  .hero-copy-immersive {
+    max-width: 100%;
+    order: 1;
+  }
+  .hero-copy-immersive h1 { max-width: 10.5ch; }
+  .hero-lede-immersive { max-width: 28ch; }
+  .hero-visual-immersive {
+    order: 2;
+    width: min(100%, 32rem);
+    justify-self: center;
+  }
+}
+@media (max-width: 720px) {
+  .hero-immersive {
+    padding-top: 1.6rem;
+    padding-bottom: 2.2rem;
+  }
+  .hero-immersive::before {
+    background: linear-gradient(180deg, rgba(7,16,29,0.48) 0%, rgba(7,16,29,0.24) 28%, rgba(7,16,29,0.18) 42%, rgba(7,16,29,0.68) 100%);
+  }
+  .hero-copy-immersive {
+    text-align: center;
+    max-width: 100%;
+  }
+  .hero-copy-immersive h1 {
+    max-width: 9ch;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: clamp(2.6rem, 12vw, 4rem);
+  }
+  .hero-lede-immersive,
+  .hero-meta-immersive {
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .hero-actions-immersive {
+    justify-content: center;
+  }
+  .button-hero {
+    width: min(100%, 20rem);
+  }
+  .hero-visual-immersive {
+    width: min(100%, 25rem);
+  }
+  .hero-art-immersive {
+    aspect-ratio: 4 / 5;
+    border-radius: 24px;
+    box-shadow: 0 18px 60px rgba(0,0,0,0.35);
+  }
+}
