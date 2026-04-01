@@ -511,6 +511,21 @@ ul, ol { list-style: none; }
   position: relative;
   padding: var(--space-3xl) 0;
   text-align: center;
+  background: rgba(4, 6, 15, 0.5);
+}
+
+.what-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 90% 70% at 50% 50%, rgba(12, 19, 40, 0.7) 0%, transparent 80%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.what-section .container {
+  position: relative;
+  z-index: 1;
 }
 
 .section-label {
@@ -536,8 +551,8 @@ ul, ol { list-style: none; }
 .section-body {
   font-family: var(--font-serif);
   font-size: clamp(19px, 2vw, 22px);
-  line-height: 1.75;
-  color: var(--text-secondary);
+  line-height: 1.8;
+  color: var(--text-primary);
   max-width: 680px;
   margin: 0 auto;
 }
@@ -601,8 +616,9 @@ ul, ol { list-style: none; }
 
 .signal-desc {
   font-size: 17px;
-  line-height: 1.7;
-  color: var(--text-secondary);
+  line-height: 1.75;
+  color: var(--text-primary);
+  opacity: 0.88;
 }
 
 /* === DIVIDER === */
@@ -721,9 +737,9 @@ ul, ol { list-style: none; }
 }
 
 .about-body {
-  font-size: 18px;
-  line-height: 1.8;
-  color: var(--text-secondary);
+  font-size: 19px;
+  line-height: 1.85;
+  color: var(--text-primary);
 }
 
 .about-body p + p {
