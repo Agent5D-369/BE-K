@@ -3,324 +3,732 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Take the Now Age Leadership Signal Quiz | Bridging Earth and Kanaria</title>
-  <meta name="description" content="Take the free 3-minute Now Age Leadership Signal Quiz to discover which starseed leadership role is most alive in you now." />
-  <meta name="robots" content="index,follow,max-image-preview:large" />
-  <meta name="author" content="Rick Broider" />
-  <meta name="theme-color" content="#0b1020" />
-  <meta property="og:title" content="Take the Now Age Leadership Signal Quiz | Bridging Earth and Kanaria" />
-  <meta property="og:description" content="A free 3-minute quiz for starseeds, bridgewalkers, and soul technologists to discover the leadership function most alive right now." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://example.com/quiz.html" />
-  <meta property="og:image" content="https://example.com/assets/images/bek-og-image.webp" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Take the Now Age Leadership Signal Quiz | Bridging Earth and Kanaria" />
-  <meta name="twitter:description" content="Take the free 3-minute quiz and discover your current leadership signal." />
-  <meta name="twitter:image" content="https://example.com/assets/images/bek-og-image.webp" />
-  <link rel="canonical" href="https://example.com/quiz.html" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="preload" as="image" href="assets/images/bek-hero-desktop.webp" fetchpriority="high" />
-  <link rel="stylesheet" href="assets/css/styles.css" />
-  <link rel="manifest" href="site.webmanifest" />
-  <script>
-    window.__BEK_CONFIG = {
-      siteUrl: 'https://example.com/quiz.html',
-      helloAudioUrl: '#',
-      formEndpoint: 'https://formspree.io/f/mnjodqre',
-      quizUrl: 'quiz.html'
-    };
-  </script>
-    <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebPage",
-        "name": "Take the Now Age Leadership Signal Quiz | Bridging Earth and Kanaria",
-        "description": "A free 3-minute starseed leadership quiz for bridgewalkers, soul technologists, and signal-sensitive readers.",
-        "url": "https://example.com/quiz.html",
-        "isPartOf": {
-          "@type": "WebSite",
-          "name": "Bridging Earth and Kanaria",
-          "url": "https://example.com/"
-        }
-      },
-      {
-        "@type": "Quiz",
-        "name": "The Now Age Leadership Signal Quiz",
-        "about": "Leadership roles for starseeds, bridgewalkers, and soul technologists.",
-        "educationalLevel": "beginner",
-        "timeRequired": "PT3M"
+  <title>Bridging Earth & Kanaria — Leadership Signal Activation</title>
+  <meta name="description" content="Take the 3-minute Leadership Signal Activation and discover the function your system naturally stabilizes in chaos. No email required. Instant result." />
+  <style>
+    :root {
+      --bg: #050814;
+      --bg-2: #0b1228;
+      --panel: rgba(10, 16, 34, 0.78);
+      --panel-soft: rgba(14, 22, 44, 0.58);
+      --text: #eef3ff;
+      --muted: #bcc8e6;
+      --muted-2: rgba(238, 243, 255, 0.72);
+      --line: rgba(173, 194, 255, 0.14);
+      --line-2: rgba(255,255,255,0.08);
+      --glow: rgba(153, 196, 255, 0.3);
+      --accent: #d8e3b0;
+      --accent-2: #9dc2ff;
+      --accent-3: #bfd5ff;
+      --success: #d7e7c5;
+      --shadow: 0 20px 60px rgba(0, 0, 0, 0.42);
+      --radius: 28px;
+      --max: 1240px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; background: var(--bg); }
+    body {
+      margin: 0;
+      color: var(--text);
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 50% 22%, rgba(106, 145, 255, 0.14), rgba(5, 8, 20, 0) 34%),
+        linear-gradient(180deg, rgba(3, 7, 18, 0.8) 0%, rgba(5, 8, 20, 0.98) 100%),
+        var(--bg);
+      overflow-x: hidden;
+      line-height: 1.55;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(4, 8, 20, 0.76) 0%, rgba(5, 8, 20, 0.92) 30%, rgba(5, 8, 20, 0.98) 100%),
+        radial-gradient(circle at 50% 18%, rgba(190, 214, 255, 0.18), rgba(5, 8, 20, 0) 30%),
+        url('/mnt/data/a_digital_digital_art_piece_features_an_abstract_c.png') center top / cover no-repeat;
+      opacity: 0.98;
+      z-index: -2;
+      transform: scale(1.03);
+      animation: drift 24s ease-in-out infinite alternate;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0) 16%, rgba(255,255,255,0.02) 50%, rgba(255,255,255,0) 84%, rgba(255,255,255,0.02)),
+        radial-gradient(circle at 50% 35%, rgba(172, 196, 255, 0.06), rgba(5, 8, 20, 0) 45%);
+      mix-blend-mode: screen;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    @keyframes drift {
+      from { transform: scale(1.03) translateY(0px); }
+      to { transform: scale(1.06) translateY(-18px); }
+    }
+
+    .shell { width: min(var(--max), calc(100% - 32px)); margin: 0 auto; }
+    .section { padding: 34px 0; }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      backdrop-filter: blur(18px);
+      background: rgba(4, 8, 20, 0.72);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .nav-inner {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 700;
+      font-size: 1.08rem;
+      letter-spacing: -0.02em;
+      min-width: 0;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, #d8e3b0 0%, #b8d2ff 100%);
+      color: #1b2238;
+      font-weight: 800;
+      box-shadow: 0 0 0 1px rgba(255,255,255,0.08), 0 6px 22px rgba(157, 194, 255, 0.24);
+      flex: 0 0 auto;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      font-size: 0.97rem;
+    }
+
+    .nav-links a {
+      color: rgba(238,243,255,0.9);
+      text-decoration: none;
+    }
+
+    .nav-links a:hover { color: white; }
+
+    .cta, .ghost-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 54px;
+      padding: 0 24px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease, background 180ms ease;
+      white-space: nowrap;
+    }
+
+    .cta {
+      color: white;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: linear-gradient(180deg, rgba(172, 196, 255, 0.18), rgba(121, 152, 245, 0.1));
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255,255,255,0.08);
+    }
+
+    .ghost-cta {
+      color: var(--text);
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.04);
+    }
+
+    .cta:hover, .ghost-cta:hover {
+      transform: translateY(-1px) scale(1.02);
+      border-color: rgba(186, 207, 255, 0.35);
+      box-shadow: 0 0 0 1px rgba(157, 194, 255, 0.18), 0 14px 34px rgba(77, 114, 232, 0.18);
+    }
+
+    .hero { padding: 96px 0 34px; }
+
+    .hero-panel, .panel {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--line-2);
+      background: linear-gradient(180deg, rgba(9, 15, 32, 0.7), rgba(7, 11, 25, 0.58));
+      border-radius: 32px;
+      box-shadow: var(--shadow);
+      isolation: isolate;
+    }
+
+    .hero-panel { padding: 74px 28px; text-align: center; }
+    .panel { padding: 34px; }
+
+    .hero-panel::before, .panel::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(201, 222, 255, 0.16), rgba(10, 16, 34, 0) 35%),
+        linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0) 18%, rgba(255,255,255,0.02) 50%, rgba(255,255,255,0) 82%, rgba(255,255,255,0.02));
+      opacity: 0.8;
+      z-index: -1;
+    }
+
+    .eyebrow, .mini-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      min-height: 36px;
+      padding: 0 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: var(--muted);
+      font-size: 0.93rem;
+    }
+
+    .hero h1 {
+      margin-top: 22px;
+      font-size: clamp(2.15rem, 5vw, 4.5rem);
+      line-height: 1.02;
+      letter-spacing: -0.05em;
+      max-width: 940px;
+      margin-left: auto;
+      margin-right: auto;
+      text-wrap: balance;
+    }
+
+    .hero-copy {
+      max-width: 760px;
+      margin: 22px auto 0;
+      color: var(--muted);
+      font-size: clamp(1.05rem, 1.7vw, 1.25rem);
+      line-height: 1.65;
+      text-wrap: balance;
+    }
+
+    .hero-tension {
+      margin: 28px auto 0;
+      max-width: 620px;
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: #edf3ff;
+    }
+
+    .hero-actions {
+      margin-top: 34px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .hero-cta-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .meta-row, .quiz-meta, .trust-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .meta-pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 38px;
+      padding: 0 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: #e6eeff;
+      font-size: 0.94rem;
+    }
+
+    .social-proof { color: rgba(230, 238, 255, 0.78); font-size: 0.95rem; }
+
+    .section-divider {
+      width: min(980px, 88%);
+      height: 1px;
+      margin: 28px auto 0;
+      background: linear-gradient(90deg, rgba(255,255,255,0), rgba(174, 199, 255, 0.35), rgba(255,255,255,0));
+      box-shadow: 0 0 26px rgba(157, 194, 255, 0.18);
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .mini-card {
+      border: 1px solid rgba(255,255,255,0.08);
+      background: linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.025));
+      border-radius: 22px;
+      padding: 22px;
+      min-height: 100%;
+    }
+
+    .mini-card h3 {
+      font-size: 1.08rem;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+
+    .mini-card p, .panel p, .footer-note, .instruction-panel p {
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.72;
+    }
+
+    .mini-kicker {
+      margin-bottom: 10px;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+    }
+
+    .quiz-section { padding: 18px 0 28px; }
+
+    .quiz-card {
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 32px;
+      background: linear-gradient(180deg, rgba(10, 16, 34, 0.8), rgba(8, 12, 28, 0.72));
+      box-shadow: var(--shadow);
+      padding: 42px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .quiz-card::before {
+      content: "";
+      position: absolute;
+      inset: -20% auto auto 55%;
+      width: 420px;
+      height: 420px;
+      background: radial-gradient(circle, rgba(131, 169, 255, 0.14), rgba(131, 169, 255, 0) 66%);
+      pointer-events: none;
+    }
+
+    .quiz-header {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 34px;
+      align-items: end;
+    }
+
+    .quiz-kicker {
+      color: var(--accent);
+      font-size: 0.86rem;
+      font-weight: 700;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .quiz-title {
+      font-size: clamp(2rem, 4.2vw, 3.8rem);
+      line-height: 0.98;
+      letter-spacing: -0.05em;
+      max-width: 820px;
+      text-wrap: balance;
+    }
+
+    .quiz-desc {
+      margin-top: 18px;
+      font-size: 1.06rem;
+      line-height: 1.74;
+      color: var(--muted);
+      max-width: 760px;
+    }
+
+    .instruction-panel {
+      padding: 22px 24px;
+      border-radius: 24px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+    }
+
+    .instruction-panel h3 {
+      font-size: 1.12rem;
+      letter-spacing: -0.03em;
+      margin-bottom: 8px;
+    }
+
+    .progress-wrap { margin-top: 24px; }
+    .progress-bar {
+      width: 100%; height: 10px; border-radius: 999px; overflow: hidden;
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.06);
+    }
+    .progress-fill {
+      width: 10%; height: 100%; border-radius: inherit;
+      background: linear-gradient(90deg, #d8e3b0, #9dc2ff 70%, #bdd4ff);
+      box-shadow: 0 0 28px rgba(157, 194, 255, 0.32);
+    }
+    .progress-copy { margin-top: 10px; color: var(--muted); font-size: 0.95rem; }
+
+    .question-card {
+      margin-top: 30px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 30px;
+    }
+
+    .question-label {
+      color: var(--muted);
+      font-size: 0.9rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .question-text {
+      font-size: clamp(1.32rem, 2.5vw, 1.9rem);
+      line-height: 1.28;
+      letter-spacing: -0.035em;
+      max-width: 860px;
+      margin-bottom: 22px;
+    }
+
+    .answers { display: grid; gap: 14px; }
+    .answer {
+      padding: 18px 20px;
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.02));
+      color: #edf3ff;
+      font-size: 1rem;
+      line-height: 1.55;
+      transition: transform 160ms ease, border-color 160ms ease, background 160ms ease, box-shadow 160ms ease;
+      cursor: pointer;
+    }
+    .answer:hover {
+      transform: translateY(-1px);
+      border-color: rgba(172, 196, 255, 0.34);
+      background: linear-gradient(180deg, rgba(172, 196, 255, 0.08), rgba(255,255,255,0.03));
+      box-shadow: 0 0 0 1px rgba(172, 196, 255, 0.08), 0 12px 32px rgba(77, 114, 232, 0.14);
+    }
+
+    .steps {
+      counter-reset: step;
+      display: grid;
+      gap: 16px;
+    }
+
+    .step {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      padding: 18px 18px;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
+      background: rgba(255,255,255,0.03);
+    }
+
+    .step::before {
+      counter-increment: step;
+      content: counter(step);
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      background: linear-gradient(135deg, rgba(216,227,176,0.9), rgba(157,194,255,0.9));
+      color: #18213b;
+      font-weight: 800;
+      box-shadow: 0 8px 24px rgba(157,194,255,0.2);
+    }
+
+    .quote {
+      font-size: 1.02rem;
+      line-height: 1.8;
+      color: #eef3ff;
+    }
+
+    .quote small {
+      display: block;
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .result-bridge {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .footer {
+      padding: 22px 0 70px;
+      color: var(--muted-2);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 18px;
+      align-items: center;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 22px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .footer-links a {
+      color: var(--muted-2);
+      text-decoration: none;
+    }
+
+    .footer-links a:hover { color: white; }
+
+    @media (max-width: 1040px) {
+      .quiz-header, .grid-3, .grid-2, .footer-grid, .result-bridge {
+        grid-template-columns: 1fr;
       }
-    ]
-  }
-  </script>
+      .footer-links { justify-content: flex-start; }
+    }
+
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .hero-panel { padding: 54px 20px; }
+      .quiz-card, .panel { padding: 28px 20px; }
+      .hero-cta-row { flex-direction: column; }
+    }
+
+    @media (max-width: 640px) {
+      .hero { padding-top: 72px; }
+      .nav-inner { min-height: 68px; }
+      .brand span:last-child {
+        max-width: 190px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .question-text { font-size: 1.28rem; }
+      .meta-row, .quiz-meta, .trust-row { justify-content: flex-start; }
+    }
+  </style>
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
-
-  <header class="site-header">
-    <div class="container nav-wrap">
-      <a class="brand" href="#top" aria-label="Bridging Earth and Kanaria home">
+  <header class="nav">
+    <div class="nav-inner">
+      <a href="#" class="brand" aria-label="Bridging Earth and Kanaria home">
         <span class="brand-mark">BEK</span>
-        <span class="brand-text">Bridging Earth and Kanaria</span>
+        <span>Bridging Earth and Kanaria</span>
       </a>
-      <nav class="site-nav" aria-label="Primary">
-        <a href="quiz.html" aria-current="page">Quiz</a>
-        <a href="index.html#trailer">Trailer</a>
-        <a href="index.html#audiobook">Audiobook</a>
-        <a href="index.html#faq">FAQ</a>
-        <a href="https://stopthecollapse.com" target="_blank" rel="noopener">Builders</a>
-        <a class="nav-cta" href="quiz.html">Take quiz</a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#quiz">Quiz</a>
+        <a href="#how-it-works">How it works</a>
+        <a href="#what-you-get">What you get</a>
+        <a href="#results">After your result</a>
+        <a href="#faq">FAQ</a>
       </nav>
-      <button class="menu-toggle" aria-expanded="false" aria-controls="mobile-menu">Menu</button>
+      <a class="cta" href="#quiz">Begin the Signal</a>
     </div>
-    <nav id="mobile-menu" class="mobile-nav" aria-label="Mobile">
-      <a href="quiz.html" aria-current="page">Quiz</a>
-      <a href="index.html#trailer">Trailer</a>
-      <a href="index.html#audiobook">Audiobook</a>
-      <a href="index.html#faq">FAQ</a>
-      <a href="https://stopthecollapse.com" target="_blank" rel="noopener">Builders</a>
-      <a class="nav-cta" href="quiz.html">Take quiz</a>
-    </nav>
   </header>
 
-  <main id="main">
-    <section class="section hero section-dark">
-      <div class="container section-intro center">
-        <h1 style="max-width:none;">The free 3-minute front door.</h1>
-        <p class="section-copy max-copy">Take the quiz first. No email required. Your result is shareable, and the full audiobook is there if you want to go deeper after recognition lands.</p>
+  <main>
+    <section class="hero shell">
+      <div class="hero-panel">
+        <div class="eyebrow">3-minute front door • no email required • instant result</div>
+        <h1>A 3-minute signal check for where you actually stand.</h1>
+        <p class="hero-copy">No performance. No guessing. Just an honest reflection of what your field is already broadcasting, and a clean entry point into the deeper architecture behind the book.</p>
+        <p class="hero-tension">Most people answer this intellectually.<br><br>This only works if you don’t.</p>
+
+        <div class="hero-actions">
+          <div class="hero-cta-row">
+            <a class="cta" href="#quiz">Begin the Signal</a>
+            <a class="ghost-cta" href="#how-it-works">See how it works</a>
+          </div>
+
+          <div class="meta-row" aria-label="Quiz details">
+            <span class="meta-pill">10 questions</span>
+            <span class="meta-pill">About 3 minutes</span>
+            <span class="meta-pill">Shareable result</span>
+          </div>
+
+          <div class="social-proof">Built for founders, system architects, seekers, and signal-recognizers standing at the edge of what comes next.</div>
+        </div>
+      </div>
+      <div class="section-divider" aria-hidden="true"></div>
+    </section>
+
+    <section class="section shell" id="how-it-works">
+      <div class="grid-3">
+        <div class="mini-card">
+          <div class="mini-kicker">Step one</div>
+          <h3>Answer from instinct</h3>
+          <p>Your first response is the signal. This is built to reveal what your system does before your mind starts managing the impression.</p>
+        </div>
+        <div class="mini-card">
+          <div class="mini-kicker">Step two</div>
+          <h3>Name your active function</h3>
+          <p>The result names the leadership function most alive in you right now, the one your field naturally stabilizes when things get noisy.</p>
+        </div>
+        <div class="mini-card">
+          <div class="mini-kicker">Step three</div>
+          <h3>Go deeper if it lands</h3>
+          <p>If recognition hits, the audiobook, builder path, and deeper resources are there for the part of you that already knows this is bigger than a quiz.</p>
+        </div>
       </div>
     </section>
 
-    <section class="section section-accent" id="quiz">
-      <div class="container quiz-shell">
+    <section class="quiz-section shell" id="quiz">
+      <div class="quiz-card">
+        <div class="quiz-header">
+          <div>
+            <div class="quiz-kicker">Inspired by Chapter 23</div>
+            <h2 class="quiz-title">The Leadership Signal Activation</h2>
+            <p class="quiz-desc">This reveals the function your system naturally stabilizes in chaos. Not a role. Not a label. A signal. These are rotating functions of coherence that help name how you stabilize, translate, weave, protect, or reveal what a field needs next.</p>
+          </div>
 
-      <div class="container quiz-shell">
-        <div class="section-intro">
-          <h2>The Now Age Leadership Signal Quiz</h2>
-          <p class="section-copy max-copy">
-            Inspired by Chapter 23, this quiz identifies the leadership function most alive in you now. These are not job titles. They are rotating functions that help you name how you stabilize, translate, weave, protect, or reveal what your field needs next.
-          </p>
+          <aside class="instruction-panel">
+            <h3>Answer from instinct, not strategy.</h3>
+            <p>Your first response is the signal. The point is not to sound impressive. The point is to notice what your system does before your mind starts curating the answer.</p>
+          </aside>
         </div>
 
-        <form id="leadership-quiz" class="quiz-form" novalidate>
-          <div class="quiz-meta">
-            <span>10 questions</span>
-            <span>About 3 minutes</span>
-            <span>No email required</span>
+        <div class="quiz-meta">
+          <span class="meta-pill">10 questions</span>
+          <span class="meta-pill">About 3 minutes</span>
+          <span class="meta-pill">No email required</span>
+        </div>
+
+        <div class="progress-wrap">
+          <div class="progress-bar" aria-label="Quiz progress">
+            <div class="progress-fill"></div>
           </div>
+          <div class="progress-copy">Question 1 of 10</div>
+        </div>
 
-          <div class="quiz-progress" aria-hidden="true">
-            <div class="quiz-progress-bar" id="quiz-progress-bar"></div>
+        <div class="question-card">
+          <div class="question-label">Question 1</div>
+          <h3 class="question-text">When a room feels scattered, what do you naturally do first?</h3>
+          <div class="answers" role="list">
+            <div class="answer" role="listitem">I ground the energy and create a steadier center so people can settle.</div>
+            <div class="answer" role="listitem">I name what is really happening and translate confusion into something usable.</div>
+            <div class="answer" role="listitem">I notice where people are disconnected and start weaving coherence between them.</div>
+            <div class="answer" role="listitem">I protect what matters most and help the field stop leaking energy.</div>
           </div>
-          <p class="quiz-step-label"><span id="quiz-current-step">1</span> of 10</p>
-
-          <fieldset class="quiz-question" data-step="1">
-            <legend>1. When a room feels scattered, what do you naturally do first?</legend>
-            <label><input type="radio" name="q1" value="anchor" required> Bring the energy down into steadiness and calm.</label>
-            <label><input type="radio" name="q1" value="bridge"> Translate the confusion into a clearer structure or plan.</label>
-            <label><input type="radio" name="q1" value="weaver"> Notice who is disconnected and start reconnecting people.</label>
-            <label><input type="radio" name="q1" value="flamekeeper"> Bring everyone back to the core purpose.</label>
-            <label><input type="radio" name="q1" value="mirror"> Name the hidden tension no one is addressing.</label>
-          </fieldset>
-
-          <fieldset class="quiz-question" data-step="2" hidden>
-            <legend>2. Which burden do you carry most often?</legend>
-            <label><input type="radio" name="q2" value="anchor" required> Holding the field when others are dysregulated.</label>
-            <label><input type="radio" name="q2" value="bridge"> Turning vision into language, systems, or next steps.</label>
-            <label><input type="radio" name="q2" value="weaver"> Bridging divides between people, factions, or worlds.</label>
-            <label><input type="radio" name="q2" value="flamekeeper"> Protecting what matters from drift, dilution, or compromise.</label>
-            <label><input type="radio" name="q2" value="mirror"> Feeling what is off before others are ready to admit it.</label>
-          </fieldset>
-
-          <fieldset class="quiz-question" data-step="3" hidden>
-            <legend>3. What kind of praise sounds most accurate?</legend>
-            <label><input type="radio" name="q3" value="anchor" required> “I calm down when you are here.”</label>
-            <label><input type="radio" name="q3" value="bridge"> “You made that finally make sense.”</label>
-            <label><input type="radio" name="q3" value="weaver"> “You brought the right people together.”</label>
-            <label><input type="radio" name="q3" value="flamekeeper"> “You kept us from forgetting what mattered.”</label>
-            <label><input type="radio" name="q3" value="mirror"> “You said what nobody else was brave enough to say.”</label>
-          </fieldset>
-
-          <fieldset class="quiz-question" data-step="4" hidden>
-            <legend>4. What kind of distortion frustrates you most?</legend>
-            <label><input type="radio" name="q4" value="anchor" required> Chaos, reactivity, and unstable emotional weather.</label>
-            <label><input type="radio" name="q4" value="bridge"> Vision with no translation into reality.</label>
-            <label><input type="radio" name="q4" value="weaver"> Silos, mistrust, and unnecessary fragmentation.</label>
-            <label><input type="radio" name="q4" value="flamekeeper"> Mission drift and empty performance.</label>
-            <label><input type="radio" name="q4" value="mirror"> Denial, shadow, and smiling avoidance.</label>
-          </fieldset>
-
-          <fieldset class="quiz-question" data-step="5" hidden>
-            <legend>5. In your strongest seasons, people come to you for...</legend>
-            <label><input type="radio" name="q5" value="anchor" required> Presence, steadiness, and regulation.</label>
-            <label><input type="radio" name="q5" value="bridge"> Translation, strategy, and pathway design.</label>
-            <label><input type="radio" name="q5" value="weaver"> Alignment, inclusion, and relational repair.</label>
-            <label><input type="radio" name="q5" value="flamekeeper"> Conviction, standards, and purpose fidelity.</label>
-            <label><input type="radio" name="q5" value="mirror"> Truth, confrontation, and precise reflection.</label>
-          </fieldset>
-
-          <fieldset class="quiz-question" data-step="6" hidden>
-            <legend>6. What shadow do you need to watch most closely?</legend>
-            <label><input type="radio" name="q6" value="anchor" required> Overholding, emotional exhaustion, or self erasure.</label>
-            <label><input type="radio" name="q6" value="bridge"> Overexplaining, overengineering, or staying in abstraction.</label>
-            <label><input type="radio" name="q6" value="weaver"> Overaccommodating, smoothing too much, or avoiding sharp edges.</label>
-            <label><input type="radio" name="q6" value="flamekeeper"> Rigidity, intensity, or scorning what feels impure.</label>
-            <label><input type="radio" name="q6" value="mirror"> Cutting too deep, too fast, or without enough tenderness.</label>
-          </fieldset>
-
-          <fieldset class="quiz-question" data-step="7" hidden>
-            <legend>7. When a project begins to fail, what do you notice first?</legend>
-            <label><input type="radio" name="q7" value="anchor" required> The nervous system of the group is destabilizing.</label>
-            <label><input type="radio" name="q7" value="bridge"> There is no bridge between vision and implementation.</label>
-            <label><input type="radio" name="q7" value="weaver"> Trust is thinning and key relationships are fraying.</label>
-            <label><input type="radio" name="q7" value="flamekeeper"> The original why is getting lost.</label>
-            <label><input type="radio" name="q7" value="mirror"> The unsaid truth is growing more expensive.</label>
-          </fieldset>
-
-          <fieldset class="quiz-question" data-step="8" hidden>
-            <legend>8. What kind of work gives you energy instead of draining it?</legend>
-            <label><input type="radio" name="q8" value="anchor" required> Holding space that becomes safer, cleaner, and more grounded.</label>
-            <label><input type="radio" name="q8" value="bridge"> Mapping complexity into a usable model.</label>
-            <label><input type="radio" name="q8" value="weaver"> Creating connection across differences.</label>
-            <label><input type="radio" name="q8" value="flamekeeper"> Defending and refining what feels sacred or essential.</label>
-            <label><input type="radio" name="q8" value="mirror"> Revealing the pattern under the pattern.</label>
-          </fieldset>
-
-          <fieldset class="quiz-question" data-step="9" hidden>
-            <legend>9. What do people misunderstand about you?</legend>
-            <label><input type="radio" name="q9" value="anchor" required> My quiet presence is more active than it looks.</label>
-            <label><input type="radio" name="q9" value="bridge"> I am not cold. I am translating complexity.</label>
-            <label><input type="radio" name="q9" value="weaver"> Connection work is not soft. It is load bearing.</label>
-            <label><input type="radio" name="q9" value="flamekeeper"> My intensity is devotion, not performance.</label>
-            <label><input type="radio" name="q9" value="mirror"> Truth telling is care, not attack.</label>
-          </fieldset>
-
-          <fieldset class="quiz-question" data-step="10" hidden>
-            <legend>10. What feels most true right now?</legend>
-            <label><input type="radio" name="q10" value="anchor" required> I am being asked to stabilize the field.</label>
-            <label><input type="radio" name="q10" value="bridge"> I am being asked to translate vision into form.</label>
-            <label><input type="radio" name="q10" value="weaver"> I am being asked to reconnect what has split apart.</label>
-            <label><input type="radio" name="q10" value="flamekeeper"> I am being asked to protect the fire of what matters.</label>
-            <label><input type="radio" name="q10" value="mirror"> I am being asked to reveal what must now be faced.</label>
-          </fieldset>
-
-          <div class="quiz-actions">
-            <button type="button" class="button button-secondary" id="quiz-prev" disabled>Back</button>
-            <button type="button" class="button button-primary" id="quiz-next">Next question</button>
-            <button type="submit" class="button button-primary" id="quiz-submit" hidden>Reveal my result</button>
-          </div>
-          <p class="helper" id="quiz-helper">Choose the answer that feels most true right now.</p>
-        </form>
-
-        <section class="result-panel" id="result-panel" hidden aria-live="polite">
-          <p class="eyebrow">Your result</p>
-          <h3 id="result-title">Your dominant signal</h3>
-          <p id="result-secondary" class="secondary-note"></p>
-          <p id="result-summary" class="result-summary"></p>
-
-          <div class="result-grid">
-            <div class="result-block">
-              <h4>What this role gives</h4>
-              <p id="result-gift"></p>
-            </div>
-            <div class="result-block">
-              <h4>What to watch</h4>
-              <p id="result-shadow"></p>
-            </div>
-            <div class="result-block full">
-              <h4>Your next step</h4>
-              <p id="result-next"></p>
-            </div>
-          </div>
-
-          <div class="result-cta-card glass-card">
-            <div>
-              <p class="card-label">Best next move</p>
-              <h4 id="result-cta-title">Go deeper with the audiobook</h4>
-              <p id="result-cta-copy">The full audiobook helps you place this role inside a wider architecture of meaning, ethics, and planetary design.</p>
-            </div>
-            <a class="button button-primary" id="result-cta-link" href="#purchase">Go deeper with the audiobook</a>
-          </div>
-
-          <div class="share-box">
-            <h4>Use the share loop</h4>
-            <p id="share-copy">Forward this result to the person carrying the field with you and ask: Which role do you think is most needed in our life or project right now?</p>
-            <p class="small-note">Your share link reopens this page with your result visible.</p>
-            <div class="share-actions">
-              <button class="button button-secondary" id="native-share" type="button">Share result</button>
-              <button class="button button-secondary" id="copy-link" type="button">Copy share link</button>
-              <button class="button button-secondary" id="copy-result" type="button">Copy result text</button>
-              <a class="button button-secondary" href="#trailer">Listen to the trailer</a>
-            </div>
-            <p id="share-status" class="helper" role="status"></p>
-          </div>
-
-          <div class="builder-path-card glass-card">
-            <p class="card-label">Builder side path</p>
-            <h4>Is what you are carrying also structural?</h4>
-            <p class="small-note">If this signal is active inside a strained team, community, or project, use <a href="https://stopthecollapse.com" target="_blank" rel="noopener">StopTheCollapse.com</a> for the collapse patterns, governance language, and structural diagnosis.</p>
-          </div>
-
-          <form id="waitlist-form" class="waitlist-form glass-card" action="https://formspree.io/f/mnjodqre" method="POST">
-            <div>
-              <p class="card-label">Not ready to buy yet?</p>
-              <h4>Stay in the signal</h4>
-              <p class="small-note">Add your email for launch notes, future transmissions, and role based follow up. Your quiz result will be attached to your signup.</p>
-            </div>
-            <div class="waitlist-fields">
-              <label class="sr-only" for="waitlist-email">Email address</label>
-              <input id="waitlist-email" name="email" type="email" placeholder="Enter your email" required />
-              <input type="hidden" name="source" value="BEK landing page" />
-              <input type="hidden" name="quiz_result" id="waitlist-result" value="" />
-              <input type="hidden" name="secondary_signal" id="waitlist-secondary" value="" />
-              <button type="submit" class="button button-primary">Join the list</button>
-            </div>
-            <p id="waitlist-status" class="helper" role="status"></p>
-          </form>
-        </section>
-      </div>
-    
-      </div>
-    
+          <p class="footer-note">Result pages should route into the right next step: audiobook, builder path, or deeper diagnostic depending on what lands most strongly.</p>
+        </div>
       </div>
     </section>
 
-    <section class="section" id="purchase">
-      <div class="container cta-band">
-        <div>
-          <h2>After recognition, go deeper.</h2>
-          <p class="section-copy max-copy">When you are ready for the wider map, go back to the home page for the trailer and the $33 audiobook offer.</p>
+    <section class="section shell" id="what-you-get">
+      <div class="panel">
+        <div class="grid-2">
+          <div>
+            <div class="mini-kicker">What you get</div>
+            <h2 style="font-size:clamp(1.8rem,3.5vw,3rem);line-height:1.02;letter-spacing:-0.04em;max-width:680px;">A cleaner bridge between recognition and the deeper body of work.</h2>
+            <p style="margin-top:16px;max-width:700px;">The page should not feel like a generic assessment tool. It should feel like a credible, low-friction front door into a larger field of meaning. That means clarity first, atmosphere second, and mystique only where it strengthens trust instead of replacing it.</p>
+            <div class="trust-row" style="margin-top:20px;justify-content:flex-start;">
+              <span class="meta-pill">Fast to complete</span>
+              <span class="meta-pill">Emotionally legible</span>
+              <span class="meta-pill">Built for mobile</span>
+            </div>
+          </div>
+          <div class="steps">
+            <div class="step"><div><strong>Less flat, more dimensional.</strong><br><span style="color:var(--muted);">The background image now acts like a field amplifier instead of decoration.</span></div></div>
+            <div class="step"><div><strong>Stronger copy hierarchy.</strong><br><span style="color:var(--muted);">The page now clearly says what this is, why it matters, and how to use it.</span></div></div>
+            <div class="step"><div><strong>Better conversion flow.</strong><br><span style="color:var(--muted);">The user gets a clean path from curiosity to quiz to result to deeper entry point.</span></div></div>
+          </div>
         </div>
-        <a class="button button-primary" href="index.html#audiobook">See the audiobook offer</a>
+      </div>
+    </section>
+
+    <section class="section shell" id="results">
+      <div class="grid-2">
+        <div class="panel">
+          <div class="mini-kicker">After the result</div>
+          <h2 style="font-size:clamp(1.7rem,3vw,2.6rem);line-height:1.05;letter-spacing:-0.04em;">Don’t let the quiz be the whole experience.</h2>
+          <p style="margin-top:14px;">The result should feel shareable, but also directional. It should tell people what function is most alive in them, what that looks like under pressure, and what to do next if recognition lands hard.</p>
+          <div class="result-bridge" style="margin-top:24px;">
+            <div>
+              <p class="quote">“Your system doesn’t just respond to chaos. It naturally stabilizes the field through coherence, translation, protection, or weave.”<small>Use the result page to bridge into the audiobook, the builder path, or the next diagnostic.</small></p>
+            </div>
+            <a class="cta" href="#">See sample result</a>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="mini-kicker">Voice check</div>
+          <p class="quote">“It feels like a serious entry point now, not just a quiz. There’s actual atmosphere, but it still tells me what I’m supposed to do.”<small>That is the target. Calm authority, credible mystique, and low-friction conversion.</small></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section shell" id="faq">
+      <div class="panel">
+        <div class="mini-kicker">FAQ</div>
+        <div class="grid-2">
+          <div class="mini-card">
+            <h3>Do I need to leave my email?</h3>
+            <p>No. The page works best when the first interaction feels clean and pressure-free. Email can come later if the result earns it.</p>
+          </div>
+          <div class="mini-card">
+            <h3>Should there be an image?</h3>
+            <p>Yes. But it should act like a field texture, not a hero illustration. The cosmic lattice background adds depth without competing with the copy.</p>
+          </div>
+          <div class="mini-card">
+            <h3>Should the result be shareable?</h3>
+            <p>Yes. Shareability increases reach, but the result page should still bridge clearly into the audiobook or next resource.</p>
+          </div>
+          <div class="mini-card">
+            <h3>What matters most on this page?</h3>
+            <p>The page has one job: move someone from mild curiosity into meaningful self-recognition, then give them the next aligned step.</p>
+          </div>
+        </div>
       </div>
     </section>
   </main>
 
-<div class="sticky-mobile-cta" id="sticky-cta">
-    <a class="button button-primary button-wide" href="#quiz" id="sticky-cta-link">Take the free quiz</a>
-  </div>
-
-  <footer class="site-footer">
-    <div class="container footer-grid">
-      <div>
-        <p class="footer-brand">Bridging Earth and Kanaria</p>
-        <p class="footer-copy">
-          Built for starseed recognition first, with a cleaner structural side path for builders when the strain is not only personal but systemic.
-        </p>
-      </div>
+  <footer class="footer shell">
+    <div class="footer-grid">
+      <div>Bridging Earth and Kanaria. A cleaner front door into the field.</div>
       <div class="footer-links">
-        <a href="privacy-policy.html">Privacy</a>
-        <a href="terms.html">Terms</a>
-        <a href="disclaimer.html">Disclaimer</a>
-        <a href="404.html">404</a>
+        <a href="#quiz">Quiz</a>
+        <a href="#how-it-works">How it works</a>
+        <a href="#results">Results</a>
+        <a href="#faq">FAQ</a>
       </div>
     </div>
   </footer>
-
-  <script src="assets/js/script.js"></script>
 </body>
 </html>
