@@ -330,6 +330,26 @@ function handleAnswer(type, questionIndex) {
   }
   quizState.answers[questionIndex] = type;
 
+  // After first answer: collapse trust row and hero to reduce mobile scroll
+  if (questionIndex === 0) {
+    const trustRow = document.getElementById('quiz-trust-row');
+    if (trustRow) {
+      trustRow.style.transition = 'opacity 0.4s ease, max-height 0.5s ease';
+      trustRow.style.overflow = 'hidden';
+      trustRow.style.opacity = '0';
+      trustRow.style.maxHeight = '0';
+    }
+    const hero = document.querySelector('.quiz-page-hero');
+    if (hero) {
+      hero.style.transition = 'opacity 0.4s ease, max-height 0.6s ease, padding 0.5s ease';
+      hero.style.overflow = 'hidden';
+      hero.style.opacity = '0';
+      hero.style.maxHeight = '0';
+      hero.style.paddingTop = '0';
+      hero.style.paddingBottom = '0';
+    }
+  }
+
   // Visual feedback — brief flash before next question
   const btns = document.querySelectorAll('.answer-btn');
   btns.forEach(btn => {

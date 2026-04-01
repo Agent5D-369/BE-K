@@ -136,6 +136,19 @@ ul, ol { list-style: none; }
   pointer-events: none;
 }
 
+.sacred-geo-bg {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(800px, 80vmin);
+  height: min(800px, 80vmin);
+  z-index: -1;
+  background: url('sacred-geometry.png') center / contain no-repeat;
+  opacity: 0.04;
+  pointer-events: none;
+}
+
 /* === LAYOUT CONTAINERS === */
 .container {
   width: 100%;
@@ -226,6 +239,19 @@ ul, ol { list-style: none; }
 }
 
 .nav-link:hover { color: var(--gold); }
+
+.nav-link--book {
+  color: var(--gold);
+  border: 1px solid rgba(212,175,55,0.35);
+  padding: 6px 14px;
+  border-radius: var(--radius-sm);
+  transition: background var(--duration) var(--ease), color var(--duration) var(--ease);
+}
+
+.nav-link--book:hover {
+  background: var(--gold);
+  color: var(--space-black);
+}
 
 .nav-cta {
   font-family: var(--font-body);
@@ -1044,6 +1070,87 @@ ul, ol { list-style: none; }
   font-family: var(--font-serif);
   font-size: 19px;
   line-height: 1.8;
+  color: var(--text-secondary);
+}
+
+/* === POST-TRAILER CTA === */
+.post-trailer-cta {
+  padding: var(--space-3xl) 0;
+  border-top: 1px solid var(--glass-border);
+  border-bottom: 1px solid var(--glass-border);
+  text-align: center;
+}
+
+.post-trailer-cta-inner {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.post-trailer-eyebrow {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: var(--space-md);
+}
+
+.post-trailer-title {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 400;
+  color: var(--text-primary);
+  margin-bottom: var(--space-md);
+  letter-spacing: 0.04em;
+}
+
+.post-trailer-body {
+  font-family: var(--font-serif);
+  font-size: clamp(17px, 1.6vw, 20px);
+  line-height: 1.75;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-xl);
+}
+
+.post-trailer-cta-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  justify-content: center;
+}
+
+/* === GIFTED TRANSMISSION === */
+.gift-section {
+  padding: var(--space-2xl) 0;
+  text-align: center;
+}
+
+.gift-inner {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.gift-text {
+  font-family: var(--font-serif);
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--text-muted);
+  margin-bottom: var(--space-md);
+}
+
+.gift-link {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color var(--duration) var(--ease);
+}
+
+.gift-link:hover {
   color: var(--text-secondary);
 }
 
