@@ -1,5 +1,5 @@
 /* ============================================================
-   IWASREADY.COM — BRIDGING EARTH & KANARIA
+   IWASREADY.COM, BRIDGING EARTH & KANARIA
    Quiz Logic, Result Handling, UI Interactions
    ============================================================ */
 
@@ -152,7 +152,7 @@ const ARCHETYPES = {
     badge: '🔥 Signal: Flamekeeper',
     icon: '🔥',
     image: 'assets/archetype-flamekeeper.png',
-    imageAlt: 'The Flamekeeper — Emotional Architect',
+    imageAlt: 'The Flamekeeper, Emotional Architect',
     recognition: `Your signal first became visible in the moments when you stayed when others left. When you held the vision on behalf of people who couldn't hold it for themselves. When you turned back toward the work, again and again, even when the work didn't thank you for it.
 
 You are not just an inspirer. You are an emotional architect. You build the interior field that makes collective motion possible. Others stay in motion because of your presence, often without knowing why.`,
@@ -171,7 +171,7 @@ The shadow of the Flamekeeper is extinction, not through failure, but through ex
     badge: '⚙️ Signal: Architect',
     icon: '⚙️',
     image: 'assets/archetype-architect.png',
-    imageAlt: 'The Architect — Systems Engineer',
+    imageAlt: 'The Architect, Systems Engineer',
     recognition: `You've been diagnosing systems since you were young. Buildings, relationships, organizations, economies. You've always seen the structure underneath the surface. You noticed when the foundation was wrong before anyone else admitted it.
 
 And you've spent years building things, only to watch them get dismantled by people who didn't understand what they were standing on.`,
@@ -190,14 +190,14 @@ The shadow of the Architect is building something perfect that no one can enter.
     badge: '🌉 Signal: Bridge Walker',
     icon: '🌉',
     image: 'assets/archetype-bridge-walker.png',
-    imageAlt: 'The Bridge Walker — Connector of Worlds',
+    imageAlt: 'The Bridge Walker, Connector of Worlds',
     recognition: `You've always been the one who understood both sides. The one who could sit with the academic and the mystic, the executive and the visionary, the ancient and the emergent. You've often felt like a stranger even in groups that were supposed to be your people. Because you belong to more than one world at once.
 
 That feeling of not-quite-fitting? It was never a flaw. It was your function.`,
     gifts: `You move between worlds in a way that most cannot. You speak science to the spiritual and spirit to the scientific. You hold two things that appear contradictory and feel how they're the same beneath the surface tension.
 
 The Bridge Walker signal is rare precisely because it requires standing in the between-space, the place most people find unbearable. You have a higher tolerance for that liminal ground than almost anyone you know.`,
-    shadow: `You may feel like you belong nowhere. You carry the patterns of multiple worlds and sometimes lose track of your own center — your native language, your home frequency, your ground.
+    shadow: `You may feel like you belong nowhere. You carry the patterns of multiple worlds and sometimes lose track of your own center, your native language, your home frequency, your ground.
 
 The shadow of the Bridge Walker is becoming so skilled at translation that you stop knowing what language you actually speak natively. The call is to maintain your own signal even as you carry others'. Your center is the bridge. Without it, nothing holds.`,
     shareSnippet: `"That feeling of not-quite-fitting? It was never a flaw. It was your function."`
@@ -209,16 +209,16 @@ The shadow of the Bridge Walker is becoming so skilled at translation that you s
     badge: '📡 Signal: Signal Holder',
     icon: '📡',
     image: 'assets/archetype-signal-holder.png',
-    imageAlt: 'The Signal Holder — Field of Presence',
-    recognition: `You've known things before they arrived. You've been in rooms where the energy shifted because you walked in — before you said a word. You've carried the grief and weight of collective systems without a framework for why it was yours to carry.
+    imageAlt: 'The Signal Holder, Field of Presence',
+    recognition: `You've known things before they arrived. You've been in rooms where the energy shifted because you walked in, before you said a word. You've carried the grief and weight of collective systems without a framework for why it was yours to carry.
 
 And you've sometimes wondered whether you're too sensitive, too quiet, too much, or perhaps not enough of what the world says it needs.
 
 You were never too much. The world just didn't have a name for what you are.`,
-    gifts: `Your presence is a stabilizing field. When you're in a room, things settle. Not because you performed calm — because you are it. You don't lead through assertion or volume. You lead through coherence.
+    gifts: `Your presence is a stabilizing field. When you're in a room, things settle. Not because you performed calm, because you are it. You don't lead through assertion or volume. You lead through coherence.
 
-The Signal Holder carries something that doesn't require explanation. But its absence is immediately felt. Rooms feel less organized. People feel less certain. Systems drift faster. You are more structurally essential than almost anyone realizes — including you.`,
-    shadow: `You may be misread as passive. Your leadership style doesn't fit most frameworks, so you may have spent years questioning whether you're leading at all. The doubt itself becomes the shadow — because when you doubt your signal, you shrink the field.
+The Signal Holder carries something that doesn't require explanation. But its absence is immediately felt. Rooms feel less organized. People feel less certain. Systems drift faster. You are more structurally essential than almost anyone realizes, including you.`,
+    shadow: `You may be misread as passive. Your leadership style doesn't fit most frameworks, so you may have spent years questioning whether you're leading at all. The doubt itself becomes the shadow, because when you doubt your signal, you shrink the field.
 
 The shadow of the Signal Holder is not weakness. It is self-erasure. And the people who most depend on your frequency often don't know they're depending on it.`,
     shareSnippet: `"Your presence is a stabilizing field. When you're in a room, things settle."`
@@ -253,7 +253,7 @@ function renderQuestion(index) {
   if (!quizBody) return;
 
   if (index >= QUIZ_QUESTIONS.length) {
-    // Done — show completing screen, then redirect
+    // Done, show completing screen, then redirect
     quizBody.style.display = 'none';
     if (completingScreen) {
       completingScreen.classList.add('active');
@@ -386,7 +386,7 @@ function handleAnswer(type, questionIndex) {
     }
   }
 
-  // Visual feedback — brief flash before next question
+  // Visual feedback, brief flash before next question
   const btns = document.querySelectorAll('.answer-btn');
   btns.forEach(btn => {
     if (btn.dataset.type === type) {
@@ -503,12 +503,12 @@ function renderResult(a, root) {
             <!-- USER: Replace YOUR_AUDIOBOOK_URL above with the real audiobook URL (Audible, etc.) -->
             <span class="next-step-icon">📖</span>
             <span class="next-step-label">Get the Audiobook</span>
-            <span class="next-step-desc">The full transmission — every word received, every missing piece named</span>
+            <span class="next-step-desc">The full transmission, every word received, every missing piece named</span>
           </a>
           <a href="https://stopthecollapse.com" class="next-step-card" target="_blank" rel="noopener">
             <span class="next-step-icon">🛠️</span>
             <span class="next-step-label">The Builder's Path</span>
-            <span class="next-step-desc">If you're building something real in this transition — this is where that work begins</span>
+            <span class="next-step-desc">If you're building something real in this transition, this is where that work begins</span>
           </a>
         </div>
       </div>
@@ -556,11 +556,11 @@ function renderResult(a, root) {
 
 function updatePageMeta(archetype) {
   // Update title
-  document.title = `${archetype.name} — Starseed Leadership Signal | IWasReady.com`;
+  document.title = `${archetype.name}, Starseed Leadership Signal | IWasReady.com`;
 
   // Update OG tags if present
   const ogTitle = document.querySelector('meta[property="og:title"]');
-  if (ogTitle) ogTitle.setAttribute('content', `${archetype.name} — Your Starseed Leadership Signal`);
+  if (ogTitle) ogTitle.setAttribute('content', `${archetype.name}, Your Starseed Leadership Signal`);
 
   const ogDesc = document.querySelector('meta[property="og:description"]');
   if (ogDesc) ogDesc.setAttribute('content', archetype.tagline);
@@ -629,7 +629,7 @@ function initShareButtons(archetype) {
 }
 
 /* ============================================================
-   HOME PAGE — AUDIO PLAYER
+   HOME PAGE, AUDIO PLAYER
    ============================================================ */
 
 function initAudioPlayer() {
@@ -754,7 +754,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* ============================================================
-   GIFTED TRANSMISSION — FORMSPREE HANDLER
+   GIFTED TRANSMISSION, FORMSPREE HANDLER
    ============================================================ */
 
 function initGiftForm() {
@@ -792,7 +792,7 @@ function initGiftForm() {
 }
 
 /* ============================================================
-   TESTIMONIAL SUBMISSION — FORMSPREE HANDLER
+   TESTIMONIAL SUBMISSION, FORMSPREE HANDLER
    ============================================================ */
 
 function initTestimonialForm() {

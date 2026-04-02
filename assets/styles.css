@@ -2021,7 +2021,7 @@ ul, ol { list-style: none; }
 /* === TRAILER INTRO TEXT === */
 .trailer-intro {
   font-family: var(--font-serif);
-  font-size: 17px;
+  font-size: 20px;
   font-style: italic;
   color: var(--text-muted);
   margin-top: -var(--space-md);
@@ -2398,7 +2398,7 @@ ul, ol { list-style: none; }
 
 .tc-text {
   font-family: var(--font-body);
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 400;
   line-height: 1.75;
   color: var(--text-primary);
