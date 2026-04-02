@@ -2706,6 +2706,9 @@ ul, ol { list-style: none; }
     align-items: center;
     justify-content: flex-start;
     min-height: 100svh;
+    /* Tighter vertical padding keeps CTAs in viewport */
+    padding-top: calc(var(--nav-height) + var(--space-md));
+    padding-bottom: var(--space-xl);
   }
 
   .hero-content {
@@ -2725,15 +2728,38 @@ ul, ol { list-style: none; }
     align-items: flex-start;
   }
 
+  /* Smaller headline on desktop — keeps CTAs above fold */
+  .hero-headline {
+    font-size: clamp(32px, 3.8vw, 52px);
+    margin-bottom: var(--space-md);
+  }
+
+  /* Tighter badge spacing */
+  .hero-badge {
+    margin-bottom: var(--space-md);
+  }
+
   /* Relax max-width constraints that assumed centered single col */
   .hero-subhead {
     margin-left: 0;
     margin-right: 0;
     max-width: 540px;
+    margin-bottom: var(--space-md);
+  }
+
+  /* Second subhead redundant when image is present on desktop */
+  .hero-subhead--kicker {
+    display: none;
+  }
+
+  /* Tighten identity tags and actions spacing */
+  .hero-identity-tags {
+    margin-bottom: var(--space-md);
   }
 
   .hero-actions {
     align-items: flex-start;
+    gap: var(--space-sm);
   }
 
   .hero-identity-tags {
