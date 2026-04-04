@@ -850,7 +850,7 @@ ul, ol { list-style: none; }
 .book-badge {
   position: absolute;
   bottom: var(--space-lg);
-  left: -var(--space-lg);
+  left: calc(-1 * var(--space-lg));
   background: var(--glass-bg);
   backdrop-filter: blur(20px);
   border: 1px solid var(--glass-border);
@@ -860,6 +860,7 @@ ul, ol { list-style: none; }
   align-items: center;
   gap: var(--space-md);
   transform: translateX(-20px);
+  white-space: nowrap;
 }
 
 .book-badge-icon { font-size: 24px; }
