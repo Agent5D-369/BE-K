@@ -1983,11 +1983,11 @@ ul, ol { list-style: none; }
   .about-image-frame--portrait { aspect-ratio: 4/3; }
 
   .book-badge {
+    position: static;
     transform: none;
-    left: 0;
-    right: 0;
-    bottom: -var(--space-lg);
-    border-radius: 0;
+    border-radius: var(--radius-md);
+    margin-top: var(--space-md);
+    justify-content: center;
   }
 
   .next-steps-grid {
