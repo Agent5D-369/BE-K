@@ -266,14 +266,12 @@
           </div>
 
           <h1 id="hero-headline" class="hero-headline animate-fade-up delay-1">
-            You know you're here <span class="gold">for more than this.</span>
+            What you've been carrying <span class="gold">finally has a name.</span>
           </h1>
 
           <p class="hero-subhead animate-fade-up delay-2">
-            You've felt the fracture. Between the world as it is and the one you know is possible. Between who you are in ordinary rooms and who you are at 2am, turning something unnamed over in your mind.
-          </p>
-          <p class="hero-subhead hero-subhead--kicker animate-fade-up delay-2">
-            <em>Bridging Earth &amp; Kanaria</em> gives that something a name. Your signal type. Your function on the bridge between the old world and what comes next.
+            You've felt the fracture. The world as it is versus the one you know is possible.
+            <em>Bridging Earth &amp; Kanaria</em> is the map between them.
           </p>
 
           <div class="hero-identity-tags animate-fade-up delay-2" aria-hidden="true">
@@ -300,15 +298,16 @@
           </div>
         </div>
 
-        <!-- RIGHT: book journey image (desktop only) -->
+        <!-- RIGHT: book cover (desktop only) -->
         <div class="hero-image-col animate-fade-up delay-2" aria-hidden="true">
-          <div class="hero-image-frame">
+          <div class="hero-image-frame" style="overflow:hidden;display:flex;align-items:center;justify-content:center;height:100%;">
             <img
               src="assets/images/bek-book-cover.webp"
               alt="Bridging Earth and Kanaria — audiobook cover by Rick Broider"
               class="hero-journey-img hero-book-cover"
               loading="eager"
               decoding="async"
+              style="width:auto;max-width:300px;height:auto;max-height:520px;display:block;margin:auto;border-radius:12px;box-shadow:0 40px 100px rgba(0,0,0,0.75),0 0 80px rgba(201,168,76,0.25),0 0 0 1px rgba(255,255,255,0.07);transform:perspective(1200px) rotateY(-5deg) rotateX(1deg);"
             />
             <div class="hero-image-glow" aria-hidden="true"></div>
           </div>
@@ -342,20 +341,23 @@
             </p>
           </div>
 
-          <!-- Video Trailer Player -->
+          <!-- Video Trailer Player — padding-bottom 16:9 technique -->
           <div class="video-player-wrap" id="video-player" role="region" aria-label="Official trailer video player"
-            style="display:block;width:100%;max-width:820px;margin-left:auto;margin-right:auto;">
-            <video
-              class="trailer-video"
-              controls
-              preload="metadata"
-              poster="assets/images/bek-hero-desktop.webp"
-              playsinline
-              aria-label="Official trailer for Bridging Earth and Kanaria, narrated by Rick Broider"
-            >
-              <source src="/assets/video/trailer.mp4" type="video/mp4">
-              <p>Your browser does not support video playback. <a href="/assets/video/trailer.mp4">Download the trailer</a>.</p>
-            </video>
+            style="display:block;width:100%;max-width:820px;margin-left:auto;margin-right:auto;border-radius:18px;overflow:hidden;background:#000;border:1px solid rgba(201,168,76,0.2);box-shadow:0 0 60px rgba(0,0,0,0.6),0 0 40px rgba(56,80,200,0.15);">
+            <div style="position:relative;width:100%;padding-bottom:56.25%;height:0;overflow:hidden;">
+              <video
+                class="trailer-video"
+                controls
+                preload="metadata"
+                poster="assets/images/bek-hero-desktop.webp"
+                playsinline
+                aria-label="Official trailer for Bridging Earth and Kanaria, narrated by Rick Broider"
+                style="position:absolute;top:0;left:0;width:100%;height:100%;display:block;object-fit:cover;"
+              >
+                <source src="/assets/video/trailer.mp4" type="video/mp4">
+                <p>Your browser does not support video playback. <a href="/assets/video/trailer.mp4">Download the trailer</a>.</p>
+              </video>
+            </div>
           </div>
 
           <div class="trailer-caption">
