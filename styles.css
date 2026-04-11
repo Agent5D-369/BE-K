@@ -2934,3 +2934,239 @@ ul, ol { list-style: none; }
     border-radius: var(--radius-lg);
   }
 }
+
+/* ============================================================
+   VIDEO PLAYER — replaces audio player in trailer section
+   ============================================================ */
+
+.video-player-wrap {
+  width: 100%;
+  max-width: 820px;
+  margin: 0 auto;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid rgba(201, 168, 76, 0.2);
+  box-shadow:
+    0 0 80px rgba(0, 0, 0, 0.6),
+    0 0 40px var(--indigo-glow),
+    0 0 60px rgba(201, 168, 76, 0.08);
+  background: #000;
+  position: relative;
+}
+
+.video-player-wrap::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(201,168,76,0.5) 50%, transparent 100%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.trailer-video {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  display: block;
+  background: #000;
+}
+
+/* Native video controls inherit site feel via accent-color */
+.trailer-video::-webkit-media-controls-panel {
+  background: linear-gradient(to top, rgba(4,6,15,0.92), transparent);
+}
+
+@media (max-width: 768px) {
+  .video-player-wrap {
+    border-radius: var(--radius-md);
+  }
+}
+
+/* ============================================================
+   OFFER PRICING META
+   ============================================================ */
+
+.offer-meta {
+  margin-top: var(--space-lg);
+  font-size: 13px;
+  color: var(--text-muted);
+  letter-spacing: 0.06em;
+  text-align: center;
+}
+
+.offer-meta strong {
+  color: var(--gold);
+  font-weight: 600;
+}
+
+.offer-substack-link {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  border-bottom: 1px solid rgba(184, 180, 200, 0.25);
+  padding-bottom: 1px;
+  transition: color var(--duration) var(--ease), border-color var(--duration) var(--ease);
+}
+
+.offer-substack-link:hover {
+  color: var(--gold);
+  border-bottom-color: rgba(201, 168, 76, 0.4);
+}
+
+/* ============================================================
+   ECOSYSTEM ROUTING SECTION
+   ============================================================ */
+
+.ecosystem-section {
+  background: transparent;
+}
+
+.ecosystem-inner {
+  text-align: center;
+}
+
+.ecosystem-title {
+  font-family: var(--font-display);
+  font-size: clamp(26px, 4vw, 38px);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--space-2xl);
+  margin-top: var(--space-md);
+}
+
+.ecosystem-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-lg);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.ecosystem-card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl) var(--space-lg);
+  text-align: center;
+  transition: border-color var(--duration) var(--ease), box-shadow var(--duration) var(--ease);
+}
+
+.ecosystem-card:hover {
+  border-color: rgba(201, 168, 76, 0.25);
+  box-shadow: 0 0 30px rgba(201, 168, 76, 0.06);
+}
+
+.ecosystem-icon {
+  display: block;
+  font-size: 28px;
+  color: var(--gold);
+  margin-bottom: var(--space-md);
+  line-height: 1;
+}
+
+.ecosystem-card-title {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--text-primary);
+  margin-bottom: var(--space-sm);
+  text-transform: uppercase;
+}
+
+.ecosystem-card-body {
+  font-family: var(--font-serif);
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-lg);
+}
+
+.ecosystem-card-link {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--gold);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(201, 168, 76, 0.3);
+  padding-bottom: 1px;
+  transition: color var(--duration) var(--ease), border-color var(--duration) var(--ease);
+}
+
+.ecosystem-card-link:hover {
+  color: var(--gold-bright);
+  border-bottom-color: var(--gold-bright);
+}
+
+@media (max-width: 768px) {
+  .ecosystem-grid {
+    grid-template-columns: 1fr;
+    max-width: 420px;
+  }
+}
+
+/* ============================================================
+   PRINT EDITION URGENCY NOTE
+   ============================================================ */
+
+.tsubmit-print-note {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  border: 1px solid rgba(201, 168, 76, 0.3);
+  border-radius: var(--radius-sm);
+  padding: 6px 16px;
+  margin: var(--space-md) 0 var(--space-lg);
+  background: var(--gold-glow);
+}
+
+/* ============================================================
+   QUIZ SHARE NUDGE
+   ============================================================ */
+
+.quiz-share-nudge {
+  margin-top: var(--space-xl);
+  font-family: var(--font-serif);
+  font-size: 17px;
+  font-style: italic;
+  color: var(--text-muted);
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.65;
+}
+
+/* ============================================================
+   GIFTED FORM — click-to-reveal
+   ============================================================ */
+
+.gift-form-wrap--hidden {
+  display: none;
+}
+
+.gift-toggle {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: var(--text-secondary);
+  font-size: inherit;
+  font-family: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color var(--duration) var(--ease);
+}
+
+.gift-toggle:hover {
+  color: var(--gold);
+}
+
+.gift-text--expand {
+  font-size: 15px;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-lg);
+}
