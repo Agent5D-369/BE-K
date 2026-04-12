@@ -218,6 +218,11 @@
   </script>
 
   <link rel="stylesheet" href="assets/styles.css" />
+  <style>
+    /* Mobile book cover — shown in hero text column below 900px */
+    .hero-mobile-cover { display: block; text-align: center; margin: 1.5rem auto 0.75rem; }
+    @media (min-width: 900px) { .hero-mobile-cover { display: none !important; } }
+  </style>
 </head>
 <body data-page="home">
 
@@ -282,6 +287,17 @@
             <span>New Earth Architects</span>
           </div>
 
+          <!-- Mobile book cover — desktop right column handles this above 900px -->
+          <div class="hero-mobile-cover" aria-hidden="true">
+            <img
+              src="assets/images/bek-book-cover.png"
+              alt=""
+              loading="eager"
+              decoding="async"
+              style="width:auto;max-width:240px;height:auto;display:block;margin:0 auto;filter:drop-shadow(0 16px 40px rgba(201,168,76,0.45)) drop-shadow(0 30px 60px rgba(0,0,0,0.85));"
+            />
+          </div>
+
           <div class="hero-actions animate-fade-up delay-3">
             <div class="hero-cta-group">
               <a href="https://app.helloaudio.fm/feed/831d2db8-2d73-412e-a0a5-0fe58d744a10/signup" class="btn btn-primary btn-lg" target="_blank" rel="noopener">
@@ -300,16 +316,15 @@
 
         <!-- RIGHT: book cover (desktop only) -->
         <div class="hero-image-col animate-fade-up delay-2" aria-hidden="true">
-          <div class="hero-image-frame" style="overflow:hidden;display:flex;align-items:center;justify-content:center;height:100%;">
+          <div class="hero-image-frame" style="display:flex;align-items:center;justify-content:center;height:100%;">
             <img
-              src="assets/images/bek-book-cover.webp"
+              src="assets/images/bek-book-cover.png"
               alt="Bridging Earth and Kanaria — audiobook cover by Rick Broider"
               class="hero-journey-img hero-book-cover"
               loading="eager"
               decoding="async"
-              style="width:auto;max-width:300px;height:auto;max-height:520px;display:block;margin:auto;border-radius:12px;box-shadow:0 40px 100px rgba(0,0,0,0.75),0 0 80px rgba(201,168,76,0.25),0 0 0 1px rgba(255,255,255,0.07);transform:perspective(1200px) rotateY(-5deg) rotateX(1deg);"
+              style="width:auto;max-width:420px;height:auto;max-height:calc(100vh - 100px);display:block;margin:auto;filter:drop-shadow(0 30px 70px rgba(201,168,76,0.45)) drop-shadow(0 60px 120px rgba(0,0,0,0.9)) drop-shadow(0 0 40px rgba(201,168,76,0.2));"
             />
-            <div class="hero-image-glow" aria-hidden="true"></div>
           </div>
         </div>
 
