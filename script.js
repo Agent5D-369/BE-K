@@ -483,6 +483,13 @@ function renderResult(a, root) {
         <p class="result-share-prompt animate-fade-up delay-4">
           Your result is below. Send it to someone who carries the same signal.
         </p>
+
+        <!-- Team of Four -->
+        <div class="animate-fade-up delay-4" style="margin-top:32px;padding:20px 24px;border:1px solid rgba(201,168,76,0.22);border-radius:12px;background:rgba(201,168,76,0.04);max-width:560px;margin-left:auto;margin-right:auto;text-align:left;">
+          <p style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;font-family:var(--font-serif);">The Team of Four</p>
+          <p style="font-size:14px;line-height:1.75;color:var(--text-primary);margin:0 0 8px 0;">A complete New Earth team carries one of each signal: <strong>Flamekeeper · Architect · Bridge Walker · Signal Holder.</strong></p>
+          <p style="font-size:13px;line-height:1.7;color:var(--text-secondary);margin:0;">Forward the quiz to the people building with you. Ask them which type they'd get. The conversation tends to be the one you've been circling.</p>
+        </div>
       </div>
     </section>
 
@@ -579,6 +586,12 @@ function renderResult(a, root) {
         </div>
         <p id="copy-confirm" style="display:none; margin-top:12px; font-size:13px; color:var(--gold);">
           ✓ Link copied to clipboard
+        </p>
+        <p style="margin-top:22px; font-size:14px; color:var(--text-secondary); line-height:1.6;">
+          Did this land for you?
+          <a href="https://iwasready.com/#tsubmit-title" style="color:var(--gold); text-decoration:none; border-bottom:1px solid rgba(201,168,76,0.35);">
+            Share your experience →
+          </a>
         </p>
       </div>
 
