@@ -1,0 +1,1303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Where Are You in the Shift? | Bridging Earth &amp; Kanaria</title>
+<meta name="description" content="3D, 4D, or 5D? This quiz locates you in the shift with precision. Ten questions. A result that names exactly where you are.">
+<meta property="og:title" content="Where Are You in the Shift?">
+<meta property="og:description" content="3D, 4D, or 5D? Ten questions. A result that names exactly where you are right now.">
+<meta property="og:image" content="https://iwasready.com/assets/images/bek-og-image.jpg">
+<meta property="og:url" content="https://iwasready.com/consciousness-quiz.html">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Where Are You in the Shift?">
+<meta name="twitter:description" content="3D, 4D, or 5D? Ten questions. A result that names exactly where you are right now.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ── Reset & Base ─────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: #04060F;
+  color: rgba(255,255,255,0.93);
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+  overscroll-behavior: none;
+}
+
+/* ── Canvas Stars ─────────────────────────────────────────────────────────── */
+#stars {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ── App Shell ────────────────────────────────────────────────────────────── */
+#app {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Screen System ────────────────────────────────────────────────────────── */
+.screen {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: env(safe-area-inset-top, 0px) env(safe-area-inset-right, 0px) env(safe-area-inset-bottom, 0px) env(safe-area-inset-left, 0px);
+}
+.screen.active { display: flex; }
+
+/* ── Progress Bar ─────────────────────────────────────────────────────────── */
+.progress-bar-track {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: rgba(201,168,76,0.12);
+  z-index: 100;
+}
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(to right, #C9A84C, #E4C46A);
+  transition: width 0.5s cubic-bezier(0.4,0,0.2,1);
+  box-shadow: 0 0 12px rgba(201,168,76,0.6);
+  width: 0%;
+}
+
+/* ── Nav bar ──────────────────────────────────────────────────────────────── */
+.nav {
+  width: 100%;
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 28px 24px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav-wordmark {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #C9A84C;
+  text-decoration: none;
+  opacity: 0.8;
+}
+.btn-back {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.4);
+  letter-spacing: 0.06em;
+  padding: 8px 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.2s;
+}
+.btn-back:hover { color: rgba(255,255,255,0.7); }
+.btn-back svg { width: 16px; height: 16px; }
+.btn-back.hidden { visibility: hidden; pointer-events: none; }
+
+/* ── Intro Screen ─────────────────────────────────────────────────────────── */
+#screen-intro {
+  justify-content: center;
+  text-align: center;
+  padding-top: 80px;
+  padding-bottom: 60px;
+}
+.intro-inner {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 0 28px;
+  animation: fadeUp 0.9s cubic-bezier(0.4,0,0.2,1) both;
+}
+.intro-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #C9A84C;
+  margin-bottom: 24px;
+  opacity: 0.85;
+}
+.intro-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(36px, 8vw, 58px);
+  font-weight: 700;
+  line-height: 1.12;
+  color: rgba(255,255,255,0.95);
+  margin-bottom: 28px;
+  letter-spacing: -0.01em;
+}
+.intro-title em {
+  font-style: italic;
+  color: #E4C46A;
+}
+.intro-divider {
+  width: 60px;
+  height: 1.5px;
+  background: linear-gradient(to right, transparent, #C9A84C, transparent);
+  margin: 0 auto 28px;
+}
+.intro-body {
+  font-size: 17px;
+  line-height: 1.75;
+  color: rgba(255,255,255,0.68);
+  margin-bottom: 20px;
+  font-weight: 300;
+}
+.intro-body strong {
+  color: rgba(255,255,255,0.85);
+  font-weight: 500;
+}
+.intro-meta {
+  font-size: 13px;
+  color: rgba(255,255,255,0.35);
+  letter-spacing: 0.06em;
+  margin-bottom: 44px;
+}
+.btn-start {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, rgba(201,168,76,0.15) 0%, rgba(201,168,76,0.08) 100%);
+  border: 1px solid rgba(201,168,76,0.45);
+  border-radius: 50px;
+  padding: 18px 44px;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #E4C46A;
+  cursor: pointer;
+  transition: all 0.25s;
+  position: relative;
+  overflow: hidden;
+}
+.btn-start::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(201,168,76,0.12) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.btn-start:hover { border-color: rgba(201,168,76,0.8); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(201,168,76,0.2); }
+.btn-start:hover::before { opacity: 1; }
+.btn-start:active { transform: translateY(0); }
+.btn-start svg { width: 18px; height: 18px; }
+
+/* Dimension preview pills */
+.dimension-pills {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 48px;
+  flex-wrap: wrap;
+}
+.pill {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 6px 16px;
+  border-radius: 50px;
+  border: 1px solid;
+  opacity: 0.6;
+}
+.pill-3d { color: #D4956A; border-color: rgba(212,149,106,0.35); background: rgba(212,149,106,0.06); }
+.pill-bridge { color: #B898E8; border-color: rgba(184,152,232,0.35); background: rgba(184,152,232,0.06); }
+.pill-4d { color: #7AB4E8; border-color: rgba(122,180,232,0.35); background: rgba(122,180,232,0.06); }
+.pill-5d { color: #E4C46A; border-color: rgba(228,196,106,0.35); background: rgba(228,196,106,0.06); }
+
+/* ── Quiz Screen ──────────────────────────────────────────────────────────── */
+#screen-quiz {
+  justify-content: flex-start;
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
+.quiz-header {
+  width: 100%;
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 20px 24px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.quiz-counter {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  color: rgba(255,255,255,0.35);
+  text-transform: uppercase;
+}
+.quiz-counter span { color: #C9A84C; font-weight: 600; }
+
+.question-wrap {
+  width: 100%;
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 40px 24px 24px;
+  flex: 1;
+}
+.question-text {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(21px, 4.5vw, 30px);
+  font-weight: 600;
+  line-height: 1.35;
+  color: rgba(255,255,255,0.93);
+  margin-bottom: 36px;
+  min-height: 80px;
+}
+
+.options-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.option-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px;
+  padding: 20px 22px;
+  cursor: pointer;
+  transition: all 0.22s cubic-bezier(0.4,0,0.2,1);
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  position: relative;
+  overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+.option-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at left center, rgba(201,168,76,0.07) 0%, transparent 65%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.option-dot {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255,255,255,0.2);
+  flex-shrink: 0;
+  transition: all 0.22s;
+  position: relative;
+}
+.option-dot::after {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: #C9A84C;
+  transition: transform 0.2s cubic-bezier(0.34,1.56,0.64,1);
+}
+.option-text {
+  font-size: 16px;
+  line-height: 1.5;
+  color: rgba(255,255,255,0.72);
+  font-weight: 400;
+  transition: color 0.2s;
+}
+/* Hover */
+.option-card:hover {
+  background: rgba(201,168,76,0.06);
+  border-color: rgba(201,168,76,0.28);
+  transform: translateY(-1px);
+}
+.option-card:hover::before { opacity: 1; }
+.option-card:hover .option-dot { border-color: rgba(201,168,76,0.6); }
+.option-card:hover .option-text { color: rgba(255,255,255,0.88); }
+
+/* Selected state */
+.option-card.selected {
+  background: rgba(201,168,76,0.1);
+  border-color: rgba(201,168,76,0.65);
+  transform: scale(1.01);
+  box-shadow: 0 4px 24px rgba(201,168,76,0.15), inset 0 0 0 1px rgba(201,168,76,0.2);
+}
+.option-card.selected::before { opacity: 1; }
+.option-card.selected .option-dot {
+  border-color: #C9A84C;
+  background: rgba(201,168,76,0.12);
+}
+.option-card.selected .option-dot::after { transform: translate(-50%, -50%) scale(1); }
+.option-card.selected .option-text { color: rgba(255,255,255,0.95); }
+
+/* Fade out other options */
+.options-grid.selecting .option-card:not(.selected) {
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+/* Question transition */
+.question-wrap.slide-out {
+  animation: slideOutLeft 0.3s cubic-bezier(0.4,0,1,1) both;
+}
+.question-wrap.slide-in {
+  animation: slideInRight 0.35s cubic-bezier(0,0,0.2,1) both;
+}
+
+/* ── Calculating Screen ────────────────────────────────────────────────────── */
+#screen-calculating {
+  justify-content: center;
+  text-align: center;
+}
+.calc-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  padding: 40px 28px;
+  animation: fadeUp 0.5s both;
+}
+.calc-symbols {
+  display: flex;
+  gap: 28px;
+  font-size: 36px;
+  animation: pulseSymbols 1.8s ease-in-out infinite;
+}
+.calc-symbols span { opacity: 0.4; transition: opacity 0.3s; }
+.calc-text {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 22px;
+  font-style: italic;
+  color: rgba(255,255,255,0.6);
+  letter-spacing: 0.02em;
+}
+.calc-bar-track {
+  width: 200px;
+  height: 2px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.calc-bar-fill {
+  height: 100%;
+  background: linear-gradient(to right, #C9A84C, #E4C46A);
+  border-radius: 2px;
+  animation: calcProgress 1.8s cubic-bezier(0.4,0,0.2,1) both;
+}
+
+/* ── Dimension Definition Block ──────────────────────────────────────────── */
+.dim-def {
+  border-left: 2px solid;
+  padding: 16px 20px;
+  border-radius: 0 10px 10px 0;
+  background: rgba(255,255,255,0.03);
+  margin-bottom: 28px;
+  animation: fadeUp 0.6s 0.42s both;
+}
+.dim-def-heading {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  opacity: 0.7;
+}
+.dim-def-text {
+  font-size: 15px;
+  line-height: 1.65;
+  color: rgba(255,255,255,0.6);
+  font-weight: 300;
+}
+
+/* ── Result Screen ────────────────────────────────────────────────────────── */
+#screen-result {
+  justify-content: flex-start;
+  padding-bottom: 80px;
+}
+.result-glow {
+  position: fixed;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(80px);
+  opacity: 0;
+  transition: opacity 1.2s;
+}
+.result-glow.visible { opacity: 0.18; }
+
+.result-inner {
+  width: 100%;
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 20px 24px 40px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Score spectrum */
+.spectrum-wrap {
+  margin: 32px 0 40px;
+  animation: fadeUp 0.6s 0.1s both;
+}
+.spectrum-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+  margin-bottom: 12px;
+  text-align: center;
+}
+.spectrum-track {
+  height: 6px;
+  border-radius: 6px;
+  background: rgba(255,255,255,0.07);
+  position: relative;
+  overflow: visible;
+  margin-bottom: 10px;
+}
+.spectrum-fill {
+  height: 100%;
+  border-radius: 6px;
+  transition: width 1.2s cubic-bezier(0.4,0,0.2,1);
+  width: 0%;
+}
+.spectrum-marker {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid #04060F;
+  box-shadow: 0 0 0 2px currentColor, 0 4px 16px rgba(0,0,0,0.5);
+  transition: left 1.2s cubic-bezier(0.4,0,0.2,1);
+  left: 0%;
+}
+.spectrum-zones {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 2px;
+}
+.spectrum-zone {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.35;
+}
+.spectrum-zone.active { opacity: 0.9; font-weight: 700; }
+
+/* Result hero */
+.result-symbol {
+  text-align: center;
+  font-size: 72px;
+  line-height: 1;
+  margin-bottom: 16px;
+  animation: fadeUp 0.6s 0.2s both;
+  filter: drop-shadow(0 0 30px currentColor);
+}
+.result-dimension-label {
+  text-align: center;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  animation: fadeUp 0.6s 0.3s both;
+}
+.result-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(30px, 7vw, 46px);
+  font-weight: 700;
+  line-height: 1.18;
+  color: rgba(255,255,255,0.95);
+  margin-bottom: 28px;
+  text-align: center;
+  animation: fadeUp 0.6s 0.35s both;
+}
+.result-divider {
+  width: 60px;
+  height: 1.5px;
+  margin: 0 auto 32px;
+  animation: fadeUp 0.6s 0.4s both;
+}
+.result-body {
+  font-size: 17px;
+  line-height: 1.8;
+  color: rgba(255,255,255,0.68);
+  font-weight: 300;
+  animation: fadeUp 0.6s 0.45s both;
+}
+.result-body p { margin-bottom: 20px; }
+.result-body p:last-child { margin-bottom: 0; }
+.result-body strong {
+  color: rgba(255,255,255,0.88);
+  font-weight: 500;
+}
+
+/* Share + CTA block */
+.result-actions {
+  margin-top: 44px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  animation: fadeUp 0.6s 0.55s both;
+}
+.btn-share {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 18px 28px;
+  border-radius: 50px;
+  border: 1px solid rgba(201,168,76,0.5);
+  background: rgba(201,168,76,0.1);
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #E4C46A;
+  cursor: pointer;
+  transition: all 0.22s;
+}
+.btn-share:hover { background: rgba(201,168,76,0.18); border-color: rgba(201,168,76,0.75); transform: translateY(-1px); }
+.btn-share:active { transform: translateY(0); }
+.btn-share svg { width: 18px; height: 18px; }
+
+.btn-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 18px 28px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  transition: all 0.22s;
+}
+.btn-cta-primary {
+  background: linear-gradient(135deg, rgba(201,168,76,0.25), rgba(201,168,76,0.12));
+  border: 1px solid rgba(201,168,76,0.6);
+  color: #E4C46A;
+}
+.btn-cta-primary:hover { background: linear-gradient(135deg, rgba(201,168,76,0.35), rgba(201,168,76,0.2)); transform: translateY(-1px); box-shadow: 0 8px 28px rgba(201,168,76,0.2); }
+.btn-cta-secondary {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.6);
+}
+.btn-cta-secondary:hover { background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.85); transform: translateY(-1px); }
+
+.result-retake {
+  text-align: center;
+  margin-top: 20px;
+}
+.btn-retake {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 13px;
+  color: rgba(255,255,255,0.3);
+  letter-spacing: 0.06em;
+  font-family: 'Inter', sans-serif;
+  padding: 8px;
+  transition: color 0.2s;
+}
+.btn-retake:hover { color: rgba(255,255,255,0.6); }
+
+/* ── Toast ────────────────────────────────────────────────────────────────── */
+.toast {
+  position: fixed;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: rgba(201,168,76,0.15);
+  border: 1px solid rgba(201,168,76,0.4);
+  color: #E4C46A;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  padding: 12px 24px;
+  border-radius: 50px;
+  opacity: 0;
+  transition: all 0.3s;
+  pointer-events: none;
+  white-space: nowrap;
+  z-index: 999;
+  backdrop-filter: blur(12px);
+}
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ── Keyframes ────────────────────────────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideOutLeft {
+  from { opacity: 1; transform: translateX(0); }
+  to   { opacity: 0; transform: translateX(-40px); }
+}
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes pulseSymbols {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.9; }
+}
+@keyframes calcProgress {
+  from { width: 0%; }
+  to   { width: 100%; }
+}
+
+/* ── Responsive ───────────────────────────────────────────────────────────── */
+@media (min-width: 600px) {
+  .option-card { padding: 22px 26px; }
+  .result-inner { padding: 24px 40px 60px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+</style>
+</head>
+<body>
+
+<canvas id="stars"></canvas>
+
+<div class="progress-bar-track">
+  <div class="progress-bar-fill" id="progress-fill"></div>
+</div>
+
+<div id="app">
+
+  <!-- ── INTRO SCREEN ──────────────────────────────────────────────────────── -->
+  <div id="screen-intro" class="screen active">
+    <nav class="nav">
+      <a href="https://iwasready.com" class="nav-wordmark">IWasReady.com</a>
+      <div style="width:60px"></div>
+    </nav>
+    <div class="intro-inner">
+      <div class="intro-label">Consciousness Assessment</div>
+      <h1 class="intro-title">Where Are You<br><em>in the Shift?</em></h1>
+      <div class="intro-divider"></div>
+      <p class="intro-body">
+        You've felt it. The world running on old software.<br>
+        The usual explanations falling short.<br>
+        Something in you that <strong>won't go back to sleep.</strong>
+      </p>
+      <p class="intro-body">
+        This quiz doesn't rank you. <strong>It locates you.</strong><br>
+        3D, 4D, and 5D aren't levels of worth.<br>
+        They're frequencies of perception.
+      </p>
+      <p class="intro-meta">10 questions &nbsp;·&nbsp; 3 minutes &nbsp;·&nbsp; No wrong answers</p>
+      <button class="btn-start" onclick="startQuiz()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10,8 16,12 10,16"/></svg>
+        Begin the Quiz
+      </button>
+      <div class="dimension-pills">
+        <span class="pill pill-3d">3D Foundation</span>
+        <span class="pill pill-bridge">The Bridge</span>
+        <span class="pill pill-4d">4D Awakening</span>
+        <span class="pill pill-5d">5D Field</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── QUIZ SCREEN ───────────────────────────────────────────────────────── -->
+  <div id="screen-quiz" class="screen">
+    <div class="quiz-header">
+      <button class="btn-back hidden" id="btn-back" onclick="goBack()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15,18 9,12 15,6"/></svg>
+        Back
+      </button>
+      <div class="quiz-counter">Question <span id="q-current">1</span> of 10</div>
+      <div style="width:60px"></div>
+    </div>
+
+    <div class="question-wrap" id="question-wrap">
+      <div class="question-text" id="question-text"></div>
+      <div class="options-grid" id="options-grid"></div>
+    </div>
+  </div>
+
+  <!-- ── CALCULATING SCREEN ────────────────────────────────────────────────── -->
+  <div id="screen-calculating" class="screen">
+    <div class="calc-inner">
+      <div class="calc-symbols">
+        <span>◆</span><span>◈</span><span>◉</span><span>✦</span>
+      </div>
+      <div class="calc-text">Reading your frequency...</div>
+      <div class="calc-bar-track">
+        <div class="calc-bar-fill" id="calc-bar"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── RESULT SCREEN ─────────────────────────────────────────────────────── -->
+  <div id="screen-result" class="screen">
+    <div class="result-glow" id="result-glow"></div>
+    <nav class="nav">
+      <a href="https://iwasready.com" class="nav-wordmark">IWasReady.com</a>
+      <div style="width:60px"></div>
+    </nav>
+    <div class="result-inner">
+      <div class="spectrum-wrap">
+        <div class="spectrum-label">Your Frequency</div>
+        <div class="spectrum-track">
+          <div class="spectrum-fill" id="spectrum-fill"></div>
+          <div class="spectrum-marker" id="spectrum-marker"></div>
+        </div>
+        <div class="spectrum-zones">
+          <span class="spectrum-zone" id="zone-3d">3D</span>
+          <span class="spectrum-zone" id="zone-bridge">Bridge</span>
+          <span class="spectrum-zone" id="zone-4d">4D</span>
+          <span class="spectrum-zone" id="zone-5d">5D</span>
+        </div>
+      </div>
+
+      <div class="result-symbol" id="result-symbol"></div>
+      <div class="result-dimension-label" id="result-dimension-label"></div>
+      <h2 class="result-title" id="result-title"></h2>
+      <div class="result-divider" id="result-divider"></div>
+      <div class="result-body" id="result-body"></div>
+
+      <div class="result-actions">
+        <button class="btn-share" id="btn-share" onclick="shareResult()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+          Share Your Result
+        </button>
+        <a href="https://rickbroider.substack.com" target="_blank" rel="noopener" class="btn-cta btn-cta-secondary">
+          Hear 3 Free Chapters on Substack
+        </a>
+        <a href="https://iwasready.com" class="btn-cta btn-cta-primary">
+          Get Bridging Earth &amp; Kanaria
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg>
+        </a>
+      </div>
+
+      <div class="result-retake">
+        <button class="btn-retake" onclick="retakeQuiz()">Retake the quiz</button>
+      </div>
+    </div>
+  </div>
+
+</div><!-- #app -->
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ── Stars Canvas ─────────────────────────────────────────────────────────────
+(function () {
+  const canvas = document.getElementById('stars');
+  const ctx = canvas.getContext('2d');
+  let stars = [];
+  let W, H;
+
+  function resize() {
+    W = canvas.width  = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+    buildStars();
+  }
+
+  function buildStars() {
+    stars = [];
+    const count = Math.floor((W * H) / 7000);
+    for (let i = 0; i < count; i++) {
+      stars.push({
+        x: Math.random() * W,
+        y: Math.random() * H,
+        r: Math.random() * 1.4 + 0.2,
+        alpha: Math.random() * 0.6 + 0.1,
+        speed: Math.random() * 0.008 + 0.002,
+        phase: Math.random() * Math.PI * 2,
+      });
+    }
+  }
+
+  function draw(t) {
+    ctx.clearRect(0, 0, W, H);
+    stars.forEach(s => {
+      const a = s.alpha * (0.6 + 0.4 * Math.sin(t * s.speed + s.phase));
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(255,255,255,${a})`;
+      ctx.fill();
+    });
+    requestAnimationFrame(draw);
+  }
+
+  window.addEventListener('resize', resize);
+  resize();
+  requestAnimationFrame(draw);
+})();
+
+// ── Quiz Data ────────────────────────────────────────────────────────────────
+const QUESTIONS = [
+  {
+    text: "When someone challenges your perspective, your first instinct is:",
+    options: [
+      { text: "To defend it. You've earned your views.", score: 1 },
+      { text: "To get curious, but you notice a flicker of defensiveness first.", score: 2 },
+      { text: "To genuinely consider it, even if it unsettles something.", score: 3 },
+      { text: "To welcome it. New data is always useful.", score: 4 },
+    ]
+  },
+  {
+    text: "When you look at what's happening in the world right now, you feel:",
+    options: [
+      { text: "Anxious or angry. The world is dangerous and people need to wake up.", score: 1 },
+      { text: "Like you see things others don't, but explaining it exhausts you.", score: 2 },
+      { text: "Aware of the darkness and the emergence at the same time. Both feel real.", score: 3 },
+      { text: "Grounded. Collapse and rebirth are the same process.", score: 4 },
+    ]
+  },
+  {
+    text: "Your relationship to success looks most like:",
+    options: [
+      { text: "A scoreboard. Progress needs to be measurable or it isn't real.", score: 1 },
+      { text: "A map with a destination. You're building toward something, but you're not sure it's fully yours.", score: 2 },
+      { text: "A frequency. You know you're aligned because it feels different, not because the numbers confirm it.", score: 3 },
+      { text: "A field. Success isn't something you reach. It's something you inhabit.", score: 4 },
+    ]
+  },
+  {
+    text: "When someone you love is suffering, you:",
+    options: [
+      { text: "Try to fix it. Watching someone struggle without doing something feels unbearable.", score: 1 },
+      { text: "Feel it deeply, sometimes too deeply, and wonder if that sensitivity is a gift or a problem.", score: 2 },
+      { text: "Stay present without needing to change what they're experiencing.", score: 3 },
+      { text: "Hold the whole of them, the suffering and the soul, without collapsing the space between you.", score: 4 },
+    ]
+  },
+  {
+    text: "\"Us vs. them\" thinking feels:",
+    options: [
+      { text: "Accurate. There are real differences between people and pretending otherwise is naive.", score: 1 },
+      { text: "Outdated in theory, but still showing up in your reactions more than you'd like.", score: 2 },
+      { text: "Like a trap you've mostly escaped, though the pull still surfaces when things get intense.", score: 3 },
+      { text: "Like a layer you see through. Even opposition is part of the same whole.", score: 4 },
+    ]
+  },
+  {
+    text: "Your sense of purpose feels:",
+    options: [
+      { text: "Tied to achievement, legacy, or impact you can point to and measure.", score: 1 },
+      { text: "Present but murky at times. You know you're here for something, but the clarity comes and goes.", score: 2 },
+      { text: "Like a thread you follow. It doesn't need to be loud or validated to be real.", score: 3 },
+      { text: "Like a frequency you embody. Purpose isn't what you do. It's what you are.", score: 4 },
+    ]
+  },
+  {
+    text: "When you encounter someone who seems spiritually asleep, you:",
+    options: [
+      { text: "Feel frustrated, or find yourself wanting to shake them awake.", score: 1 },
+      { text: "See yourself in them a little, and it's humbling and uncomfortable.", score: 2 },
+      { text: "Respect where they are. Every timeline has its own pace.", score: 3 },
+      { text: "Feel no meaningful distance between you. Their path is as valid as yours.", score: 4 },
+    ]
+  },
+  {
+    text: "Your relationship to your past is:",
+    options: [
+      { text: "Complicated. There are things that happened that still feel unresolved and alive.", score: 1 },
+      { text: "A work in progress. You've done healing but you sense there's more waiting.", score: 2 },
+      { text: "Mostly integrated. You can hold it without being held by it.", score: 3 },
+      { text: "Like old weather. It shaped you. You're not carrying it anymore.", score: 4 },
+    ]
+  },
+  {
+    text: "When you imagine the future, the feeling underneath is:",
+    options: [
+      { text: "Urgency. There's a lot that needs to change and time feels short.", score: 1 },
+      { text: "Hope mixed with doubt. You want to believe, but the evidence keeps pulling you back.", score: 2 },
+      { text: "Openness. You're building something real without needing to know exactly how it lands.", score: 3 },
+      { text: "Trust. Not passive trust. Active, embodied trust in the coherence of what's unfolding.", score: 4 },
+    ]
+  },
+  {
+    text: "The phrase \"you're not crazy, you're early\" lands for you as:",
+    options: [
+      { text: "Something you'd like to believe, but you're not fully sure about yet.", score: 1 },
+      { text: "True, but lonely. Being early doesn't feel like a gift most days.", score: 2 },
+      { text: "A recognition you've already arrived at. You've stopped needing others to confirm it.", score: 3 },
+      { text: "A given. You never really questioned it.", score: 4 },
+    ]
+  },
+];
+
+// ── Result Definitions ────────────────────────────────────────────────────────
+// Score range: 10 (all A) to 40 (all D)
+// Ranges verified:
+//   3D:     10-18  (9 values, requires avg <= 1.8)
+//   Bridge: 19-26  (8 values, requires avg 1.9-2.6)
+//   4D:     27-34  (8 values, requires avg 2.7-3.4)
+//   5D:     35-40  (6 values, requires avg >= 3.5, mostly D answers)
+// Edge cases: 10=3D, 18=3D, 19=Bridge, 26=Bridge, 27=4D, 34=4D, 35=5D, 40=5D
+
+const RESULTS = {
+  foundation: {
+    key: 'foundation',
+    min: 10, max: 18,
+    color: '#D4956A',
+    glowColor: '#D4956A',
+    symbol: '◆',
+    dimensionLabel: '3D Consciousness',
+    title: "You're Running the Foundation Code.",
+    zoneId: 'zone-3d',
+    shareText: "I took the Where Are You in the Shift? quiz. I'm running the Foundation Code (3D). The crack is the signal.",
+    dimDef: "3D consciousness is the frequency of separation. It's the operating system most of humanity has been running: reality is physical, survival is the primary drive, and identity is built through achievement, status, and external validation. It's not primitive. It built civilization. It just wasn't designed for what's coming next.",
+    body: `
+      <p>That's not an insult. It's an orientation.</p>
+      <p>3D consciousness isn't a failure state. It's the layer every conscious builder works through before anything else becomes visible. The drive to protect, to achieve, to prove, to survive: those aren't flaws in your code. They're the architecture that got humanity this far.</p>
+      <p>What shifts at this level isn't your effort. It's the <strong>story underneath the effort.</strong></p>
+      <p>You may already be feeling it: a restlessness that achievement doesn't quiet. A sense that the rules you've been playing by were written for a world that's starting to dissolve. That feeling is accurate. It's not anxiety. It's data.</p>
+      <p>The foundation isn't where you stay. It's where you start. And the fact that you're here, asking this question, means something is already cracking open.</p>
+      <p><strong>Bridging Earth &amp; Kanaria</strong> was written for the moment the foundation starts to crack. Not to break you open, but to give you a map for what's underneath.</p>
+    `
+  },
+  bridge: {
+    key: 'bridge',
+    min: 19, max: 26,
+    color: '#B898E8',
+    glowColor: '#9B72CF',
+    symbol: '◈',
+    dimensionLabel: 'The Bridge',
+    title: "You're Between Worlds.",
+    zoneId: 'zone-bridge',
+    shareText: "I took the Where Are You in the Shift? quiz. I'm in the Bridge, between dimensions. It's the loneliest and most important place to stand.",
+    dimDef: "The Bridge is the liminal space between dimensional frequencies. You've outgrown 3D but haven't fully stabilized in 5D. You can feel both worlds, which means you don't fully belong to either one. This is the most common experience among people who are consciously navigating the shift right now, and the most under-named.",
+    body: `
+      <p>Not 3D. Not fully 5D. Something in between, and if you're honest, that in-between state has its own particular ache.</p>
+      <p>You've woken up enough that the old world doesn't fit anymore. But the new world isn't fully assembled yet. You can see what's possible, feel what's coming, and some days the gap between those two realities is the loneliest place you've ever stood.</p>
+      <p>That's not a sign you're stuck. <strong>That's what it feels like to be the bridge.</strong></p>
+      <p>Most people feeling the shift right now are right here. Not behind. Not ahead. Standing at the threshold where the old story ends and the new one hasn't been fully written yet.</p>
+      <p>The Bridge isn't a waiting room. It's a function. You're here because someone has to hold the crossing point, translate between what was and what's becoming, build structures that work in both directions.</p>
+      <p><strong>Bridging Earth &amp; Kanaria</strong> is a field manual for this exact location. The liminal state has architecture. You just need the blueprints.</p>
+    `
+  },
+  awakening: {
+    key: 'awakening',
+    min: 27, max: 34,
+    color: '#7AB4E8',
+    glowColor: '#4A7FBF',
+    symbol: '◉',
+    dimensionLabel: '4D Consciousness',
+    title: "You're in the Awakening.",
+    zoneId: 'zone-4d',
+    shareText: "I took the Where Are You in the Shift? quiz. I'm in the Awakening (4D). Awake enough to see it. Building to embody it.",
+    dimDef: "4D consciousness is the frequency of awakening. The veil between surface reality and energetic reality starts to thin. You begin seeing the patterns, the polarity, the duality underneath the systems. Light and shadow both become visible. It's expansive and disorienting at the same time, because you can see what's broken before you know how to build what replaces it.",
+    body: `
+      <p>You've done the work. You can see the polarity, the duality, the old systems running their loops. You're not asleep. You know you're not asleep.</p>
+      <p>And still: the old patterns surface. The reaction before the awareness. The moment you catch yourself in a story you thought you'd dissolved. The day the clarity drops and something uncomfortably familiar returns.</p>
+      <p>That's not regression. <strong>That's integration.</strong></p>
+      <p>4D consciousness is the most demanding position in the whole arc because you're awake enough to see what you're carrying, but not yet free enough to put it down without effort. You're running new perception on an old nervous system. The software updated. The hardware is still catching up.</p>
+      <p>What you're building now, the inner architecture, the relational containers, the ethics of how you show up: that's not personal development. That's planetary preparation.</p>
+      <p><strong>Bridging Earth &amp; Kanaria</strong> maps the move from perception to construction: from seeing what's broken to designing what comes next, with integrity, without losing your soul in the process.</p>
+    `
+  },
+  field: {
+    key: 'field',
+    min: 35, max: 40,
+    color: '#E4C46A',
+    glowColor: '#C9A84C',
+    symbol: '✦',
+    dimensionLabel: '5D Consciousness',
+    title: "You're Holding the Field.",
+    zoneId: 'zone-5d',
+    shareText: "I took the Where Are You in the Shift? quiz. I'm holding the Field (5D). The question now is what I build with it.",
+    dimDef: "5D consciousness is the frequency of unity. The sense of separation dissolves as a felt reality, not just a concept. You perceive yourself as part of an interconnected field. Love isn't a feeling at this level. It's a structural fact. Time feels less linear. The distinction between inner and outer reality gets thin. This is where the work stops being about personal healing and starts being about what you're here to build.",
+    body: `
+      <p>You don't need the world to confirm what you know.</p>
+      <p>5D isn't a reward for spiritual effort. It's a frequency of perception that some people carry without choosing it, often at significant personal cost. You've felt the weight of it: the rooms that change when you walk in, the conversations that shift, the exhaustion of being a stabilizing field in environments that are anything but stable.</p>
+      <p>You know how to love without losing yourself. You see the unity underneath the conflict, not as a platitude, but as something your nervous system actually registers.</p>
+      <p>That's rare. <strong>And it carries responsibility.</strong></p>
+      <p>At this level the question isn't about your own ascension. It's about what you build with the frequency you carry. How you design systems that hold what you hold. How you find others operating at this level. How you build a team that can function from this field together.</p>
+      <p><strong>Bridging Earth &amp; Kanaria</strong> is a blueprint for translating 5D perception into real systems, real communities, real structures that survive contact with the world as it is.</p>
+    `
+  },
+};
+
+// ── State ────────────────────────────────────────────────────────────────────
+let currentQ  = 0;
+let answers   = [];
+let resultKey = null;
+let isTransitioning = false;
+
+// ── Screen Transitions ────────────────────────────────────────────────────────
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+// ── Progress ──────────────────────────────────────────────────────────────────
+function updateProgress() {
+  const pct = (answers.length / QUESTIONS.length) * 100;
+  document.getElementById('progress-fill').style.width = pct + '%';
+}
+
+// ── Start ─────────────────────────────────────────────────────────────────────
+function startQuiz() {
+  currentQ = 0;
+  answers  = [];
+  isTransitioning = false;
+  updateProgress();
+  renderQuestion(currentQ);
+  showScreen('screen-quiz');
+}
+
+// ── Render Question ───────────────────────────────────────────────────────────
+function renderQuestion(index, direction) {
+  const q    = QUESTIONS[index];
+  const wrap = document.getElementById('question-wrap');
+  const grid = document.getElementById('options-grid');
+
+  document.getElementById('q-current').textContent = index + 1;
+  const backBtn = document.getElementById('btn-back');
+  if (index === 0) { backBtn.classList.add('hidden'); }
+  else             { backBtn.classList.remove('hidden'); }
+
+  // Build HTML
+  document.getElementById('question-text').textContent = q.text;
+  grid.innerHTML = '';
+  grid.classList.remove('selecting');
+
+  q.options.forEach((opt, i) => {
+    const card = document.createElement('button');
+    card.className = 'option-card';
+    card.setAttribute('aria-label', opt.text);
+    card.innerHTML = `<div class="option-dot"></div><div class="option-text">${opt.text}</div>`;
+    card.addEventListener('click', () => selectOption(i, opt.score));
+    grid.appendChild(card);
+  });
+
+  // Animate in
+  if (direction === 'forward' || direction === undefined) {
+    wrap.classList.remove('slide-out', 'slide-in');
+    void wrap.offsetWidth; // reflow
+    wrap.classList.add('slide-in');
+    wrap.addEventListener('animationend', () => wrap.classList.remove('slide-in'), { once: true });
+  }
+}
+
+// ── Select Option ─────────────────────────────────────────────────────────────
+function selectOption(optIndex, score) {
+  if (isTransitioning) return;
+  isTransitioning = true;
+
+  const grid  = document.getElementById('options-grid');
+  const cards = grid.querySelectorAll('.option-card');
+  const wrap  = document.getElementById('question-wrap');
+
+  // Mark selected
+  cards[optIndex].classList.add('selected');
+  grid.classList.add('selecting');
+
+  // Record answer
+  answers[currentQ] = score;
+  updateProgress();
+
+  setTimeout(() => {
+    if (currentQ < QUESTIONS.length - 1) {
+      // Slide out, advance
+      wrap.classList.add('slide-out');
+      wrap.addEventListener('animationend', () => {
+        wrap.classList.remove('slide-out');
+        currentQ++;
+        renderQuestion(currentQ, 'forward');
+        isTransitioning = false;
+      }, { once: true });
+    } else {
+      // All done
+      showCalculating();
+    }
+  }, 380);
+}
+
+// ── Back ──────────────────────────────────────────────────────────────────────
+function goBack() {
+  if (isTransitioning || currentQ === 0) return;
+  isTransitioning = true;
+  const wrap = document.getElementById('question-wrap');
+
+  // Remove the last answer
+  answers.splice(currentQ, 1);
+  currentQ--;
+  updateProgress();
+
+  wrap.classList.add('slide-out');
+  wrap.addEventListener('animationend', () => {
+    wrap.classList.remove('slide-out');
+    renderQuestion(currentQ, 'back');
+    isTransitioning = false;
+  }, { once: true });
+}
+
+// ── Calculating ───────────────────────────────────────────────────────────────
+function showCalculating() {
+  showScreen('screen-calculating');
+  // Reset and re-trigger animation
+  const bar = document.getElementById('calc-bar');
+  bar.style.animation = 'none';
+  void bar.offsetWidth;
+  bar.style.animation = '';
+
+  setTimeout(() => {
+    const total = answers.reduce((s, v) => s + v, 0);
+    showResult(total);
+  }, 1900);
+}
+
+// ── Result ────────────────────────────────────────────────────────────────────
+function getResultKey(score) {
+  // Scoring triple-checked:
+  // Min possible: 10 x 1 = 10 → 3D
+  // Max possible: 10 x 4 = 40 → 5D
+  // All boundaries are inclusive and contiguous with no gaps
+  if (score >= 35) return 'field';       // 35-40: avg 3.5-4.0
+  if (score >= 27) return 'awakening';   // 27-34: avg 2.7-3.4
+  if (score >= 19) return 'bridge';      // 19-26: avg 1.9-2.6
+  return 'foundation';                   // 10-18: avg 1.0-1.8
+}
+
+function showResult(score) {
+  resultKey = getResultKey(score);
+  const r   = RESULTS[resultKey];
+
+  // Populate result elements
+  const symbol = document.getElementById('result-symbol');
+  symbol.textContent = r.symbol;
+  symbol.style.color = r.color;
+
+  const dimLabel = document.getElementById('result-dimension-label');
+  dimLabel.textContent = r.dimensionLabel;
+  dimLabel.style.color = r.color;
+
+  document.getElementById('result-title').textContent = r.title;
+
+  const divider = document.getElementById('result-divider');
+  divider.style.background = `linear-gradient(to right, transparent, ${r.color}, transparent)`;
+
+  document.getElementById('result-body').innerHTML =
+    `<div class="dim-def" style="border-color:${r.color}40;background:${r.color}08">
+       <div class="dim-def-heading" style="color:${r.color}">${r.dimensionLabel}</div>
+       <div class="dim-def-text">${r.dimDef}</div>
+     </div>` + r.body;
+
+  // Spectrum bar
+  const pct = ((score - 10) / 30) * 100;
+  const fill = document.getElementById('spectrum-fill');
+  fill.style.background = `linear-gradient(to right, #D4956A, ${r.color})`;
+
+  const marker = document.getElementById('spectrum-marker');
+  marker.style.color = r.color;
+  marker.style.background = r.color;
+
+  // Activate zone label
+  document.querySelectorAll('.spectrum-zone').forEach(z => z.classList.remove('active'));
+  const activeZone = document.getElementById(r.zoneId);
+  if (activeZone) {
+    activeZone.classList.add('active');
+    activeZone.style.color = r.color;
+  }
+
+  // Glow
+  const glow = document.getElementById('result-glow');
+  glow.style.background = r.glowColor;
+
+  showScreen('screen-result');
+
+  // Animate spectrum after screen shows
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      fill.style.width   = pct + '%';
+      marker.style.left  = pct + '%';
+      glow.classList.add('visible');
+    });
+  });
+}
+
+// ── Share ─────────────────────────────────────────────────────────────────────
+async function shareResult() {
+  if (!resultKey) return;
+  const r    = RESULTS[resultKey];
+  const url  = 'https://iwasready.com/consciousness-quiz.html';
+  const text = r.shareText + '\n\nTake the quiz: ' + url;
+
+  if (navigator.share) {
+    try {
+      await navigator.share({ title: 'Where Are You in the Shift?', text: r.shareText, url });
+      return;
+    } catch (e) {
+      // Fall through to clipboard
+    }
+  }
+
+  // Clipboard fallback
+  try {
+    await navigator.clipboard.writeText(text);
+    showToast('Copied to clipboard');
+  } catch (e) {
+    showToast('Copy the link: iwasready.com/consciousness-quiz.html');
+  }
+}
+
+// ── Retake ────────────────────────────────────────────────────────────────────
+function retakeQuiz() {
+  const glow = document.getElementById('result-glow');
+  glow.classList.remove('visible');
+  document.getElementById('progress-fill').style.width = '0%';
+  document.querySelectorAll('.spectrum-zone').forEach(z => {
+    z.classList.remove('active');
+    z.style.color = '';
+  });
+  document.getElementById('spectrum-fill').style.width = '0%';
+  document.getElementById('spectrum-marker').style.left = '0%';
+  startQuiz();
+}
+
+// ── Toast ─────────────────────────────────────────────────────────────────────
+function showToast(msg) {
+  const toast = document.getElementById('toast');
+  toast.textContent = msg;
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 2800);
+}
+</script>
+</body>
+</html>
