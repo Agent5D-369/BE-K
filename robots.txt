@@ -1,11 +1,17 @@
 User-agent: *
 Allow: /
 
-# Sitemap
+# Primary pages
+Allow: /index.html
+Allow: /consciousness-quiz.html
+Allow: /quiz.html
+
+# Assets
+Allow: /assets/
+
+# LLM context file
+Allow: /llms.txt
+
 Sitemap: https://iwasready.com/sitemap.xml
 
-# LLM Context
-# https://iwasready.com/llms.txt
-
-# AI crawlers — full access permitted
-# GPTBot, ClaudeBot, PerplexityBot, Google-Extended: no restrictions
+Host: https://iwasready.com
