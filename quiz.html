@@ -66,6 +66,9 @@
 </head>
 <body data-page="quiz">
 
+  <!-- Twinkling star canvas (matches consciousness quiz) -->
+  <canvas id="bek-stars" aria-hidden="true" style="position:fixed;inset:0;z-index:0;pointer-events:none;"></canvas>
+
   <!-- COSMIC BACKGROUND -->
   <div class="cosmic-bg" aria-hidden="true"></div>
   <div class="cosmic-texture" aria-hidden="true"></div>
@@ -181,6 +184,43 @@
   <script src="assets/script.js"></script>
   <script>
     document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+    // ── Twinkling stars (matches consciousness quiz) ──────────────────────────
+    (function () {
+      const canvas = document.getElementById('bek-stars');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      let stars = [], W, H;
+      function resize() {
+        W = canvas.width  = window.innerWidth;
+        H = canvas.height = window.innerHeight;
+        stars = [];
+        const count = Math.floor((W * H) / 7000);
+        for (let i = 0; i < count; i++) {
+          stars.push({
+            x: Math.random() * W, y: Math.random() * H,
+            r: Math.random() * 1.4 + 0.2,
+            alpha: Math.random() * 0.6 + 0.1,
+            speed: Math.random() * 0.008 + 0.002,
+            phase: Math.random() * Math.PI * 2,
+          });
+        }
+      }
+      function draw(t) {
+        ctx.clearRect(0, 0, W, H);
+        stars.forEach(s => {
+          const a = s.alpha * (0.6 + 0.4 * Math.sin(t * s.speed + s.phase));
+          ctx.beginPath();
+          ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(255,255,255,' + a + ')';
+          ctx.fill();
+        });
+        requestAnimationFrame(draw);
+      }
+      window.addEventListener('resize', resize);
+      resize();
+      requestAnimationFrame(draw);
+    })();
   </script>
 </body>
 </html>
