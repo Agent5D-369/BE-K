@@ -1846,13 +1846,7 @@ async function submitEmailCapture(e) {
     kitOk = false;
   }
 
-  // Substack — fire-and-forget (no-cors; must use form-encoded, not JSON)
-  fetch('https://rickbroider.substack.com/api/v1/free', {
-    method: 'POST',
-    mode: 'no-cors',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: 'email=' + encodeURIComponent(email) + '&captcha_response='
-  }).catch(() => {});
+  // Substack subscription handled via Kit Email 1 CTA — no direct API call needed
 
   const successEl = document.getElementById('capture-success');
   if (kitOk) {
