@@ -1806,46 +1806,31 @@ async function submitEmailCapture(e) {
 
   let kitOk = false;
 
-  // Kit — form-encoded matches what Kit's own embedded forms send
-  // CORS headers are set by Kit's form endpoint by design (supports third-party embeds)
+  // Kit v3 API — official documented endpoint, returns readable JSON
+  // Public API key is safe in frontend code (read-only, designed for client use)
   try {
-    const res = await fetch('https://app.convertkit.com/forms/9354202/subscriptions', {
+    const res = await fetch('https://api.convertkit.com/v3/forms/9354202/subscribe', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      credentials: 'omit',
-      body: 'email_address=' + encodeURIComponent(email)
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ api_key: 'rHVnH9w-RQSRS8Fft38AeQ', email: email })
     });
-    kitOk = res.ok;
+    const data = await res.json();
+    kitOk = res.ok && data.subscription != null;
   } catch (_) { kitOk = false; }
 
-  // Substack — no-cors, best-effort (Substack doesn't expose CORS headers)
-  // Note: Substack uses double opt-in — subscriber won't appear in dashboard
-  // until they click the confirmation email Substack sends automatically
-  try {
-    await fetch('https://rickbroider.substack.com/api/v1/free', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: 'email=' + encodeURIComponent(email) + '&first_url=' + encodeURIComponent(window.location.href),
-      mode: 'no-cors'
-    });
-  } catch (_) {}
-
-  // Show result — always echo the email address so they can verify what was submitted
-  e.target.style.display = 'none';
-  document.querySelector('.email-capture-privacy').style.display = 'none';
   const successEl = document.getElementById('capture-success');
   if (kitOk) {
+    e.target.style.display = 'none';
+    document.querySelector('.email-capture-privacy').style.display = 'none';
     successEl.textContent = 'You\u2019re in. Watch for something worth opening at ' + email + '.';
+    successEl.style.display = 'block';
   } else {
-    successEl.textContent = 'Something didn\u2019t connect. Try again or send your email directly to rbroider@gmail.com.';
-    // Re-enable form on failure so they can retry
-    e.target.style.display = '';
-    document.querySelector('.email-capture-privacy').style.display = '';
+    successEl.textContent = 'Something didn\u2019t connect. Try again or email rbroider@gmail.com directly.';
+    successEl.style.color = 'rgba(255,160,100,0.9)';
+    successEl.style.display = 'block';
     btn.textContent = 'Try again';
     btn.disabled = false;
-    successEl.style.color = 'rgba(255,160,100,0.9)';
   }
-  successEl.style.display = 'block';
 }
 
 // ── Retake ────────────────────────────────────────────────────────────────────
