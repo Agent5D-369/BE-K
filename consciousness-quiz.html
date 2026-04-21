@@ -1783,19 +1783,6 @@ async function shareResult() {
   const fullText  = shareText + '\n\n' + url;
 
   if (navigator.share) {
-    // Try to share with the result image attached — shows in share preview
-    // and travels with the post on platforms that accept files (iOS, Android, some desktop)
-    try {
-      const imgRes  = await fetch('assets/images/result-' + r.key + '.png');
-      const imgBlob = await imgRes.blob();
-      const imgFile = new File([imgBlob], 'frequency-finder-' + r.key + '.png', { type: 'image/png' });
-      if (navigator.canShare && navigator.canShare({ files: [imgFile] })) {
-        await navigator.share({ title: 'The Frequency Finder Quiz', text: shareText, url, files: [imgFile] });
-        return;
-      }
-    } catch (_) { /* file share not supported — fall through to text-only */ }
-
-    // Text + URL share (no file) — works everywhere navigator.share is available
     try {
       await navigator.share({ title: 'The Frequency Finder Quiz', text: shareText, url });
       return;
@@ -1833,16 +1820,33 @@ async function submitEmailCapture(e) {
 
   let kitOk = false;
 
-  // Kit form embed endpoint — uses form UID b50ff46c9e, CORS-safe for third-party embeds
+  // Kit hosted-domain subscription endpoint (new kit.com domain has CORS open)
+  // Falls back gracefully — Substack fires in parallel regardless
   try {
-    const res = await fetch('https://app.convertkit.com/forms/b50ff46c9e/subscriptions', {
+    const res = await fetch('https://rick-broider.kit.com/b50ff46c9e/subscriptions', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       credentials: 'omit',
       body: 'email_address=' + encodeURIComponent(email)
     });
-    kitOk = res.ok;
-  } catch (_) { kitOk = false; }
+    console.log('[Kit] status:', res.status, res.statusText);
+    kitOk = res.ok || res.status === 200 || res.status === 201;
+    if (!kitOk) {
+      const body = await res.text().catch(() => '');
+      console.warn('[Kit] response body:', body);
+    }
+  } catch (err) {
+    console.warn('[Kit] fetch error:', err);
+    kitOk = false;
+  }
+
+  // Substack — fire-and-forget alongside Kit (no-cors, cannot read response)
+  fetch('https://rickbroider.substack.com/api/v1/free', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    mode: 'no-cors',
+    body: JSON.stringify({ email })
+  }).catch(() => {});
 
   const successEl = document.getElementById('capture-success');
   if (kitOk) {
