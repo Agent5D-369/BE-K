@@ -1846,12 +1846,12 @@ async function submitEmailCapture(e) {
     kitOk = false;
   }
 
-  // Substack — fire-and-forget alongside Kit (no-cors, cannot read response)
+  // Substack — fire-and-forget (no-cors; must use form-encoded, not JSON)
   fetch('https://rickbroider.substack.com/api/v1/free', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
     mode: 'no-cors',
-    body: JSON.stringify({ email })
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: 'email=' + encodeURIComponent(email) + '&captcha_response='
   }).catch(() => {});
 
   const successEl = document.getElementById('capture-success');
