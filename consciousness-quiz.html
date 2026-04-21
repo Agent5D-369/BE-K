@@ -1189,7 +1189,7 @@ body {
           Share Your Result
         </button>
         <a href="https://rickbroider.substack.com" target="_blank" rel="noopener" class="btn-cta btn-cta-secondary">
-          Hear 3 Free Chapters First
+          Get Free Transmissions →
         </a>
       </div>
 
@@ -1804,32 +1804,48 @@ async function submitEmailCapture(e) {
   btn.textContent = '...';
   btn.disabled = true;
 
-  // Fire both Kit and Substack in parallel — neither blocks the other
-  await Promise.allSettled([
+  let kitOk = false;
 
-    // Kit (ConvertKit) — form 9354202 "Frequency Finder Quiz"
-    // CORS-safe: Kit's form endpoint accepts cross-origin submissions without an API key
-    fetch('https://app.convertkit.com/forms/9354202/subscriptions', {
+  // Kit — form-encoded matches what Kit's own embedded forms send
+  // CORS headers are set by Kit's form endpoint by design (supports third-party embeds)
+  try {
+    const res = await fetch('https://app.convertkit.com/forms/9354202/subscriptions', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email_address: email })
-    }).catch(() => {}),
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      credentials: 'omit',
+      body: 'email_address=' + encodeURIComponent(email)
+    });
+    kitOk = res.ok;
+  } catch (_) { kitOk = false; }
 
-    // Substack — no-cors because Substack doesn't return CORS headers;
-    // the request goes through and Substack sends its own confirmation email
-    fetch('https://rickbroider.substack.com/api/v1/free', {
+  // Substack — no-cors, best-effort (Substack doesn't expose CORS headers)
+  // Note: Substack uses double opt-in — subscriber won't appear in dashboard
+  // until they click the confirmation email Substack sends automatically
+  try {
+    await fetch('https://rickbroider.substack.com/api/v1/free', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: 'email=' + encodeURIComponent(email) + '&first_url=' + encodeURIComponent(window.location.href),
       mode: 'no-cors'
-    }).catch(() => {})
+    });
+  } catch (_) {}
 
-  ]);
-
-  // Show success regardless — both APIs are best-effort from the browser
+  // Show result — always echo the email address so they can verify what was submitted
   e.target.style.display = 'none';
   document.querySelector('.email-capture-privacy').style.display = 'none';
-  document.getElementById('capture-success').style.display = 'block';
+  const successEl = document.getElementById('capture-success');
+  if (kitOk) {
+    successEl.textContent = 'You\u2019re in. Watch for something worth opening at ' + email + '.';
+  } else {
+    successEl.textContent = 'Something didn\u2019t connect. Try again or send your email directly to rbroider@gmail.com.';
+    // Re-enable form on failure so they can retry
+    e.target.style.display = '';
+    document.querySelector('.email-capture-privacy').style.display = '';
+    btn.textContent = 'Try again';
+    btn.disabled = false;
+    successEl.style.color = 'rgba(255,160,100,0.9)';
+  }
+  successEl.style.display = 'block';
 }
 
 // ── Retake ────────────────────────────────────────────────────────────────────
@@ -1850,7 +1866,7 @@ function retakeQuiz() {
   const captureBtn = document.querySelector('.email-capture-btn');
   if (captureForm) { captureForm.style.display = ''; captureForm.reset(); }
   if (capturePrivacy) capturePrivacy.style.display = '';
-  if (captureSuccess) captureSuccess.style.display = 'none';
+  if (captureSuccess) { captureSuccess.style.display = 'none'; captureSuccess.style.color = ''; captureSuccess.textContent = ''; }
   if (captureBtn) { captureBtn.textContent = 'Send it'; captureBtn.disabled = false; }
   startQuiz();
 }
