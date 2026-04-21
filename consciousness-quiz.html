@@ -1777,25 +1777,36 @@ function showResult(score) {
 // ── Share ─────────────────────────────────────────────────────────────────────
 async function shareResult() {
   if (!resultKey) return;
-  const r        = RESULTS[resultKey];
-  const url      = 'https://iwasready.com/consciousness-quiz.html#' + r.key;
-  // Build dynamic share text — diagnostic, not promotional
+  const r         = RESULTS[resultKey];
+  const url       = 'https://iwasready.com/consciousness-quiz.html#' + r.key;
   const shareText = r.shareText;
   const fullText  = shareText + '\n\n' + url;
 
   if (navigator.share) {
+    // Try to share with the result image attached — shows in share preview
+    // and travels with the post on platforms that accept files (iOS, Android, some desktop)
+    try {
+      const imgRes  = await fetch('assets/images/result-' + r.key + '.png');
+      const imgBlob = await imgRes.blob();
+      const imgFile = new File([imgBlob], 'frequency-finder-' + r.key + '.png', { type: 'image/png' });
+      if (navigator.canShare && navigator.canShare({ files: [imgFile] })) {
+        await navigator.share({ title: 'The Frequency Finder Quiz', text: shareText, url, files: [imgFile] });
+        return;
+      }
+    } catch (_) { /* file share not supported — fall through to text-only */ }
+
+    // Text + URL share (no file) — works everywhere navigator.share is available
     try {
       await navigator.share({ title: 'The Frequency Finder Quiz', text: shareText, url });
       return;
-    } catch (e) {
-      // Fall through to clipboard
-    }
+    } catch (_) { /* cancelled or failed — fall through to clipboard */ }
   }
 
+  // Clipboard fallback for browsers without Web Share API
   try {
     await navigator.clipboard.writeText(fullText);
     showToast('Copied to clipboard');
-  } catch (e) {
+  } catch (_) {
     showToast('Link: iwasready.com/consciousness-quiz.html#' + r.key);
   }
 }
@@ -1822,16 +1833,15 @@ async function submitEmailCapture(e) {
 
   let kitOk = false;
 
-  // Kit v3 API — official documented endpoint, returns readable JSON
-  // Public API key is safe in frontend code (read-only, designed for client use)
+  // Kit form embed endpoint — uses form UID b50ff46c9e, CORS-safe for third-party embeds
   try {
-    const res = await fetch('https://api.convertkit.com/v3/forms/9354202/subscribe', {
+    const res = await fetch('https://app.convertkit.com/forms/b50ff46c9e/subscriptions', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ api_key: 'rHVnH9w-RQSRS8Fft38AeQ', email: email })
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      credentials: 'omit',
+      body: 'email_address=' + encodeURIComponent(email)
     });
-    const data = await res.json();
-    kitOk = res.ok && data.subscription != null;
+    kitOk = res.ok;
   } catch (_) { kitOk = false; }
 
   const successEl = document.getElementById('capture-success');
