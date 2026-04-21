@@ -1803,16 +1803,30 @@ async function submitEmailCapture(e) {
   const btn = e.target.querySelector('.email-capture-btn');
   btn.textContent = '...';
   btn.disabled = true;
-  try {
-    // Submits to Substack subscribe API (no-cors: response unreadable but request goes through)
-    await fetch('https://rickbroider.substack.com/api/v1/free', {
+
+  // Fire both Kit and Substack in parallel — neither blocks the other
+  await Promise.allSettled([
+
+    // Kit (ConvertKit) — form 9354202 "Frequency Finder Quiz"
+    // CORS-safe: Kit's form endpoint accepts cross-origin submissions without an API key
+    fetch('https://app.convertkit.com/forms/9354202/subscriptions', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email_address: email })
+    }).catch(() => {}),
+
+    // Substack — no-cors because Substack doesn't return CORS headers;
+    // the request goes through and Substack sends its own confirmation email
+    fetch('https://rickbroider.substack.com/api/v1/free', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: 'email=' + encodeURIComponent(email) + '&first_url=' + encodeURIComponent(window.location.href),
       mode: 'no-cors'
-    });
-  } catch (_) { /* silent — Substack sends confirmation email regardless */ }
-  // Show success state
+    }).catch(() => {})
+
+  ]);
+
+  // Show success regardless — both APIs are best-effort from the browser
   e.target.style.display = 'none';
   document.querySelector('.email-capture-privacy').style.display = 'none';
   document.getElementById('capture-success').style.display = 'block';
