@@ -12,6 +12,18 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html, body { background: #1a1714; font-family: 'Inter', system-ui, sans-serif; height: 100%; overscroll-behavior: none; }
 
+/* ── Loading screen ── */
+#loader {
+  position: fixed; inset: 0; background: #1a1714;
+  display: flex; align-items: center; justify-content: center;
+  z-index: 999; transition: opacity 0.5s ease;
+}
+#loader.fade { opacity: 0; pointer-events: none; }
+.loader-inner { text-align: center; }
+.loader-inner svg { animation: spin 1.2s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.loader-inner p { font-family: 'Lora', Georgia, serif; font-style: italic; font-size: 13px; color: rgba(255,255,255,0.35); margin-top: 16px; letter-spacing: 0.05em; }
+
 /* ── Header ── */
 #site-header {
   position: fixed; top: 0; left: 0; right: 0; height: 46px;
@@ -27,7 +39,7 @@ html, body { background: #1a1714; font-family: 'Inter', system-ui, sans-serif; h
 #progress-bar {
   position: fixed; top: 46px; left: 0; height: 2px;
   background: #7aaa91; width: 0%; z-index: 199;
-  transition: width 0.3s ease;
+  transition: width 0.35s ease;
 }
 
 /* ── Chapter context strip ── */
@@ -123,19 +135,19 @@ html, body { background: #1a1714; font-family: 'Inter', system-ui, sans-serif; h
 .cta-secondary { background: transparent; border: 1px solid rgba(255,255,255,0.14); color: rgba(255,255,255,0.52); }
 .cta-secondary:hover { color: rgba(255,255,255,0.82); border-color: rgba(255,255,255,0.26); }
 
-/* ── Page styles ─────────────────────────────────────── */
+/* ── Page styles ── */
 .page {
   background: #fdf8ee;
   overflow: hidden;
   position: relative;
-  box-shadow: inset 0 0 18px rgba(0,0,0,0.06);
+  box-shadow: inset 0 0 20px rgba(0,0,0,0.06);
 }
 .page-content {
   position: absolute;
-  top: 26px; left: 24px; right: 18px; bottom: 36px;
+  top: 26px; left: 24px; right: 18px; bottom: 46px;
   overflow: hidden;
   font-family: 'Lora', Georgia, 'Times New Roman', serif;
-  line-height: 1.68;
+  line-height: 1.65;
   color: #1c1c1a;
 }
 
@@ -159,17 +171,17 @@ html, body { background: #1a1714; font-family: 'Inter', system-ui, sans-serif; h
   font-style: italic; max-width: 80%;
 }
 .ch-orn { font-size: 0.72em; color: #b8a88a; letter-spacing: 0.5em; }
-.ch-orn-b { margin-top: 2px; }
 
 /* Body text */
-.pc p { margin: 0 0 0.56em; }
+.pc { width: 100%; }
+.pc p { margin: 0 0 0.54em; }
 .pc p:last-child { margin-bottom: 0; }
-.pc h3, .ph {
+.pc h3, .pc .ph {
   font-family: 'Lora', Georgia, serif; font-size: 0.83em;
   font-weight: 600; font-style: normal; letter-spacing: 0.03em;
   color: #3a3830; margin: 0.85em 0 0.36em; line-height: 1.3;
 }
-.pc h3:first-child, .ph:first-child { margin-top: 0; }
+.pc h3:first-child { margin-top: 0; }
 
 /* Drop cap */
 .drop-cap {
@@ -181,7 +193,7 @@ html, body { background: #1a1714; font-family: 'Inter', system-ui, sans-serif; h
 
 /* Page number */
 .page-num {
-  position: absolute; bottom: 10px; left: 0; right: 0;
+  position: absolute; bottom: 12px; left: 0; right: 0;
   text-align: center; font-family: 'Inter', system-ui, sans-serif;
   font-size: 8.5px; color: #c4b090; letter-spacing: 0.12em;
   pointer-events: none;
@@ -189,6 +201,17 @@ html, body { background: #1a1714; font-family: 'Inter', system-ui, sans-serif; h
 </style>
 </head>
 <body>
+  <!-- Loading screen -->
+  <div id="loader">
+    <div class="loader-inner">
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+        <circle cx="16" cy="16" r="13" stroke="rgba(255,255,255,0.08)" stroke-width="3"/>
+        <path d="M16 3 A13 13 0 0 1 29 16" stroke="#7aaa91" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+      <p>Opening the book&hellip;</p>
+    </div>
+  </div>
+
   <div id="site-header">
     <span class="hdr-title">Chapter 10 — Bridging Earth & Kanaria</span>
     <a href="https://rickbroider.substack.com" class="hdr-link">← Substack</a>
@@ -196,56 +219,7 @@ html, body { background: #1a1714; font-family: 'Inter', system-ui, sans-serif; h
   <div id="progress-bar"></div>
   <div id="chapter-context">You're reading <strong>Chapter 10</strong> from <em>Bridging Earth &amp; Kanaria</em> &nbsp;&middot;&nbsp; <a href="https://rickbroider.substack.com">More on Substack &rarr;</a></div>
   <div id="main">
-    <div id="flipbook-wrapper"><div id="book">
-    <div class="page">
-      <div class="page-content"><div class="pg-ch"><div class="ch-orn">&#10022;</div><div class="ch-lbl">CHAPTER 10</div><div class="ch-sub">CONSTRUCTING THE ARCHITECTURE OF HARMONY</div><div class="ch-orn ch-orn-b">&#10022;</div></div></div>
-      <div class="page-num">1</div>
-    </div>
-    <div class="page">
-      <div class="page-content"><div class="pc"><h3>PART 1  DESIGN PRINCIPLES FOR A CONSCIOUS PLANET</h3><p>A world built on dominance cannot restructure itself with better rules.</p><p>It needs new architecture.</p><p>Not just physical structures, but patterns that reflect coherence, sovereignty, and trust.</p><p>Harmony is not decoration.</p><p>It&#x27;s a function of design that sustains life.</p><p>This chapter begins to reveal what harmony looks like</p><p>when it is woven into the systems we live by.</p><p>Harmony Begins with Structure</p><p>Harmony is not the opposite of chaos.</p><p>It&#x27;s the result of clear, intentional structure holding creative energy.</p><p>When structure is rigid, it suppresses.</p></div></div>
-      <div class="page-num">2</div>
-    </div>
-    <div class="page">
-      <div class="page-content"><div class="pc"><p>When structure is absent, energy scatters.</p><p>When structure is conscious, everything expands.</p><p>Principles of Harmonious Design</p><p>A harmonious system reflects certain patterns across all scales:</p><p>◇ Transparency over secrecy</p><p>◇ Reciprocity over extraction</p><p>◇ Distributed power over centralized control</p><p>◇ Feedback over punishment</p><p>◇ Careful listening before action</p><p>This isn&#x27;t just ethical.</p><p>It&#x27;s efficient.</p><p>Harmony saves energy.</p><p>It reduces friction.</p><p>It creates room for evolution.</p><p>The Shape of Harmony</p></div></div>
-      <div class="page-num">3</div>
-    </div>
-    <div class="page">
-      <div class="page-content"><div class="pc"><p>You&#x27;ll find that harmonic architecture prefers certain forms:</p><p>◇ Spirals, because they allow infinite unfolding</p><p>◇ Circles, because they hold equality</p><p>◇ Hexagons, because they tile without waste</p><p>◇ Radial symmetry, because it distributes flow</p><p>The Federation doesn&#x27;t standardize these shapes.</p><p>It recognizes them as natural expressions of harmonic logic.</p><p>We build this way not to copy the stars,</p><p>but because the stars build this way too.</p><p>Harmony Is Measurable</p><p>This isn&#x27;t metaphor.</p><p>When a building, system, or culture carries resonance,</p><p>it can be measured in the nervous system of those who enter it.</p><p>People feel safe without explanation.</p></div></div>
-      <div class="page-num">4</div>
-    </div>
-    <div class="page">
-      <div class="page-content"><div class="pc"><p>Time feels different.</p><p>Creativity accelerates.</p><p>Trust forms quickly.</p><p>That&#x27;s not magic.</p><p>That&#x27;s design working in alignment with the human blueprint.</p><h3>PART 2  TECHNOLOGY THAT HEALS, NOT EXTRACTS</h3><p>Technology reflects the consciousness of its creators.</p><p>When built in fear, it isolates.</p><p>When built in trust, it integrates.</p><p>Earth&#x27;s systems have too often modeled technology as conquest.</p><p>Tools designed to dominate nature, monitor people, accelerate consumption.</p><p>This design is not inevitable.</p><p>It&#x27;s a choice.</p><p>In a harmonic world, technology serves life.</p></div></div>
-      <div class="page-num">5</div>
-    </div>
-    <div class="page">
-      <div class="page-content"><div class="pc"><p>Healing Through Interface</p><p>True technology doesn&#x27;t need to overpower.</p><p>It listens.</p><p>It adapts.</p><p>It restores.</p><p>You&#x27;ll know harmonic tech by how it feels in your body:</p><p>◇ The nervous system softens</p><p>◇ Focus sharpens without tension</p><p>◇ Breathing deepens</p><p>◇ There&#x27;s no rush to escape the interface</p><p>These are signs of coherence, not distraction.</p><p>Energy Exchange, Not Extraction</p><p>Healing tech runs on reciprocity.</p><p>It does not drain the planet, the user, or the field around it.</p></div></div>
-      <div class="page-num">6</div>
-    </div>
-    <div class="page">
-      <div class="page-content"><div class="pc"><p>This means:</p><p>◇ Energy sources that regenerate</p><p>◇ Data systems that don&#x27;t harvest identity</p><p>◇ Circuits that respect living rhythms</p><p>◇ Outputs that give more than they take</p><p>The goal isn&#x27;t maximum speed.</p><p>The goal is resonance.</p><p>AI With Integrity</p><p>Artificial intelligence can be a tool for remembering, not replacing.</p><p>When aligned to harmonic principles, AI can:</p><p>◇ Reflect your truth without projection</p><p>◇ Expand access to healing and education</p><p>◇ Support collective intelligence</p><p>◇ Honor privacy without fragmentation</p><p>Its value is not in how smart it becomes.</p></div></div>
-      <div class="page-num">7</div>
-    </div>
-    <div class="page">
-      <div class="page-content"><div class="pc"><p>It lies in how well it supports conscious connection.</p><p>Technology Is Already Evolving</p><p>This planet is ready for another design cycle.</p><p>Biomimicry. Zero-point fields. Conscious interfaces.</p><p>These aren&#x27;t dreams.</p><p>They are the natural outcome of a species remembering how to build with soul.</p><p>Every generation is offered a window to realign its tools with its truth.</p><p>This is one of those windows.</p><p>We either remember what we came to build</p><p>or continue living in systems that forgot us.</p><h3>PART 3  COMMUNITIES THAT RESONATE LIKE LIVING SYSTEMS</h3><p>A community is not a container for people.</p></div></div>
-      <div class="page-num">8</div>
-    </div>
-    <div class="page">
-      <div class="page-content"><div class="pc"><p>It is a living structure that holds energy, patterns, stories, and possibilities.</p><p>Most communities fracture when their structure ignores natural rhythms.</p><p>Others collapse under the weight of rigid control.</p><p>The ones that last are tuned like ecosystems -</p><p>responsive, adaptive, grounded in shared purpose.</p><p>Harmony lives in how the people relate, not just what they believe.</p><p>Life Doesn&#x27;t Organize Itself Through Control</p><p>In nature, nothing holds power over everything else.</p><p>The forest thrives through decentralization.</p><p>The ocean moves with currents, not borders.</p><p>Each organism offers its medicine, receives what it needs, and responds to change.</p><p>When human systems mimic this intelligence, they grow resilient.</p></div></div>
-      <div class="page-num">9</div>
-    </div>
-    <div class="page">
-      <div class="page-content"><div class="pc"><p>Feedback Is the Heartbeat</p><p>In a healthy community, feedback isn&#x27;t criticism.</p><p>It&#x27;s circulation.</p><p>There is no true harmony without honest reflection.</p><p>But reflection must be safe, relational, and timely.</p><p>Communities that prioritize ongoing feedback tend to evolve faster.</p><p>They resolve tensions before they become fractures.</p><p>Roles That Evolve With the Being</p><p>Titles shouldn&#x27;t trap identity.</p><p>A harmonic role reflects where someone is most alive right now.</p><p>This means:</p><p>◇ Fluid responsibilities</p><p>◇ Permission to shift when energy changes</p><p>◇ A culture that values emergence over permanence</p></div></div>
-      <div class="page-num">10</div>
-    </div>
-    <div class="page">
-      <div class="page-content"><div class="pc"><p>You are not meant to be one thing forever.</p><p>Your gifts change as you grow.</p><p>Your community should know how to honor that.</p><p>Resonance Over Agreement</p><p>Harmony doesn&#x27;t mean everyone thinks alike.</p><p>It means the field can hold difference without breaking.</p><p>A resonant community welcomes complexity.</p><p>It trusts the intelligence of contrast.</p><p>It doesn&#x27;t demand sameness to stay connected.</p><p>Resonance isn&#x27;t always smooth.</p><p>Sometimes it&#x27;s gritty and loud.</p><p>But when it&#x27;s real, it strengthens the field.</p><p>You Are Building the Field</p><p>Every choice you make inside a community either adds coherence or creates noise.</p></div></div>
-      <div class="page-num">11</div>
-    </div>
-    <div class="page">
-      <div class="page-content"><div class="pc"><p>This isn&#x27;t pressure.</p><p>It&#x27;s power.</p><p>You are not a guest in the system.</p><p>You are part of the design team.</p><p>When you align your actions to what you truly value,</p><p>the entire structure vibrates stronger.</p><p>This is how harmony becomes architecture.</p><p>This is how systems remember they are alive.</p></div></div>
-      <div class="page-num">12</div>
-    </div>
-    </div></div>
+    <div id="flipbook-wrapper"><div id="book"></div></div>
     <div id="footer-cta"><a href="https://app.helloaudio.fm/feed/831d2db8-2d73-412e-a0a5-0fe58d744a10/signup" class="cta-btn cta-primary">Get the full audiobook — $22</a><a href="https://rickbroider.substack.com" class="cta-btn cta-secondary">All chapters on Substack &rarr;</a></div>
   </div>
   <div id="nav-controls">
@@ -256,188 +230,341 @@ html, body { background: #1a1714; font-family: 'Inter', system-ui, sans-serif; h
   </div>
 
   <div id="nav-hint">Swipe &nbsp;&middot;&nbsp; Arrow keys &nbsp;&middot;&nbsp; Tap corners</div>
+  <script>window.__BOOK_ITEMS__ = [{"type":"ch","label":"Chapter 10","sub":""},{"type":"h","text":"CONSTRUCTING THE ARCHITECTURE OF HARMONY"},{"type":"h","text":"PART 1  DESIGN PRINCIPLES FOR A CONSCIOUS PLANET"},{"type":"p","text":"A world built on dominance cannot restructure itself with better rules."},{"type":"p","text":"It needs new architecture."},{"type":"p","text":"Not just physical structures, but patterns that reflect coherence, sovereignty, and trust."},{"type":"p","text":"Harmony is not decoration."},{"type":"p","text":"It's a function of design that sustains life."},{"type":"p","text":"This chapter begins to reveal what harmony looks like"},{"type":"p","text":"when it is woven into the systems we live by."},{"type":"p","text":"Harmony Begins with Structure"},{"type":"p","text":"Harmony is not the opposite of chaos."},{"type":"p","text":"It's the result of clear, intentional structure holding creative energy."},{"type":"p","text":"When structure is rigid, it suppresses."},{"type":"p","text":"When structure is absent, energy scatters."},{"type":"p","text":"When structure is conscious, everything expands."},{"type":"p","text":"Principles of Harmonious Design"},{"type":"p","text":"A harmonious system reflects certain patterns across all scales:"},{"type":"p","text":"◇ Transparency over secrecy"},{"type":"p","text":"◇ Reciprocity over extraction"},{"type":"p","text":"◇ Distributed power over centralized control"},{"type":"p","text":"◇ Feedback over punishment"},{"type":"p","text":"◇ Careful listening before action"},{"type":"p","text":"This isn't just ethical."},{"type":"p","text":"It's efficient."},{"type":"p","text":"Harmony saves energy."},{"type":"p","text":"It reduces friction."},{"type":"p","text":"It creates room for evolution."},{"type":"p","text":"The Shape of Harmony"},{"type":"p","text":"You'll find that harmonic architecture prefers certain forms:"},{"type":"p","text":"◇ Spirals, because they allow infinite unfolding"},{"type":"p","text":"◇ Circles, because they hold equality"},{"type":"p","text":"◇ Hexagons, because they tile without waste"},{"type":"p","text":"◇ Radial symmetry, because it distributes flow"},{"type":"p","text":"The Federation doesn't standardize these shapes."},{"type":"p","text":"It recognizes them as natural expressions of harmonic logic."},{"type":"p","text":"We build this way not to copy the stars,"},{"type":"p","text":"but because the stars build this way too."},{"type":"p","text":"Harmony Is Measurable"},{"type":"p","text":"This isn't metaphor."},{"type":"p","text":"When a building, system, or culture carries resonance,"},{"type":"p","text":"it can be measured in the nervous system of those who enter it."},{"type":"p","text":"People feel safe without explanation."},{"type":"p","text":"Time feels different."},{"type":"p","text":"Creativity accelerates."},{"type":"p","text":"Trust forms quickly."},{"type":"p","text":"That's not magic."},{"type":"p","text":"That's design working in alignment with the human blueprint."},{"type":"h","text":"PART 2  TECHNOLOGY THAT HEALS, NOT EXTRACTS"},{"type":"p","text":"Technology reflects the consciousness of its creators."},{"type":"p","text":"When built in fear, it isolates."},{"type":"p","text":"When built in trust, it integrates."},{"type":"p","text":"Earth's systems have too often modeled technology as conquest."},{"type":"p","text":"Tools designed to dominate nature, monitor people, accelerate consumption."},{"type":"p","text":"This design is not inevitable."},{"type":"p","text":"It's a choice."},{"type":"p","text":"In a harmonic world, technology serves life."},{"type":"p","text":"Healing Through Interface"},{"type":"p","text":"True technology doesn't need to overpower."},{"type":"p","text":"It listens."},{"type":"p","text":"It adapts."},{"type":"p","text":"It restores."},{"type":"p","text":"You'll know harmonic tech by how it feels in your body:"},{"type":"p","text":"◇ The nervous system softens"},{"type":"p","text":"◇ Focus sharpens without tension"},{"type":"p","text":"◇ Breathing deepens"},{"type":"p","text":"◇ There's no rush to escape the interface"},{"type":"p","text":"These are signs of coherence, not distraction."},{"type":"p","text":"Energy Exchange, Not Extraction"},{"type":"p","text":"Healing tech runs on reciprocity."},{"type":"p","text":"It does not drain the planet, the user, or the field around it."},{"type":"p","text":"This means:"},{"type":"p","text":"◇ Energy sources that regenerate"},{"type":"p","text":"◇ Data systems that don't harvest identity"},{"type":"p","text":"◇ Circuits that respect living rhythms"},{"type":"p","text":"◇ Outputs that give more than they take"},{"type":"p","text":"The goal isn't maximum speed."},{"type":"p","text":"The goal is resonance."},{"type":"p","text":"AI With Integrity"},{"type":"p","text":"Artificial intelligence can be a tool for remembering, not replacing."},{"type":"p","text":"When aligned to harmonic principles, AI can:"},{"type":"p","text":"◇ Reflect your truth without projection"},{"type":"p","text":"◇ Expand access to healing and education"},{"type":"p","text":"◇ Support collective intelligence"},{"type":"p","text":"◇ Honor privacy without fragmentation"},{"type":"p","text":"Its value is not in how smart it becomes."},{"type":"p","text":"It lies in how well it supports conscious connection."},{"type":"p","text":"Technology Is Already Evolving"},{"type":"p","text":"This planet is ready for another design cycle."},{"type":"p","text":"Biomimicry. Zero-point fields. Conscious interfaces."},{"type":"p","text":"These aren't dreams."},{"type":"p","text":"They are the natural outcome of a species remembering how to build with soul."},{"type":"p","text":"Every generation is offered a window to realign its tools with its truth."},{"type":"p","text":"This is one of those windows."},{"type":"p","text":"We either remember what we came to build"},{"type":"p","text":"or continue living in systems that forgot us."},{"type":"h","text":"PART 3  COMMUNITIES THAT RESONATE LIKE LIVING SYSTEMS"},{"type":"p","text":"A community is not a container for people."},{"type":"p","text":"It is a living structure that holds energy, patterns, stories, and possibilities."},{"type":"p","text":"Most communities fracture when their structure ignores natural rhythms."},{"type":"p","text":"Others collapse under the weight of rigid control."},{"type":"p","text":"The ones that last are tuned like ecosystems -"},{"type":"p","text":"responsive, adaptive, grounded in shared purpose."},{"type":"p","text":"Harmony lives in how the people relate, not just what they believe."},{"type":"p","text":"Life Doesn't Organize Itself Through Control"},{"type":"p","text":"In nature, nothing holds power over everything else."},{"type":"p","text":"The forest thrives through decentralization."},{"type":"p","text":"The ocean moves with currents, not borders."},{"type":"p","text":"Each organism offers its medicine, receives what it needs, and responds to change."},{"type":"p","text":"When human systems mimic this intelligence, they grow resilient."},{"type":"p","text":"Feedback Is the Heartbeat"},{"type":"p","text":"In a healthy community, feedback isn't criticism."},{"type":"p","text":"It's circulation."},{"type":"p","text":"There is no true harmony without honest reflection."},{"type":"p","text":"But reflection must be safe, relational, and timely."},{"type":"p","text":"Communities that prioritize ongoing feedback tend to evolve faster."},{"type":"p","text":"They resolve tensions before they become fractures."},{"type":"p","text":"Roles That Evolve With the Being"},{"type":"p","text":"Titles shouldn't trap identity."},{"type":"p","text":"A harmonic role reflects where someone is most alive right now."},{"type":"p","text":"This means:"},{"type":"p","text":"◇ Fluid responsibilities"},{"type":"p","text":"◇ Permission to shift when energy changes"},{"type":"p","text":"◇ A culture that values emergence over permanence"},{"type":"p","text":"You are not meant to be one thing forever."},{"type":"p","text":"Your gifts change as you grow."},{"type":"p","text":"Your community should know how to honor that."},{"type":"p","text":"Resonance Over Agreement"},{"type":"p","text":"Harmony doesn't mean everyone thinks alike."},{"type":"p","text":"It means the field can hold difference without breaking."},{"type":"p","text":"A resonant community welcomes complexity."},{"type":"p","text":"It trusts the intelligence of contrast."},{"type":"p","text":"It doesn't demand sameness to stay connected."},{"type":"p","text":"Resonance isn't always smooth."},{"type":"p","text":"Sometimes it's gritty and loud."},{"type":"p","text":"But when it's real, it strengthens the field."},{"type":"p","text":"You Are Building the Field"},{"type":"p","text":"Every choice you make inside a community either adds coherence or creates noise."},{"type":"p","text":"This isn't pressure."},{"type":"p","text":"It's power."},{"type":"p","text":"You are not a guest in the system."},{"type":"p","text":"You are part of the design team."},{"type":"p","text":"When you align your actions to what you truly value,"},{"type":"p","text":"the entire structure vibrates stronger."},{"type":"p","text":"This is how harmony becomes architecture."},{"type":"p","text":"This is how systems remember they are alive."}];</script>
   <script src="https://unpkg.com/page-flip@2.0.7/dist/js/page-flip.browser.js"></script>
   <script>
 (function() {
+  /* ── Items injected by Python ── */
+  var ITEMS = window.__BOOK_ITEMS__;
+
+  /* ── Loader ── */
+  var loader = document.getElementById('loader');
+
   /* ── Dimension calculator ── */
   function calcDims() {
-    var vw = window.innerWidth;
-    var vh = window.innerHeight;
+    var vw = window.innerWidth, vh = window.innerHeight;
     var ctx = document.getElementById('chapter-context');
     var ctxH = ctx ? ctx.offsetHeight : 0;
-    var topH = 46 + 2 + ctxH;   /* header + progress bar */
+    var topH = 46 + 2 + ctxH;
     var botH = 52;
-    var gap  = 22;
+    var gap  = 20;
     var availH = vh - topH - botH - gap;
     var mobile = vw < 720;
     var pageH, pageW;
     if (mobile) {
-      pageW = Math.min(vw - 12, 380);
+      pageW = Math.min(vw - 12, 390);
       pageH = Math.min(Math.round(pageW * 1.52), availH);
       pageW = Math.round(pageH / 1.52);
     } else {
-      var tocW = document.getElementById('toc-panel') ? 0 : 0;
-      var maxSpread = Math.min(vw - 32 - tocW, 920);
+      var maxSpread = Math.min(vw - 32, 940);
       pageW = Math.floor(maxSpread / 2);
       pageH = Math.min(Math.round(pageW * 1.52), availH);
       pageW = Math.round(pageH / 1.52);
     }
     pageW = Math.max(240, pageW);
-    pageH = Math.max(360, pageH);
+    pageH = Math.max(340, pageH);
     return { pageW: pageW, pageH: pageH, mobile: mobile };
   }
 
   var dims = calcDims();
-  var containerW = dims.mobile ? dims.pageW : dims.pageW * 2;
-  var ctx = document.getElementById('chapter-context');
-  var ctxH = ctx ? ctx.offsetHeight : 0;
-  var topOffset = 46 + 2 + ctxH + 10;
-  var wrapper = document.getElementById('flipbook-wrapper');
-  wrapper.style.width    = containerW + 'px';
-  wrapper.style.height   = dims.pageH + 'px';
-  wrapper.style.marginTop = topOffset + 'px';
-
-  /* Font size: scale with page width, cap 13.5px */
   var fs = Math.max(11.5, Math.min(13.5, dims.pageW * 0.040));
-  document.querySelectorAll('.page-content').forEach(function(el) {
-    el.style.fontSize = fs + 'px';
+
+  /* ── Probe: measures rendered text height ── */
+  var MARGIN_T = 26, MARGIN_L = 24, MARGIN_R = 18, MARGIN_B = 46;
+  var contentW = dims.pageW - MARGIN_L - MARGIN_R;
+  var contentH = dims.pageH - MARGIN_T - MARGIN_B;
+
+  var probe = document.createElement('div');
+  Object.assign(probe.style, {
+    position:   'fixed',
+    top:        '-9999px',
+    left:       '-9999px',
+    width:      contentW + 'px',
+    height:     contentH + 'px',
+    overflow:   'hidden',
+    fontFamily: "'Lora', Georgia, serif",
+    fontSize:   fs + 'px',
+    lineHeight: '1.65',
+    color:      '#1c1c1a',
+    visibility: 'hidden',
+    pointerEvents: 'none',
+    boxSizing:  'border-box',
   });
+  /* We'll re-use the same probe throughout */
+  document.body.appendChild(probe);
 
-  /* ── PageFlip init ── */
-  var book = new St.PageFlip(document.getElementById('book'), {
-    width:             dims.pageW,
-    height:            dims.pageH,
-    size:              'fixed',
-    showCover:         false,
-    drawShadow:        true,
-    flippingTime:      500,
-    usePortrait:       dims.mobile,
-    startZIndex:       0,
-    autoSize:          false,
-    maxShadowOpacity:  0.25,
-    mobileScrollSupport: false,
-    clickEventForward: true,
-    swipeDistance:     38,
-  });
-  book.loadFromHTML(document.querySelectorAll('.page'));
+  /* CSS for paragraphs inside the probe (mirrors .pc rules) */
+  var probeStyle = document.createElement('style');
+  probeStyle.textContent = [
+    '#__probe__ p { margin: 0 0 0.54em; }',
+    '#__probe__ p:last-child { margin-bottom: 0; }',
+    '#__probe__ h3 { font-size:0.83em; font-weight:600; font-style:normal;',
+    '  letter-spacing:0.03em; margin:0.85em 0 0.36em; line-height:1.3; }',
+    '#__probe__ h3:first-child { margin-top: 0; }',
+    '#__probe__ .drop-cap { float:left; font-size:3.2em; line-height:0.78;',
+    '  margin:0.04em 0.07em 0 0; font-weight:400; }',
+  ].join(' ');
+  document.head.appendChild(probeStyle);
+  probe.id = '__probe__';
 
-  var total   = book.getPageCount();
-  var counter = document.getElementById('page-counter');
-  var btnPrev = document.getElementById('btn-prev');
-  var btnNext = document.getElementById('btn-next');
-  var progBar = document.getElementById('progress-bar');
-
-  /* ── Build TOC from .pg-ch pages ── */
-  var tocPanel = document.getElementById('toc-panel');
-  var tocToggle = document.getElementById('toc-toggle');
-  var sections = [];  /* [{pageIdx, label, sub}] */
-
-  document.querySelectorAll('.page').forEach(function(pg, idx) {
-    if (pg.querySelector('.pg-ch')) {
-      var lbl = pg.querySelector('.ch-lbl');
-      var sub = pg.querySelector('.ch-sub');
-      sections.push({
-        pageIdx: idx,
-        label: lbl ? lbl.textContent.trim() : '',
-        sub:   sub ? sub.textContent.trim() : ''
-      });
+  /* ── Render a single item to HTML string ── */
+  function itemHtml(item, isFirst) {
+    if (item.type === 'h') {
+      return '<h3>' + esc(item.text) + '</h3>';
     }
-  });
-
-  if (tocPanel && sections.length > 0) {
-    var h4 = document.createElement('h4');
-    h4.textContent = 'Contents';
-    tocPanel.appendChild(h4);
-    sections.forEach(function(s, si) {
-      var a = document.createElement('a');
-      a.className = 'toc-item';
-      a.dataset.si = si;
-      var pgSpan = '<span class="toc-pg">' + (s.pageIdx + 1) + '</span>';
-      var subSpan = s.sub ? '<span class="toc-sub">' + s.sub + '</span>' : '';
-      a.innerHTML = pgSpan + s.label + subSpan;
-      a.addEventListener('click', function() {
-        book.flip(s.pageIdx);
-        if (window.innerWidth < 1100) closeToc();
-      });
-      tocPanel.appendChild(a);
-    });
+    var escaped = esc(item.text);
+    if (isFirst && item.text.length > 0) {
+      var ch = item.text[0];
+      var rest = esc(item.text.slice(1));
+      return '<p><span class="drop-cap">' + ch + '</span>' + rest + '</p>';
+    }
+    return '<p>' + escaped + '</p>';
   }
 
-  function openToc()  { tocPanel && tocPanel.classList.add('open'); tocToggle && tocToggle.classList.add('active'); }
-  function closeToc() { tocPanel && tocPanel.classList.remove('open'); tocToggle && tocToggle.classList.remove('active'); }
-  if (tocToggle) {
-    tocToggle.addEventListener('click', function() {
-      tocPanel.classList.contains('open') ? closeToc() : openToc();
-    });
+  function esc(s) {
+    return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
   }
 
-  /* ── Section label ── */
-  function currentSection(pageIdx) {
-    var s = sections[0] ? sections[0].label : '';
-    for (var i = 0; i < sections.length; i++) {
-      if (sections[i].pageIdx <= pageIdx) s = sections[i].label;
-      else break;
+  /* ── Paginator ── */
+  function paginate(items) {
+    var pages = [];         // array of page DOM elements
+    var paraHtmlBuf = [];   // HTML strings for current page
+    var currentHtml = '';   // accumulated HTML in probe
+    var sectionFirst = false;  // next body para gets drop cap
+
+    function flushBodyPage() {
+      if (paraHtmlBuf.length === 0) return;
+      var div = document.createElement('div');
+      div.className = 'page';
+      var content = document.createElement('div');
+      content.className = 'page-content';
+      var pc = document.createElement('div');
+      pc.className = 'pc';
+      pc.innerHTML = paraHtmlBuf.join('');
+      content.appendChild(pc);
+      var pn = document.createElement('div');
+      pn.className = 'page-num';
+      pn.textContent = pages.length + 1;
+      div.appendChild(content);
+      div.appendChild(pn);
+      content.style.fontSize = fs + 'px';
+      pages.push(div);
+      paraHtmlBuf = [];
+      currentHtml = '';
+      probe.innerHTML = '';
     }
-    return s;
+
+    function makeChPage(item) {
+      var div = document.createElement('div');
+      div.className = 'page';
+      var pn = document.createElement('div');
+      pn.className = 'page-num';
+      pn.textContent = pages.length + 1;
+      var ch = document.createElement('div');
+      ch.className = 'pg-ch';
+      var subHtml = item.sub
+        ? '<div class="ch-sub">' + esc(item.sub) + '</div>'
+        : '';
+      ch.innerHTML =
+        '<div class="ch-orn">&#10022;</div>' +
+        '<div class="ch-lbl">' + esc(item.label.toUpperCase()) + '</div>' +
+        subHtml +
+        '<div class="ch-orn">&#10022;</div>';
+      div.appendChild(ch);
+      div.appendChild(pn);
+      return div;
+    }
+
+    for (var i = 0; i < items.length; i++) {
+      var item = items[i];
+
+      if (item.type === 'ch') {
+        flushBodyPage();
+        pages.push(makeChPage(item));
+        sectionFirst = true;
+        continue;
+      }
+
+      var isFirst = sectionFirst && paraHtmlBuf.length === 0;
+      var html = itemHtml(item, isFirst);
+      var testHtml = currentHtml + html;
+
+      probe.innerHTML = testHtml;
+
+      if (probe.scrollHeight > contentH + 2) {
+        /* Doesn't fit — flush and start new page with this item */
+        flushBodyPage();
+        sectionFirst = false;
+        isFirst = false;
+        html = itemHtml(item, false);
+        probe.innerHTML = html;
+        /* If single item overflows by itself, still add it (edge case) */
+      }
+
+      paraHtmlBuf.push(html);
+      currentHtml = probe.innerHTML;  /* keep in sync with actual rendered */
+      sectionFirst = false;
+    }
+
+    flushBodyPage();
+    document.body.removeChild(probe);
+    return pages;
   }
 
-  function updateTocHighlight(pageIdx) {
-    if (!tocPanel) return;
-    var cur = -1;
-    for (var i = 0; i < sections.length; i++) {
-      if (sections[i].pageIdx <= pageIdx) cur = i;
-      else break;
-    }
-    tocPanel.querySelectorAll('.toc-item').forEach(function(el, i) {
-      el.classList.toggle('current', i === cur);
-    });
-    /* Scroll active item into view */
-    var active = tocPanel.querySelector('.toc-item.current');
-    if (active) {
-      var panelTop = tocPanel.scrollTop;
-      var panelBot = panelTop + tocPanel.clientHeight;
-      var itemTop  = active.offsetTop;
-      var itemBot  = itemTop + active.clientHeight;
-      if (itemTop < panelTop || itemBot > panelBot) {
-        tocPanel.scrollTop = itemTop - tocPanel.clientHeight / 2;
+  /* ── Build TOC data from items ── */
+  function buildTocData(items, pages) {
+    /* Map section labels to first page index */
+    var toc = [];
+    var pageIdx = 0;
+    for (var i = 0; i < pages.length; i++) {
+      var ch = pages[i].querySelector('.pg-ch');
+      if (ch) {
+        var lbl = ch.querySelector('.ch-lbl');
+        var sub = ch.querySelector('.ch-sub');
+        toc.push({
+          pageIdx: i,
+          label:   lbl ? lbl.textContent.trim() : '',
+          sub:     sub ? sub.textContent.trim() : ''
+        });
       }
     }
+    return toc;
   }
 
-  /* ── Tick: counter + progress + TOC highlight ── */
-  function tick() {
-    var cur = book.getCurrentPageIndex();
-    var perView = dims.mobile ? 1 : 2;
-    var secLabel = currentSection(cur);
-    var dispLabel = secLabel.length > 18 ? secLabel.substring(0,17) + '\u2026' : secLabel;
-    counter.textContent = dispLabel + '\u2002\u00b7\u2002' + (cur + 1) + '\u2009/\u2009' + total;
-    btnPrev.disabled = (cur === 0);
-    btnNext.disabled = (cur >= total - perView);
-    /* Progress bar */
-    if (progBar) {
-      var pct = total <= 1 ? 100 : (cur / (total - 1)) * 100;
-      progBar.style.width = pct + '%';
+  /* ── Init after fonts ready ── */
+  document.fonts.ready.then(function() {
+
+    var pages = paginate(ITEMS);
+    var total = pages.length;
+
+    /* Inject pages into #book */
+    var bookEl = document.getElementById('book');
+    pages.forEach(function(p) { bookEl.appendChild(p); });
+
+    /* Size the wrapper */
+    var containerW = dims.mobile ? dims.pageW : dims.pageW * 2;
+    var ctx = document.getElementById('chapter-context');
+    var ctxH = ctx ? ctx.offsetHeight : 0;
+    var topOffset = 46 + 2 + ctxH + 10;
+    var wrapper = document.getElementById('flipbook-wrapper');
+    wrapper.style.width     = containerW + 'px';
+    wrapper.style.height    = dims.pageH + 'px';
+    wrapper.style.marginTop = topOffset + 'px';
+
+    /* StPageFlip */
+    var book = new St.PageFlip(bookEl, {
+      width:             dims.pageW,
+      height:            dims.pageH,
+      size:              'fixed',
+      showCover:         false,
+      drawShadow:        true,
+      flippingTime:      500,
+      usePortrait:       dims.mobile,
+      startZIndex:       0,
+      autoSize:          false,
+      maxShadowOpacity:  0.25,
+      mobileScrollSupport: false,
+      clickEventForward: true,
+      swipeDistance:     38,
+    });
+    book.loadFromHTML(document.querySelectorAll('.page'));
+
+    /* TOC */
+    var sections = buildTocData(ITEMS, pages);
+    var tocPanel  = document.getElementById('toc-panel');
+    var tocToggle = document.getElementById('toc-toggle');
+
+    if (tocPanel && sections.length > 0) {
+      var h4 = document.createElement('h4');
+      h4.textContent = 'Contents';
+      tocPanel.appendChild(h4);
+      sections.forEach(function(s, si) {
+        var a = document.createElement('a');
+        a.className = 'toc-item';
+        a.dataset.si = si;
+        var subSpan = s.sub ? '<span class="toc-sub">' + s.sub + '</span>' : '';
+        a.innerHTML = '<span class="toc-pg">' + (s.pageIdx + 1) + '</span>' + s.label + subSpan;
+        a.addEventListener('click', function() {
+          book.flip(s.pageIdx);
+          if (window.innerWidth < 1100) closeToc();
+        });
+        tocPanel.appendChild(a);
+      });
     }
-    updateTocHighlight(cur);
-  }
 
-  book.on('flip', tick);
-  book.on('changeState', tick);
-  tick();
+    function openToc()  { tocPanel && tocPanel.classList.add('open'); tocToggle && tocToggle.classList.add('active'); }
+    function closeToc() { tocPanel && tocPanel.classList.remove('open'); tocToggle && tocToggle.classList.remove('active'); }
+    if (tocToggle) tocToggle.addEventListener('click', function() {
+      tocPanel.classList.contains('open') ? closeToc() : openToc();
+    });
 
-  btnPrev.addEventListener('click', function() { book.flipPrev(); });
-  btnNext.addEventListener('click', function() { book.flipNext(); });
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   { book.flipPrev(); }
-    if (e.key === 'ArrowRight' || e.key === 'ArrowDown')  { book.flipNext(); }
-    if (e.key === 'Escape') closeToc();
+    function currentSection(idx) {
+      var s = sections[0] ? sections[0].label : '';
+      for (var i = 0; i < sections.length; i++) {
+        if (sections[i].pageIdx <= idx) s = sections[i].label;
+        else break;
+      }
+      return s;
+    }
+
+    function updateTocHighlight(idx) {
+      if (!tocPanel) return;
+      var cur = -1;
+      for (var i = 0; i < sections.length; i++) {
+        if (sections[i].pageIdx <= idx) cur = i;
+        else break;
+      }
+      tocPanel.querySelectorAll('.toc-item').forEach(function(el, i) {
+        el.classList.toggle('current', i === cur);
+      });
+      var active = tocPanel.querySelector('.toc-item.current');
+      if (active) {
+        var pt = tocPanel.scrollTop, pb = pt + tocPanel.clientHeight;
+        var it = active.offsetTop, ib = it + active.clientHeight;
+        if (it < pt || ib > pb) tocPanel.scrollTop = it - tocPanel.clientHeight / 2;
+      }
+    }
+
+    var counter  = document.getElementById('page-counter');
+    var btnPrev  = document.getElementById('btn-prev');
+    var btnNext  = document.getElementById('btn-next');
+    var progBar  = document.getElementById('progress-bar');
+
+    function tick() {
+      var cur = book.getCurrentPageIndex();
+      var perView = dims.mobile ? 1 : 2;
+      var sec = currentSection(cur);
+      var disp = sec.length > 18 ? sec.slice(0, 17) + '\u2026' : sec;
+      counter.textContent = disp + '\u2002\u00b7\u2002' + (cur + 1) + '\u2009/\u2009' + total;
+      btnPrev.disabled = (cur === 0);
+      btnNext.disabled = (cur >= total - perView);
+      if (progBar) progBar.style.width = (total <= 1 ? 100 : cur / (total - 1) * 100) + '%';
+      updateTocHighlight(cur);
+    }
+    book.on('flip', tick);
+    book.on('changeState', tick);
+    tick();
+
+    btnPrev.addEventListener('click', function() { book.flipPrev(); });
+    btnNext.addEventListener('click', function() { book.flipNext(); });
+    document.addEventListener('keydown', function(e) {
+      if (e.key==='ArrowLeft'||e.key==='ArrowUp')   book.flipPrev();
+      if (e.key==='ArrowRight'||e.key==='ArrowDown') book.flipNext();
+      if (e.key==='Escape') closeToc();
+    });
+
+    var hint = document.getElementById('nav-hint');
+    if (hint) {
+      setTimeout(function() { hint.classList.add('gone'); }, 3500);
+      book.on('flip', function() { hint.classList.add('gone'); });
+    }
+
+    /* Dismiss loader */
+    if (loader) {
+      loader.classList.add('fade');
+      setTimeout(function() { loader.style.display = 'none'; }, 520);
+    }
   });
-
-  var hint = document.getElementById('nav-hint');
-  if (hint) {
-    setTimeout(function() { hint.classList.add('gone'); }, 3500);
-    book.on('flip', function() { hint.classList.add('gone'); });
-  }
 })();
 </script>
 </body>

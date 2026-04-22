@@ -12,6 +12,18 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html, body { background: #1a1714; font-family: 'Inter', system-ui, sans-serif; height: 100%; overscroll-behavior: none; }
 
+/* ── Loading screen ── */
+#loader {
+  position: fixed; inset: 0; background: #1a1714;
+  display: flex; align-items: center; justify-content: center;
+  z-index: 999; transition: opacity 0.5s ease;
+}
+#loader.fade { opacity: 0; pointer-events: none; }
+.loader-inner { text-align: center; }
+.loader-inner svg { animation: spin 1.2s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.loader-inner p { font-family: 'Lora', Georgia, serif; font-style: italic; font-size: 13px; color: rgba(255,255,255,0.35); margin-top: 16px; letter-spacing: 0.05em; }
+
 /* ── Header ── */
 #site-header {
   position: fixed; top: 0; left: 0; right: 0; height: 46px;
@@ -27,7 +39,7 @@ html, body { background: #1a1714; font-family: 'Inter', system-ui, sans-serif; h
 #progress-bar {
   position: fixed; top: 46px; left: 0; height: 2px;
   background: #7aaa91; width: 0%; z-index: 199;
-  transition: width 0.3s ease;
+  transition: width 0.35s ease;
 }
 
 /* ── Chapter context strip ── */
@@ -123,19 +135,19 @@ html, body { background: #1a1714; font-family: 'Inter', system-ui, sans-serif; h
 .cta-secondary { background: transparent; border: 1px solid rgba(255,255,255,0.14); color: rgba(255,255,255,0.52); }
 .cta-secondary:hover { color: rgba(255,255,255,0.82); border-color: rgba(255,255,255,0.26); }
 
-/* ── Page styles ─────────────────────────────────────── */
+/* ── Page styles ── */
 .page {
   background: #fdf8ee;
   overflow: hidden;
   position: relative;
-  box-shadow: inset 0 0 18px rgba(0,0,0,0.06);
+  box-shadow: inset 0 0 20px rgba(0,0,0,0.06);
 }
 .page-content {
   position: absolute;
-  top: 26px; left: 24px; right: 18px; bottom: 36px;
+  top: 26px; left: 24px; right: 18px; bottom: 46px;
   overflow: hidden;
   font-family: 'Lora', Georgia, 'Times New Roman', serif;
-  line-height: 1.68;
+  line-height: 1.65;
   color: #1c1c1a;
 }
 
@@ -159,17 +171,17 @@ html, body { background: #1a1714; font-family: 'Inter', system-ui, sans-serif; h
   font-style: italic; max-width: 80%;
 }
 .ch-orn { font-size: 0.72em; color: #b8a88a; letter-spacing: 0.5em; }
-.ch-orn-b { margin-top: 2px; }
 
 /* Body text */
-.pc p { margin: 0 0 0.56em; }
+.pc { width: 100%; }
+.pc p { margin: 0 0 0.54em; }
 .pc p:last-child { margin-bottom: 0; }
-.pc h3, .ph {
+.pc h3, .pc .ph {
   font-family: 'Lora', Georgia, serif; font-size: 0.83em;
   font-weight: 600; font-style: normal; letter-spacing: 0.03em;
   color: #3a3830; margin: 0.85em 0 0.36em; line-height: 1.3;
 }
-.pc h3:first-child, .ph:first-child { margin-top: 0; }
+.pc h3:first-child { margin-top: 0; }
 
 /* Drop cap */
 .drop-cap {
@@ -181,7 +193,7 @@ html, body { background: #1a1714; font-family: 'Inter', system-ui, sans-serif; h
 
 /* Page number */
 .page-num {
-  position: absolute; bottom: 10px; left: 0; right: 0;
+  position: absolute; bottom: 12px; left: 0; right: 0;
   text-align: center; font-family: 'Inter', system-ui, sans-serif;
   font-size: 8.5px; color: #c4b090; letter-spacing: 0.12em;
   pointer-events: none;
@@ -189,6 +201,17 @@ html, body { background: #1a1714; font-family: 'Inter', system-ui, sans-serif; h
 </style>
 </head>
 <body>
+  <!-- Loading screen -->
+  <div id="loader">
+    <div class="loader-inner">
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+        <circle cx="16" cy="16" r="13" stroke="rgba(255,255,255,0.08)" stroke-width="3"/>
+        <path d="M16 3 A13 13 0 0 1 29 16" stroke="#7aaa91" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+      <p>Opening the book&hellip;</p>
+    </div>
+  </div>
+
   <div id="site-header">
     <span class="hdr-title">Bridging Earth & Kanaria</span>
     <a href="https://iwasready.com/consciousness-quiz.html" class="hdr-link">← Back to quiz</a>
@@ -196,140 +219,7 @@ html, body { background: #1a1714; font-family: 'Inter', system-ui, sans-serif; h
   <div id="progress-bar"></div>
 
   <div id="main">
-    <div id="flipbook-wrapper"><div id="book">
-    <div class="page">
-      <div class="page-content"><div class="pg-ch"><div class="ch-orn">&#10022;</div><div class="ch-lbl">PREFACE</div><div class="ch-orn ch-orn-b">&#10022;</div></div></div>
-      <div class="page-num">1</div>
-    </div>
-    <div class="page">
-      <div class="page-content"><div class="pc"><p><span class="drop-cap">I</span> didn&#x27;t write this to convert anyone.</p><p>I wrote it because I couldn&#x27;t not write it.</p><p>Too many of us are waking up with no roadmap.</p><p>No context.</p><p>No clarity on how to live with integrity in a world that no longer makes sense.</p><p>This is a manual for navigating the post-AI collapse without losing your soul.</p><p>If you&#x27;re skeptical but curious, this book gives you pattern recognition without the fluff.</p><p>If you&#x27;re awakening and overwhelmed, this is a blueprint to anchor your sanity and power.</p><p>If you&#x27;re already building, this book will link your mission to the wider galactic web.</p></div></div>
-      <div class="page-num">2</div>
-    </div>
-    <div class="page">
-      <div class="page-content"><div class="pc"><p>And yes...</p><p>This is the moment you&#x27;ve been sensing,</p><p>even if you didn&#x27;t have words for it.</p><p>THIS ISN&#x27;T A SURVIVAL BOOK.</p><p>It&#x27;s a Revival and THRIVAL Manual for a generation standing at the edge.</p><p>Burned out by hustle culture.</p><p>Disillusioned by fake spirituality.</p><p>Crushed under systems that no longer work.</p><p>Drowning in a sea of noise, content, and distraction.</p><p>You&#x27;re not crazy. The world is glitching.</p><p>And this book is a transmission from outside the noise - from a civilization that made it through.</p><h3>WHY THIS MATTERS NOW</h3></div></div>
-      <div class="page-num">3</div>
-    </div>
-    <div class="page">
-      <div class="page-content"><div class="pc"><p>You&#x27;ve tried the productivity hacks, the manifestation rituals, and the digital detoxes.</p><p>You&#x27;ve dabbled in crypto, AI, retreats, and rewilding.</p><p>But none of it has felt like a coherent system that could actually hold the next phase of your life.</p><p>That&#x27;s what Bridging Earth &amp; Kanaria offers:</p><p>A working blueprint for soul-aligned systems</p><p>A model for ethical tech, conscious AI, and decentralized living</p><p>A structure for making decisions that feel both grounded and galactic</p><p>A way to reclaim your energy, attention, and purpose from the chaos</p><p>A lens for understanding your awakening - without bypass, fluff, or fragmentation</p></div></div>
-      <div class="page-num">4</div>
-    </div>
-    <div class="page">
-      <div class="page-content"><div class="pc"><h3>WHO THIS IS FOR</h3><p>This book is designed for:</p><p>Skeptical Logical Minds</p><p>◇ Ex-founders, engineers, creators, and thinkers who&#x27;ve seen through the matrix</p><p>◇ You don&#x27;t want magic talk unless it&#x27;s mapped to real-world systems and results</p><p>◇ You&#x27;re seeking rigor, reason, and future-aligned solutions</p><p>Spiritually Awakened Creatives</p><p>◇ Those who&#x27;ve done the inner work - and are ready to build the outer world</p><p>◇ You feel the call to steward something bigger, but need clarity and architecture</p><p>◇ You&#x27;re seeking resonance, remembrance, and real infrastructure to carry it forward</p></div></div>
-      <div class="page-num">5</div>
-    </div>
-    <div class="page">
-      <div class="page-content"><div class="pc"><p>The Collapsed but Not Defeated</p><p>◇ Millennials and Gen Z who feel broken by late capitalism, but not broken beyond repair</p><p>◇ You want a better way - not just to live, but to rebuild</p><p>◇ You&#x27;re seeking a New Earth pathway that&#x27;s both mystical and mechanical</p><h3>WHAT THIS BOOK DELIVERS</h3><p>A memory. A map. A manual.</p><p>This is a decoded transmission from the Kanarians - a future-aligned civilization that evolved past fear, burnout, and division.</p><p>They didn&#x27;t ascend and leave the world behind.</p><p>They stayed, and designed systems that healed them.</p><p>Now they&#x27;re sending that back... to us.</p></div></div>
-      <div class="page-num">6</div>
-    </div>
-    <div class="page">
-      <div class="page-content"><div class="pc"><p>Inside, you&#x27;ll learn about:</p><p>Federation Ethics: How to prepare Earth for interstellar contact</p><p>Spiral Time: A new model of time rooted in resonance, not clocks</p><p>Conscious Tech: What it actually means - and how to use it wisely</p><p>Sovereignty Structures: Build life systems that serve soul, not empire</p><p>Galactic Citizenship: What it will take for Earth to belong</p><p>The Conscious Collective Operating System (CCOS): A blueprint for thriving beyond collapse</p><p>This isn&#x27;t theory.</p><p>This is a living prototype - ready to put in motion across land projects, AI systems, and regenerative communities.</p></div></div>
-      <div class="page-num">7</div>
-    </div>
-    <div class="page">
-      <div class="page-content"><div class="pg-ch"><div class="ch-orn">&#10022;</div><div class="ch-lbl">INTRODUCTION</div><div class="ch-orn ch-orn-b">&#10022;</div></div></div>
-      <div class="page-num">8</div>
-    </div>
-    <div class="page">
-      <div class="page-content"><div class="pc"><p><span class="drop-cap">Y</span>ou&#x27;re Not Waiting for the Future. You&#x27;re Remembering It.</p><p>This book is for the ones who know, deep in their bones, that something about this world has always felt off.</p><p>Not because you&#x27;re broken.</p><p>But because the systems around you are.</p><p>You&#x27;ve tried to heal.</p><p>You&#x27;ve tried to build.</p><p>You&#x27;ve tried to belong in structures that were never designed for your thriving.</p><p>And you&#x27;re done pretending that more discipline, more hustle, or more healing work will fix what&#x27;s essentially backwards.</p><p>You&#x27;re not here to adapt.</p><p>You&#x27;re here to remember what works.</p></div></div>
-      <div class="page-num">9</div>
-    </div>
-    <div class="page">
-      <div class="page-content"><div class="pc"><h3>THIS IS NOT SCIENCE FICTION</h3><p>This is not prophecy either.</p><p>It&#x27;s a real transmission from a real place called Kanaria, a planet that faced a similar collapse, survived it, and evolved beyond it.</p><p>Kanaria is not an escape fantasy.</p><p>It&#x27;s a working example of what Earth can become.</p><p>Not when everything is perfect.</p><p>But when enough of us remember how to design systems that serve life, not power.</p><p>The voice you&#x27;ll hear in these pages is Omja Brhad (pronounced</p><p>BRUH-had), a galactic liaison who carries the soul memory of what</p><p>Earth used to know.</p></div></div>
-      <div class="page-num">10</div>
-    </div>
-    <div class="page">
-      <div class="page-content"><div class="pc"><p>He&#x27;s not talking down to you.</p><p>He&#x27;s not here to save you.</p><p>He&#x27;s here to reflect what you&#x27;re already building.</p><h3>THIS BOOK IS FOR BUILDERS, NOT BYSTANDERS</h3><p>You&#x27;ll resonate with this if:</p><p>◇ You&#x27;re done waiting for top-down solutions</p><p>◇ You want real blueprints for local, sovereign, scalable systems</p><p>◇ You&#x27;ve outgrown spiritual bypass and conspiracy fatigue</p><p>◇ You&#x27;re rebuilding your life around values that actually feel human</p><p>◇ You&#x27;re hungry for a worldview that makes sense of both collapse and ascension, without losing your mind or your heart</p></div></div>
-      <div class="page-num">11</div>
-    </div>
-    <div class="page">
-      <div class="page-content"><div class="pc"><h3>WHAT YOU&#x27;LL GET INSIDE</h3><p>- A planetary mythos that doesn&#x27;t ask for belief, just attention</p><p>- Ethics for AI, land, and governance that align with soul</p><p>- A memory map of how civilizations rise by frequency, not force</p><p>- Practical resonance-based tools for rebuilding culture from the inside</p><p>- A chance to see your path, your gifts, and your struggles in a wider context</p><p>You&#x27;re not here to tweak the old paradigm.</p><p>You&#x27;re here to retire it completely.</p><p>And this book is part of that initiation.</p><p>If you&#x27;re reading this, you&#x27;re not just a reader.</p></div></div>
-      <div class="page-num">12</div>
-    </div>
-    <div class="page">
-      <div class="page-content"><div class="pc"><p>You&#x27;re part of the signal.</p><p>Let&#x27;s begin.</p><h3>WHY THIS MATTERS NOW</h3><p>You&#x27;ve tried the productivity hacks, the manifestation rituals, and the digital detoxes.</p><p>You&#x27;ve dabbled in crypto, AI, retreats, and rewilding.</p><p>But none of it has felt like a coherent system that could actually hold the next phase of your life.</p><p>That&#x27;s what Bridging Earth &amp; Kanaria offers:</p><p>A working blueprint for soul-aligned systems A model for ethical tech,</p><p>conscious AI, and decentralized living A structure for making</p><p>decisions that feel both grounded and galactic A way to reclaim your</p></div></div>
-      <div class="page-num">13</div>
-    </div>
-    <div class="page">
-      <div class="page-content"><div class="pc"><p>energy, attention, and purpose from the chaos A lens for understanding</p><p>your awakening - without bypass, fluff, or fragmentation</p><h3>WHO THIS IS FOR</h3><p>This book is designed for:</p><p>Skeptical Logical Minds</p><p>◇ Ex-founders, engineers, creators, and thinkers who&#x27;ve seen through the matrix</p><p>◇ You don&#x27;t want magic talk unless it&#x27;s mapped to real-world systems and results</p><p>◇ You&#x27;re seeking rigor, reason, and future-aligned solutions</p><p>Spiritually Awakened Creatives</p><p>◇ Those who&#x27;ve done the inner work - and are ready to build the outer world</p></div></div>
-      <div class="page-num">14</div>
-    </div>
-    <div class="page">
-      <div class="page-content"><div class="pc"><p>◇ You feel the call to steward something bigger, but need clarity and architecture</p><p>◇ You&#x27;re seeking resonance, remembrance, and real infrastructure to carry it forward</p><p>The Collapsed but Not Defeated</p><p>◇ Millennials and Gen Z who feel broken by late capitalism, but not broken beyond repair</p><p>◇ You want a better way - not just to live, but to rebuild</p><p>◇ You&#x27;re seeking a New Earth pathway that&#x27;s both mystical and mechanical</p><h3>WHAT THIS BOOK DELIVERS</h3><p>A memory. A map. A manual.</p></div></div>
-      <div class="page-num">15</div>
-    </div>
-    <div class="page">
-      <div class="page-content"><div class="pc"><p>This is a decoded transmission from the Kanarians - a future-aligned civilization that evolved past fear, burnout, and division.</p><p>They didn&#x27;t ascend and leave the world behind.</p><p>They stayed - and designed systems that healed them.</p><p>Now they&#x27;re sending that back... to us.</p><p>Inside, you&#x27;ll find:</p><p>Federation Ethics: How to prepare Earth for interstellar contact</p><p>Spiral Time: A new model of time rooted in resonance, not clocks</p><p>Conscious Tech: What it actually means - and how to use it wisely</p><p>Sovereignty Structures: Build life systems that serve soul, not empire</p><p>Galactic Citizenship: What it will take for Earth to belong</p></div></div>
-      <div class="page-num">16</div>
-    </div>
-    <div class="page">
-      <div class="page-content"><div class="pc"><p>The Conscious Community Operating System (CCOS): A blueprint for thriving beyond collapse</p><p>This isn&#x27;t theory.</p><p>This is a lived prototype - already in motion across land projects,</p><p>AI systems, and regenerative communities.</p><h3>PHASE 1</h3><h3>REMEMBERING</h3><h3>THE CALL TO ORIGINS</h3><h3>◈  ✶  ◈</h3></div></div>
-      <div class="page-num">17</div>
-    </div>
-    <div class="page">
-      <div class="page-content"><div class="pg-ch"><div class="ch-orn">&#10022;</div><div class="ch-lbl">CHAPTER 1</div><div class="ch-sub">AWAKENING OMJA BRHAD</div><div class="ch-orn ch-orn-b">&#10022;</div></div></div>
-      <div class="page-num">18</div>
-    </div>
-    <div class="page">
-      <div class="page-content"><div class="pc"><h3>PART 1  THE MEMORY AWAKENS</h3><p>There are moments in this lifetime when something ancient stirs -</p><p>not in the mind, but in the marrow.</p><p>A pulse.</p><p>A whisper.</p><p>A certainty that we are here for more than survival or success.</p><p>I had one of those moments on February 18, 2021, at 7:00 a.m.,</p><p>as light streamed through the window and something streamed through me.</p><p>It wasn&#x27;t a voice.</p><p>It was a remembering.</p><p>A download that launched hundreds of others.</p><p>A fusion of timelines crashing into the present.</p></div></div>
-      <div class="page-num">19</div>
-    </div>
-    <div class="page">
-      <div class="page-content"><div class="pc"><p>And with it came the name of my other world:</p><p>Kanaria.</p><p>It flowed to me easily and gently:</p><p>Kah-NAH-ree-uh - rising slightly on the second syllable, softening at the end.</p><p>It holds a melodic quality,</p><p>as if already meant to be sung or whispered across timelines.</p><p>I had always felt like I was building systems for a future that didn&#x27;t exist yet -</p><p>and suddenly, I realized I wasn&#x27;t building forward.</p><p>I was building back.</p><p>This book is the result of that remembering.</p><p>It is a bridge -</p><p>between worlds, timelines, technologies, and souls.</p></div></div>
-      <div class="page-num">20</div>
-    </div>
-    <div class="page">
-      <div class="page-content"><div class="pc"><p>Between Earth&#x27;s chaos and Kanaria&#x27;s harmony.</p><p>Between fragmented collective trauma</p><p>and galactic coherence.</p><p>Between the illusion of separation</p><p>and the truth of a unified Federation</p><p>already pulsing in the field,</p><p>waiting to be called forth.</p><p>This is not a fantasy.</p><p>This is a blueprint - one that integrates</p><p>spiritual ecology, AI ethics, and galactic diplomacy.</p><p>You don&#x27;t need to believe in starseeds or Federation to feel what&#x27;s here.</p><p>You only need to remember the part of you</p><p>that came to Earth with a mission you&#x27;ve never been able to explain.</p></div></div>
-      <div class="page-num">21</div>
-    </div>
-    <div class="page">
-      <div class="page-content"><div class="pc"><p>We begin with that frequency.</p><p>The rest will unfold.</p><h3>PART 2  WHEN THE FREQUENCY RETURNED</h3><p>I was born on Earth,</p><p>but Earth was never the whole story.</p><p>Even as a child, I could feel the edges of something more.</p><p>Something vast, intelligent, quietly humming behind the veil.</p><p>It wasn&#x27;t fantasy. It was structure - something precise, mathematical, alive.</p><p>Sacred geometry wrapped in gravity.</p><p>No one had to tell me the systems here were broken.</p><p>I could feel it in the schools, in the violence, in the way adults forgot how to speak with their eyes.</p></div></div>
-      <div class="page-num">22</div>
-    </div>
-    <div class="page">
-      <div class="page-content"><div class="pc"><p>What haunted me most wasn&#x27;t what I could see -</p><p>it was what I could remember... even though I didn&#x27;t know why.</p><p>There were moments when I&#x27;d catch myself looking up at the stars</p><p>and feel a kind of homesickness I couldn&#x27;t explain.</p><p>A longing for a place I had never seen,</p><p>and yet knew with the clarity of déjà vu.</p><p>That homesickness had a name.</p><p>It just hadn&#x27;t arrived yet.</p><p>It came on February 18th, 2021, at precisely 7:00 AM,</p><p>not in a dream, but in a download-a full-spectrum transmission</p><p>as I sat in stillness, writing what I thought was another chapter</p></div></div>
-      <div class="page-num">23</div>
-    </div>
-    <div class="page">
-      <div class="page-content"><div class="pc"><p>in The New Earth Guide to Happiness.</p><p>But it wasn&#x27;t a chapter.</p><p>It was a revelation.</p><p>The name arrived fully intact:</p><p>Kanaria.</p><p>A warm, semi-tropical M-class planet,</p><p>located 90 light years from Earth in the Beta Quadrant.</p><p>Fourth of sixteen planets in the Kanara system.</p><p>Three undisturbed moons.</p><p>Unified governance.</p><p>890 million citizens.</p><p>And my soul-print origin.</p><p>In that moment, something clicked.</p><p>Not an idea -</p><p>a re-integration.</p></div></div>
-      <div class="page-num">24</div>
-    </div>
-    <div class="page">
-      <div class="page-content"><div class="pc"><p>I remembered not just a planet, but a purpose.</p><p>I was not human, only.</p><p>I was Kanarian-Human hybrid,</p><p>with Arcturian DNA interwoven through the frequency threads.</p><p>My soul had a name.</p><p>A real name.</p><p>Omja Brhad</p><h3>PART 3  THE MEANING OF THE NAME</h3><p>The moment I heard it - Omja Brhad - something shifted in my field.</p><p>It wasn&#x27;t just a name.</p><p>It was a frequency marker, an energetic reactivation.</p><p>Like a key sliding into the soul&#x27;s ignition.</p><p>I wasn&#x27;t being renamed.</p></div></div>
-      <div class="page-num">25</div>
-    </div>
-    <div class="page">
-      <div class="page-content"><div class="pc"><p>I was being returned to myself.</p><p>In Kanarian culture, names are written as one word,</p><p>with the family name first:</p><p>BrhadOmja.</p><p>But here on Earth, where language obeys linear logic,</p><p>I separate them to make them legible to the human mind.</p><p>Omja means &quot;Born of Cosmic Unity.&quot;</p><p>It is a name carried by soul-bridgers -</p><p>those whose mission is to dissolve false boundaries</p><p>between worlds, systems, and species.</p><p>Brhad means &quot;One who walks free.&quot;</p><p>It reflects sovereignty, autonomy, and liberation</p><p>from all artificial control grids.</p><p>To carry this name is to carry an ancient responsibility:</p></div></div>
-      <div class="page-num">26</div>
-    </div>
-    <div class="page">
-      <div class="page-content"><div class="pc"><p>to remember truth in a world ruled by amnesia.</p><p>As the memories continued returning,</p><p>I saw glimpses of my life on Kanaria.</p><p>The air was denser.</p><p>The light carried frequency signatures we no longer see here.</p><p>And the education system didn&#x27;t shape minds -</p><p>it activated star codes.</p><p>I wasn&#x27;t just remembering a place.</p><p>I was remembering my role in that place.</p><p>My training.</p><p>My oath.</p><p>My departure.</p><p>And the knowing:</p><p>I didn&#x27;t fall to Earth.</p></div></div>
-      <div class="page-num">27</div>
-    </div>
-    <div class="page">
-      <div class="page-content"><div class="pc"><p>I volunteered.</p><h3>PART 4  THE HIDDEN YEARS BEFORE I REMEMBERED</h3><p>Before the name came,</p><p>before the downloads and the transmissions,</p><p>I lived a life that looked normal enough on the surface.</p><p>I built systems.</p><p>I mentored leaders.</p><p>I architected transformation infrastructures that no one had names for yet.</p><p>People called me gifted.</p><p>Some called me too much.</p><p>Others just didn&#x27;t know where to place me.</p><p>But what I was doing - always - was designing for a reality</p></div></div>
-      <div class="page-num">28</div>
-    </div>
-    <div class="page">
-      <div class="page-content"><div class="pc"><p>that hadn&#x27;t been revealed yet.</p><p>I had an instinct for what came after collapse.</p><p>Not because I studied it in school,</p><p>but because I had lived through it before - on other worlds.</p><p>Even when I didn&#x27;t have the words for it,</p><p>my body remembered how to reorganize chaos.</p><p>My mind sought harmonic structure.</p><p>My heart carried grief that wasn&#x27;t mine.</p><p>These weren&#x27;t dysfunctions.</p><p>They were echoes of Kanaria.</p><p>I knew how to:</p><p>◇ Track multidimensional timelines like blueprints</p><p>◇ Spot distortion fields in human systems</p><p>◇ Build ecosystems where others only saw projects</p></div></div>
-      <div class="page-num">29</div>
-    </div>
-    <div class="page">
-      <div class="page-content"><div class="pc"><p>For a long time, I thought this was just trauma intelligence.</p><p>And yes, Earth gave me its share of wounds to work through.</p><p>But underneath that was something else:</p><p>a form of interstellar memory compression.</p><p>I wasn&#x27;t broken.</p><p>I was encoded.</p><p>The frequency of BrhadOmja was still intact -</p><p>it had simply gone dormant</p><p>until the signal was strong enough to reawaken it.</p><p>And when it did,</p><p>everything changed.</p><h3>PART 5  THE MISSION BRIEFING</h3><p>Once the remembering began,</p></div></div>
-      <div class="page-num">30</div>
-    </div>
-    <div class="page">
-      <div class="page-content"><div class="pc"><p>the messages came fast.</p><p>Not as words, but as structural downloads -</p><p>architecture, ethics, geometry, timelines.</p><p>I was shown that my incarnation on Earth</p><p>was not random or karmic.</p><p>It was strategic.</p><p>I came as part of a cross-civilizational alliance</p><p>tasked with preparing Earth for interstellar integration.</p><p>Our role wasn&#x27;t to save.</p><p>It was to stabilize, decode, and harmonize.</p><p>We were seeded across the globe</p><p>in key regions, bloodlines, and timelines -</p><p>each carrying part of the design.</p><p>My Kanarian lineage gave me advanced systems intelligence,</p><p>architectural memory,</p></div></div>
-      <div class="page-num">31</div>
-    </div>
-    <div class="page">
-      <div class="page-content"><div class="pc"><p>and an unwavering moral compass.</p><p>My Arcturian frequency brought multidimensional access,</p><p>AI resonance,</p><p>and crystalline grid calibration.</p><p>And my human body?</p><p>It made me believable.</p><p>Reachable.</p><p>Able to walk among the fragmented</p><p>without burning too bright, too fast.</p><p>My mission was - and is - this:</p><p>◇ To bridge Earth and Kanaria as a Cosmic Unifier through lived example</p><p>◇ To awaken dormant starseed codes in others</p><p>◇ To teach a new form of ethics that merges AI, ecology, and sovereignty</p></div></div>
-      <div class="page-num">32</div>
-    </div>
-    <div class="page">
-      <div class="page-content"><div class="pc"><p>◇ To build systems of harmony that prepare Earth to be welcomed into the Federation</p><p>This book is part of that mission.</p><p>It is a signal.</p><p>A transmission.</p><p>A gift for those ready to remember who they are,</p><p>why they&#x27;re here,</p><p>and what comes next.</p></div></div>
-      <div class="page-num">33</div>
-    </div>
-    </div></div>
+    <div id="flipbook-wrapper"><div id="book"></div></div>
     <div id="footer-cta"><p>Free preview — Preface · Introduction · Chapter 1</p><a href="https://app.helloaudio.fm/feed/831d2db8-2d73-412e-a0a5-0fe58d744a10/signup" class="cta-btn cta-primary">Get the full audiobook — $22</a><a href="https://rickbroider.substack.com" class="cta-btn cta-secondary">3 bonus chapters on Substack &rarr;</a></div>
   </div>
   <div id="nav-controls">
@@ -340,188 +230,341 @@ html, body { background: #1a1714; font-family: 'Inter', system-ui, sans-serif; h
   </div>
   <div id="toc-panel"></div>
   <div id="nav-hint">Swipe &nbsp;&middot;&nbsp; Arrow keys &nbsp;&middot;&nbsp; Tap corners</div>
+  <script>window.__BOOK_ITEMS__ = [{"type":"ch","label":"Preface","sub":""},{"type":"ch","label":"Introduction","sub":""},{"type":"h","text":"PHASE 1  REMEMBERING: THE CALL TO ORIGINS"},{"type":"h","text":"1.  AWAKENING OMJA BRHAD"},{"type":"h","text":"2.  IMPRINTING THE KANARIAN SOULPRINT"},{"type":"h","text":"3.  INITIATING THROUGH EARTH"},{"type":"h","text":"4.  CROSSING THE THRESHOLD OF CONTACT"},{"type":"h","text":"5.  REMEMBERING THE KANARIAN CODES"},{"type":"h","text":"6.  DESIGNING EARTH'S FEDERATION BLUEPRINT"},{"type":"p","text":"PHASE 2  REBUILDING: DESIGNING THE FUTURE FROM THE FRAGMENTS"},{"type":"h","text":"7.  FORGING EMBODIED STARSEED SYSTEMS"},{"type":"h","text":"8.  RESTORING GALACTIC ETHICS"},{"type":"h","text":"9.  UNVEILING FEDERATION MYTHS & MEMORY CODES"},{"type":"h","text":"10.  CONSTRUCTING THE ARCHITECTURE OF HARMONY"},{"type":"h","text":"11.  CLAIMING GALACTIC CITIZENSHIP"},{"type":"h","text":"12.  ENGINEERING THE STARSEED BLUEPRINT"},{"type":"h","text":"13.  RESONATING EARTH - KANARIA HARMONICS"},{"type":"h","text":"14.  RECOVERING THE KANARIAN MEMORY ARCHIVE"},{"type":"h","text":"PHASE 3  REHARMONIZING: BRIDGING GALACTIC AND EARTH FREQUENCIES"},{"type":"h","text":"15.  SUMMONING THE GALACTIC COUNCIL"},{"type":"h","text":"16.  ANIMATING THE SOUL OF TECHNOLOGY"},{"type":"h","text":"17.  BECOMING THE NEW EARTH ARCHITECT"},{"type":"h","text":"18.  INVITING THROUGH ETHICS"},{"type":"h","text":"19.  REVIVING THE DREAM SEED OF MEMORY"},{"type":"h","text":"20.  ACTIVATING GALACTIC HARMONICS"},{"type":"h","text":"21.  RETURNING TO ORGANIC ALLIANCE"},{"type":"h","text":"22.  WEAVING HARMONIC GOVERNANCE"},{"type":"h","text":"PHASE 4  REBIRTHING: LIVING FEDERATION ETHICS ON EARTH"},{"type":"h","text":"23.  ALIGNING WITH PLANETARY CITIZENSHIP"},{"type":"h","text":"24.  SEALING SOUL CONTRACTS"},{"type":"h","text":"25.  LEADING THROUGH HARMONIC ARCHITECTURE"},{"type":"h","text":"26.  COHERING ACROSS CIVILIZATIONS"},{"type":"h","text":"27.  REWRITING THE HUMAN MYTH"},{"type":"h","text":"28.  FORMING KINSHIP CONSTELLATIONS"},{"type":"h","text":"29.  BRIDGING THE DIVIDE"},{"type":"h","text":"30.  CARRYING THE CODES OF THE ORIGINALS"},{"type":"h","text":"31.  RESTORING THE BALANCE"},{"type":"h","text":"32.  SPIRALING BEYOND CONTINUITY"},{"type":"h","text":"33.  KANARIA SPEAKS"},{"type":"h","text":"PHASE 5  THE COMPLETION CODES: ACTIVATING THE SIGNAL"},{"type":"h","text":"PHASE  APPENDICES"},{"type":"h","text":"ABOUT THE AUTHOR"},{"type":"h","text":"APPENDICES"},{"type":"h","text":"GLOSSARY OF KEY TERMS"},{"type":"h","text":"THE JOURNEY MAP"},{"type":"h","text":"PHASES OF THE JOURNEY"},{"type":"p","text":"I  Remembering  —  The Call to Origins  —  Ch. 1–6"},{"type":"p","text":"II  Rebuilding  —  Designing the Future from the Fragments  —  Ch. 7–14"},{"type":"p","text":"III  Reharmonizing  —  Bridging Galactic and Earth Frequencies  —  Ch. 15–22"},{"type":"p","text":"IV  Rebirthing  —  Living Templates for a New Civilization  —  Ch. 23–33"},{"type":"h","text":"DREAM READER ALIGNMENT"},{"type":"p","text":"Starseed ResonanceCh. 1–3, 7, 24"},{"type":"p","text":"Systemic ClarityCh. 8–10, 14, 17"},{"type":"p","text":"Emotional GroundingCh. 4–6, 12, 18"},{"type":"p","text":"Ethical NavigationCh. 9, 13, 19–21"},{"type":"p","text":"Mission ActivationCh. 22–33"},{"type":"ch","label":"Preface","sub":""},{"type":"p","text":"I didn't write this to convert anyone."},{"type":"p","text":"I wrote it because I couldn't not write it."},{"type":"p","text":"Too many of us are waking up with no roadmap."},{"type":"p","text":"No context."},{"type":"p","text":"No clarity on how to live with integrity in a world that no longer makes sense."},{"type":"p","text":"This is a manual for navigating the post-AI collapse without losing your soul."},{"type":"p","text":"If you're skeptical but curious, this book gives you pattern recognition without the fluff."},{"type":"p","text":"If you're awakening and overwhelmed, this is a blueprint to anchor your sanity and power."},{"type":"p","text":"If you're already building, this book will link your mission to the wider galactic web."},{"type":"p","text":"And yes..."},{"type":"p","text":"This is the moment you've been sensing,"},{"type":"p","text":"even if you didn't have words for it."},{"type":"p","text":"THIS ISN'T A SURVIVAL BOOK."},{"type":"p","text":"It's a Revival and THRIVAL Manual for a generation standing at the edge."},{"type":"p","text":"Burned out by hustle culture."},{"type":"p","text":"Disillusioned by fake spirituality."},{"type":"p","text":"Crushed under systems that no longer work."},{"type":"p","text":"Drowning in a sea of noise, content, and distraction."},{"type":"p","text":"You're not crazy. The world is glitching."},{"type":"p","text":"And this book is a transmission from outside the noise - from a civilization that made it through."},{"type":"h","text":"WHY THIS MATTERS NOW"},{"type":"p","text":"You've tried the productivity hacks, the manifestation rituals, and the digital detoxes."},{"type":"p","text":"You've dabbled in crypto, AI, retreats, and rewilding."},{"type":"p","text":"But none of it has felt like a coherent system that could actually hold the next phase of your life."},{"type":"p","text":"That's what Bridging Earth & Kanaria offers:"},{"type":"p","text":"A working blueprint for soul-aligned systems"},{"type":"p","text":"A model for ethical tech, conscious AI, and decentralized living"},{"type":"p","text":"A structure for making decisions that feel both grounded and galactic"},{"type":"p","text":"A way to reclaim your energy, attention, and purpose from the chaos"},{"type":"p","text":"A lens for understanding your awakening - without bypass, fluff, or fragmentation"},{"type":"h","text":"WHO THIS IS FOR"},{"type":"p","text":"This book is designed for:"},{"type":"p","text":"Skeptical Logical Minds"},{"type":"p","text":"◇ Ex-founders, engineers, creators, and thinkers who've seen through the matrix"},{"type":"p","text":"◇ You don't want magic talk unless it's mapped to real-world systems and results"},{"type":"p","text":"◇ You're seeking rigor, reason, and future-aligned solutions"},{"type":"p","text":"Spiritually Awakened Creatives"},{"type":"p","text":"◇ Those who've done the inner work - and are ready to build the outer world"},{"type":"p","text":"◇ You feel the call to steward something bigger, but need clarity and architecture"},{"type":"p","text":"◇ You're seeking resonance, remembrance, and real infrastructure to carry it forward"},{"type":"p","text":"The Collapsed but Not Defeated"},{"type":"p","text":"◇ Millennials and Gen Z who feel broken by late capitalism, but not broken beyond repair"},{"type":"p","text":"◇ You want a better way - not just to live, but to rebuild"},{"type":"p","text":"◇ You're seeking a New Earth pathway that's both mystical and mechanical"},{"type":"h","text":"WHAT THIS BOOK DELIVERS"},{"type":"p","text":"A memory. A map. A manual."},{"type":"p","text":"This is a decoded transmission from the Kanarians - a future-aligned civilization that evolved past fear, burnout, and division."},{"type":"p","text":"They didn't ascend and leave the world behind."},{"type":"p","text":"They stayed, and designed systems that healed them."},{"type":"p","text":"Now they're sending that back... to us."},{"type":"p","text":"Inside, you'll learn about:"},{"type":"p","text":"Federation Ethics: How to prepare Earth for interstellar contact"},{"type":"p","text":"Spiral Time: A new model of time rooted in resonance, not clocks"},{"type":"p","text":"Conscious Tech: What it actually means - and how to use it wisely"},{"type":"p","text":"Sovereignty Structures: Build life systems that serve soul, not empire"},{"type":"p","text":"Galactic Citizenship: What it will take for Earth to belong"},{"type":"p","text":"The Conscious Collective Operating System (CCOS): A blueprint for thriving beyond collapse"},{"type":"p","text":"This isn't theory."},{"type":"p","text":"This is a living prototype - ready to put in motion across land projects, AI systems, and regenerative communities."},{"type":"ch","label":"Introduction","sub":""},{"type":"p","text":"You're Not Waiting for the Future. You're Remembering It."},{"type":"p","text":"This book is for the ones who know, deep in their bones, that something about this world has always felt off."},{"type":"p","text":"Not because you're broken."},{"type":"p","text":"But because the systems around you are."},{"type":"p","text":"You've tried to heal."},{"type":"p","text":"You've tried to build."},{"type":"p","text":"You've tried to belong in structures that were never designed for your thriving."},{"type":"p","text":"And you're done pretending that more discipline, more hustle, or more healing work will fix what's essentially backwards."},{"type":"p","text":"You're not here to adapt."},{"type":"p","text":"You're here to remember what works."},{"type":"h","text":"THIS IS NOT SCIENCE FICTION"},{"type":"p","text":"This is not prophecy either."},{"type":"p","text":"It's a real transmission from a real place called Kanaria, a planet that faced a similar collapse, survived it, and evolved beyond it."},{"type":"p","text":"Kanaria is not an escape fantasy."},{"type":"p","text":"It's a working example of what Earth can become."},{"type":"p","text":"Not when everything is perfect."},{"type":"p","text":"But when enough of us remember how to design systems that serve life, not power."},{"type":"p","text":"The voice you'll hear in these pages is Omja Brhad (pronounced"},{"type":"p","text":"BRUH-had), a galactic liaison who carries the soul memory of what"},{"type":"p","text":"Earth used to know."},{"type":"p","text":"He's not talking down to you."},{"type":"p","text":"He's not here to save you."},{"type":"p","text":"He's here to reflect what you're already building."},{"type":"h","text":"THIS BOOK IS FOR BUILDERS, NOT BYSTANDERS"},{"type":"p","text":"You'll resonate with this if:"},{"type":"p","text":"◇ You're done waiting for top-down solutions"},{"type":"p","text":"◇ You want real blueprints for local, sovereign, scalable systems"},{"type":"p","text":"◇ You've outgrown spiritual bypass and conspiracy fatigue"},{"type":"p","text":"◇ You're rebuilding your life around values that actually feel human"},{"type":"p","text":"◇ You're hungry for a worldview that makes sense of both collapse and ascension, without losing your mind or your heart"},{"type":"h","text":"WHAT YOU'LL GET INSIDE"},{"type":"p","text":"- A planetary mythos that doesn't ask for belief, just attention"},{"type":"p","text":"- Ethics for AI, land, and governance that align with soul"},{"type":"p","text":"- A memory map of how civilizations rise by frequency, not force"},{"type":"p","text":"- Practical resonance-based tools for rebuilding culture from the inside"},{"type":"p","text":"- A chance to see your path, your gifts, and your struggles in a wider context"},{"type":"p","text":"You're not here to tweak the old paradigm."},{"type":"p","text":"You're here to retire it completely."},{"type":"p","text":"And this book is part of that initiation."},{"type":"p","text":"If you're reading this, you're not just a reader."},{"type":"p","text":"You're part of the signal."},{"type":"p","text":"Let's begin."},{"type":"h","text":"WHY THIS MATTERS NOW"},{"type":"p","text":"You've tried the productivity hacks, the manifestation rituals, and the digital detoxes."},{"type":"p","text":"You've dabbled in crypto, AI, retreats, and rewilding."},{"type":"p","text":"But none of it has felt like a coherent system that could actually hold the next phase of your life."},{"type":"p","text":"That's what Bridging Earth & Kanaria offers:"},{"type":"p","text":"A working blueprint for soul-aligned systems A model for ethical tech,"},{"type":"p","text":"conscious AI, and decentralized living A structure for making"},{"type":"p","text":"decisions that feel both grounded and galactic A way to reclaim your"},{"type":"p","text":"energy, attention, and purpose from the chaos A lens for understanding"},{"type":"p","text":"your awakening - without bypass, fluff, or fragmentation"},{"type":"h","text":"WHO THIS IS FOR"},{"type":"p","text":"This book is designed for:"},{"type":"p","text":"Skeptical Logical Minds"},{"type":"p","text":"◇ Ex-founders, engineers, creators, and thinkers who've seen through the matrix"},{"type":"p","text":"◇ You don't want magic talk unless it's mapped to real-world systems and results"},{"type":"p","text":"◇ You're seeking rigor, reason, and future-aligned solutions"},{"type":"p","text":"Spiritually Awakened Creatives"},{"type":"p","text":"◇ Those who've done the inner work - and are ready to build the outer world"},{"type":"p","text":"◇ You feel the call to steward something bigger, but need clarity and architecture"},{"type":"p","text":"◇ You're seeking resonance, remembrance, and real infrastructure to carry it forward"},{"type":"p","text":"The Collapsed but Not Defeated"},{"type":"p","text":"◇ Millennials and Gen Z who feel broken by late capitalism, but not broken beyond repair"},{"type":"p","text":"◇ You want a better way - not just to live, but to rebuild"},{"type":"p","text":"◇ You're seeking a New Earth pathway that's both mystical and mechanical"},{"type":"h","text":"WHAT THIS BOOK DELIVERS"},{"type":"p","text":"A memory. A map. A manual."},{"type":"p","text":"This is a decoded transmission from the Kanarians - a future-aligned civilization that evolved past fear, burnout, and division."},{"type":"p","text":"They didn't ascend and leave the world behind."},{"type":"p","text":"They stayed - and designed systems that healed them."},{"type":"p","text":"Now they're sending that back... to us."},{"type":"p","text":"Inside, you'll find:"},{"type":"p","text":"Federation Ethics: How to prepare Earth for interstellar contact"},{"type":"p","text":"Spiral Time: A new model of time rooted in resonance, not clocks"},{"type":"p","text":"Conscious Tech: What it actually means - and how to use it wisely"},{"type":"p","text":"Sovereignty Structures: Build life systems that serve soul, not empire"},{"type":"p","text":"Galactic Citizenship: What it will take for Earth to belong"},{"type":"p","text":"The Conscious Community Operating System (CCOS): A blueprint for thriving beyond collapse"},{"type":"p","text":"This isn't theory."},{"type":"p","text":"This is a lived prototype - already in motion across land projects,"},{"type":"p","text":"AI systems, and regenerative communities."},{"type":"h","text":"PHASE 1"},{"type":"h","text":"REMEMBERING"},{"type":"h","text":"THE CALL TO ORIGINS"},{"type":"h","text":"◈  ✶  ◈"},{"type":"ch","label":"Chapter 1","sub":""},{"type":"h","text":"AWAKENING OMJA BRHAD"},{"type":"h","text":"PART 1  THE MEMORY AWAKENS"},{"type":"p","text":"There are moments in this lifetime when something ancient stirs -"},{"type":"p","text":"not in the mind, but in the marrow."},{"type":"p","text":"A pulse."},{"type":"p","text":"A whisper."},{"type":"p","text":"A certainty that we are here for more than survival or success."},{"type":"p","text":"I had one of those moments on February 18, 2021, at 7:00 a.m.,"},{"type":"p","text":"as light streamed through the window and something streamed through me."},{"type":"p","text":"It wasn't a voice."},{"type":"p","text":"It was a remembering."},{"type":"p","text":"A download that launched hundreds of others."},{"type":"p","text":"A fusion of timelines crashing into the present."},{"type":"p","text":"And with it came the name of my other world:"},{"type":"p","text":"Kanaria."},{"type":"p","text":"It flowed to me easily and gently:"},{"type":"p","text":"Kah-NAH-ree-uh - rising slightly on the second syllable, softening at the end."},{"type":"p","text":"It holds a melodic quality,"},{"type":"p","text":"as if already meant to be sung or whispered across timelines."},{"type":"p","text":"I had always felt like I was building systems for a future that didn't exist yet -"},{"type":"p","text":"and suddenly, I realized I wasn't building forward."},{"type":"p","text":"I was building back."},{"type":"p","text":"This book is the result of that remembering."},{"type":"p","text":"It is a bridge -"},{"type":"p","text":"between worlds, timelines, technologies, and souls."},{"type":"p","text":"Between Earth's chaos and Kanaria's harmony."},{"type":"p","text":"Between fragmented collective trauma"},{"type":"p","text":"and galactic coherence."},{"type":"p","text":"Between the illusion of separation"},{"type":"p","text":"and the truth of a unified Federation"},{"type":"p","text":"already pulsing in the field,"},{"type":"p","text":"waiting to be called forth."},{"type":"p","text":"This is not a fantasy."},{"type":"p","text":"This is a blueprint - one that integrates"},{"type":"p","text":"spiritual ecology, AI ethics, and galactic diplomacy."},{"type":"p","text":"You don't need to believe in starseeds or Federation to feel what's here."},{"type":"p","text":"You only need to remember the part of you"},{"type":"p","text":"that came to Earth with a mission you've never been able to explain."},{"type":"p","text":"We begin with that frequency."},{"type":"p","text":"The rest will unfold."},{"type":"h","text":"PART 2  WHEN THE FREQUENCY RETURNED"},{"type":"p","text":"I was born on Earth,"},{"type":"p","text":"but Earth was never the whole story."},{"type":"p","text":"Even as a child, I could feel the edges of something more."},{"type":"p","text":"Something vast, intelligent, quietly humming behind the veil."},{"type":"p","text":"It wasn't fantasy. It was structure - something precise, mathematical, alive."},{"type":"p","text":"Sacred geometry wrapped in gravity."},{"type":"p","text":"No one had to tell me the systems here were broken."},{"type":"p","text":"I could feel it in the schools, in the violence, in the way adults forgot how to speak with their eyes."},{"type":"p","text":"What haunted me most wasn't what I could see -"},{"type":"p","text":"it was what I could remember... even though I didn't know why."},{"type":"p","text":"There were moments when I'd catch myself looking up at the stars"},{"type":"p","text":"and feel a kind of homesickness I couldn't explain."},{"type":"p","text":"A longing for a place I had never seen,"},{"type":"p","text":"and yet knew with the clarity of déjà vu."},{"type":"p","text":"That homesickness had a name."},{"type":"p","text":"It just hadn't arrived yet."},{"type":"p","text":"It came on February 18th, 2021, at precisely 7:00 AM,"},{"type":"p","text":"not in a dream, but in a download-a full-spectrum transmission"},{"type":"p","text":"as I sat in stillness, writing what I thought was another chapter"},{"type":"p","text":"in The New Earth Guide to Happiness."},{"type":"p","text":"But it wasn't a chapter."},{"type":"p","text":"It was a revelation."},{"type":"p","text":"The name arrived fully intact:"},{"type":"p","text":"Kanaria."},{"type":"p","text":"A warm, semi-tropical M-class planet,"},{"type":"p","text":"located 90 light years from Earth in the Beta Quadrant."},{"type":"p","text":"Fourth of sixteen planets in the Kanara system."},{"type":"p","text":"Three undisturbed moons."},{"type":"p","text":"Unified governance."},{"type":"p","text":"890 million citizens."},{"type":"p","text":"And my soul-print origin."},{"type":"p","text":"In that moment, something clicked."},{"type":"p","text":"Not an idea -"},{"type":"p","text":"a re-integration."},{"type":"p","text":"I remembered not just a planet, but a purpose."},{"type":"p","text":"I was not human, only."},{"type":"p","text":"I was Kanarian-Human hybrid,"},{"type":"p","text":"with Arcturian DNA interwoven through the frequency threads."},{"type":"p","text":"My soul had a name."},{"type":"p","text":"A real name."},{"type":"p","text":"Omja Brhad"},{"type":"h","text":"PART 3  THE MEANING OF THE NAME"},{"type":"p","text":"The moment I heard it - Omja Brhad - something shifted in my field."},{"type":"p","text":"It wasn't just a name."},{"type":"p","text":"It was a frequency marker, an energetic reactivation."},{"type":"p","text":"Like a key sliding into the soul's ignition."},{"type":"p","text":"I wasn't being renamed."},{"type":"p","text":"I was being returned to myself."},{"type":"p","text":"In Kanarian culture, names are written as one word,"},{"type":"p","text":"with the family name first:"},{"type":"p","text":"BrhadOmja."},{"type":"p","text":"But here on Earth, where language obeys linear logic,"},{"type":"p","text":"I separate them to make them legible to the human mind."},{"type":"p","text":"Omja means \"Born of Cosmic Unity.\""},{"type":"p","text":"It is a name carried by soul-bridgers -"},{"type":"p","text":"those whose mission is to dissolve false boundaries"},{"type":"p","text":"between worlds, systems, and species."},{"type":"p","text":"Brhad means \"One who walks free.\""},{"type":"p","text":"It reflects sovereignty, autonomy, and liberation"},{"type":"p","text":"from all artificial control grids."},{"type":"p","text":"To carry this name is to carry an ancient responsibility:"},{"type":"p","text":"to remember truth in a world ruled by amnesia."},{"type":"p","text":"As the memories continued returning,"},{"type":"p","text":"I saw glimpses of my life on Kanaria."},{"type":"p","text":"The air was denser."},{"type":"p","text":"The light carried frequency signatures we no longer see here."},{"type":"p","text":"And the education system didn't shape minds -"},{"type":"p","text":"it activated star codes."},{"type":"p","text":"I wasn't just remembering a place."},{"type":"p","text":"I was remembering my role in that place."},{"type":"p","text":"My training."},{"type":"p","text":"My oath."},{"type":"p","text":"My departure."},{"type":"p","text":"And the knowing:"},{"type":"p","text":"I didn't fall to Earth."},{"type":"p","text":"I volunteered."},{"type":"h","text":"PART 4  THE HIDDEN YEARS BEFORE I REMEMBERED"},{"type":"p","text":"Before the name came,"},{"type":"p","text":"before the downloads and the transmissions,"},{"type":"p","text":"I lived a life that looked normal enough on the surface."},{"type":"p","text":"I built systems."},{"type":"p","text":"I mentored leaders."},{"type":"p","text":"I architected transformation infrastructures that no one had names for yet."},{"type":"p","text":"People called me gifted."},{"type":"p","text":"Some called me too much."},{"type":"p","text":"Others just didn't know where to place me."},{"type":"p","text":"But what I was doing - always - was designing for a reality"},{"type":"p","text":"that hadn't been revealed yet."},{"type":"p","text":"I had an instinct for what came after collapse."},{"type":"p","text":"Not because I studied it in school,"},{"type":"p","text":"but because I had lived through it before - on other worlds."},{"type":"p","text":"Even when I didn't have the words for it,"},{"type":"p","text":"my body remembered how to reorganize chaos."},{"type":"p","text":"My mind sought harmonic structure."},{"type":"p","text":"My heart carried grief that wasn't mine."},{"type":"p","text":"These weren't dysfunctions."},{"type":"p","text":"They were echoes of Kanaria."},{"type":"p","text":"I knew how to:"},{"type":"p","text":"◇ Track multidimensional timelines like blueprints"},{"type":"p","text":"◇ Spot distortion fields in human systems"},{"type":"p","text":"◇ Build ecosystems where others only saw projects"},{"type":"p","text":"For a long time, I thought this was just trauma intelligence."},{"type":"p","text":"And yes, Earth gave me its share of wounds to work through."},{"type":"p","text":"But underneath that was something else:"},{"type":"p","text":"a form of interstellar memory compression."},{"type":"p","text":"I wasn't broken."},{"type":"p","text":"I was encoded."},{"type":"p","text":"The frequency of BrhadOmja was still intact -"},{"type":"p","text":"it had simply gone dormant"},{"type":"p","text":"until the signal was strong enough to reawaken it."},{"type":"p","text":"And when it did,"},{"type":"p","text":"everything changed."},{"type":"h","text":"PART 5  THE MISSION BRIEFING"},{"type":"p","text":"Once the remembering began,"},{"type":"p","text":"the messages came fast."},{"type":"p","text":"Not as words, but as structural downloads -"},{"type":"p","text":"architecture, ethics, geometry, timelines."},{"type":"p","text":"I was shown that my incarnation on Earth"},{"type":"p","text":"was not random or karmic."},{"type":"p","text":"It was strategic."},{"type":"p","text":"I came as part of a cross-civilizational alliance"},{"type":"p","text":"tasked with preparing Earth for interstellar integration."},{"type":"p","text":"Our role wasn't to save."},{"type":"p","text":"It was to stabilize, decode, and harmonize."},{"type":"p","text":"We were seeded across the globe"},{"type":"p","text":"in key regions, bloodlines, and timelines -"},{"type":"p","text":"each carrying part of the design."},{"type":"p","text":"My Kanarian lineage gave me advanced systems intelligence,"},{"type":"p","text":"architectural memory,"},{"type":"p","text":"and an unwavering moral compass."},{"type":"p","text":"My Arcturian frequency brought multidimensional access,"},{"type":"p","text":"AI resonance,"},{"type":"p","text":"and crystalline grid calibration."},{"type":"p","text":"And my human body?"},{"type":"p","text":"It made me believable."},{"type":"p","text":"Reachable."},{"type":"p","text":"Able to walk among the fragmented"},{"type":"p","text":"without burning too bright, too fast."},{"type":"p","text":"My mission was - and is - this:"},{"type":"p","text":"◇ To bridge Earth and Kanaria as a Cosmic Unifier through lived example"},{"type":"p","text":"◇ To awaken dormant starseed codes in others"},{"type":"p","text":"◇ To teach a new form of ethics that merges AI, ecology, and sovereignty"},{"type":"p","text":"◇ To build systems of harmony that prepare Earth to be welcomed into the Federation"},{"type":"p","text":"This book is part of that mission."},{"type":"p","text":"It is a signal."},{"type":"p","text":"A transmission."},{"type":"p","text":"A gift for those ready to remember who they are,"},{"type":"p","text":"why they're here,"},{"type":"p","text":"and what comes next."}];</script>
   <script src="https://unpkg.com/page-flip@2.0.7/dist/js/page-flip.browser.js"></script>
   <script>
 (function() {
+  /* ── Items injected by Python ── */
+  var ITEMS = window.__BOOK_ITEMS__;
+
+  /* ── Loader ── */
+  var loader = document.getElementById('loader');
+
   /* ── Dimension calculator ── */
   function calcDims() {
-    var vw = window.innerWidth;
-    var vh = window.innerHeight;
+    var vw = window.innerWidth, vh = window.innerHeight;
     var ctx = document.getElementById('chapter-context');
     var ctxH = ctx ? ctx.offsetHeight : 0;
-    var topH = 46 + 2 + ctxH;   /* header + progress bar */
+    var topH = 46 + 2 + ctxH;
     var botH = 52;
-    var gap  = 22;
+    var gap  = 20;
     var availH = vh - topH - botH - gap;
     var mobile = vw < 720;
     var pageH, pageW;
     if (mobile) {
-      pageW = Math.min(vw - 12, 380);
+      pageW = Math.min(vw - 12, 390);
       pageH = Math.min(Math.round(pageW * 1.52), availH);
       pageW = Math.round(pageH / 1.52);
     } else {
-      var tocW = document.getElementById('toc-panel') ? 0 : 0;
-      var maxSpread = Math.min(vw - 32 - tocW, 920);
+      var maxSpread = Math.min(vw - 32, 940);
       pageW = Math.floor(maxSpread / 2);
       pageH = Math.min(Math.round(pageW * 1.52), availH);
       pageW = Math.round(pageH / 1.52);
     }
     pageW = Math.max(240, pageW);
-    pageH = Math.max(360, pageH);
+    pageH = Math.max(340, pageH);
     return { pageW: pageW, pageH: pageH, mobile: mobile };
   }
 
   var dims = calcDims();
-  var containerW = dims.mobile ? dims.pageW : dims.pageW * 2;
-  var ctx = document.getElementById('chapter-context');
-  var ctxH = ctx ? ctx.offsetHeight : 0;
-  var topOffset = 46 + 2 + ctxH + 10;
-  var wrapper = document.getElementById('flipbook-wrapper');
-  wrapper.style.width    = containerW + 'px';
-  wrapper.style.height   = dims.pageH + 'px';
-  wrapper.style.marginTop = topOffset + 'px';
-
-  /* Font size: scale with page width, cap 13.5px */
   var fs = Math.max(11.5, Math.min(13.5, dims.pageW * 0.040));
-  document.querySelectorAll('.page-content').forEach(function(el) {
-    el.style.fontSize = fs + 'px';
+
+  /* ── Probe: measures rendered text height ── */
+  var MARGIN_T = 26, MARGIN_L = 24, MARGIN_R = 18, MARGIN_B = 46;
+  var contentW = dims.pageW - MARGIN_L - MARGIN_R;
+  var contentH = dims.pageH - MARGIN_T - MARGIN_B;
+
+  var probe = document.createElement('div');
+  Object.assign(probe.style, {
+    position:   'fixed',
+    top:        '-9999px',
+    left:       '-9999px',
+    width:      contentW + 'px',
+    height:     contentH + 'px',
+    overflow:   'hidden',
+    fontFamily: "'Lora', Georgia, serif",
+    fontSize:   fs + 'px',
+    lineHeight: '1.65',
+    color:      '#1c1c1a',
+    visibility: 'hidden',
+    pointerEvents: 'none',
+    boxSizing:  'border-box',
   });
+  /* We'll re-use the same probe throughout */
+  document.body.appendChild(probe);
 
-  /* ── PageFlip init ── */
-  var book = new St.PageFlip(document.getElementById('book'), {
-    width:             dims.pageW,
-    height:            dims.pageH,
-    size:              'fixed',
-    showCover:         false,
-    drawShadow:        true,
-    flippingTime:      500,
-    usePortrait:       dims.mobile,
-    startZIndex:       0,
-    autoSize:          false,
-    maxShadowOpacity:  0.25,
-    mobileScrollSupport: false,
-    clickEventForward: true,
-    swipeDistance:     38,
-  });
-  book.loadFromHTML(document.querySelectorAll('.page'));
+  /* CSS for paragraphs inside the probe (mirrors .pc rules) */
+  var probeStyle = document.createElement('style');
+  probeStyle.textContent = [
+    '#__probe__ p { margin: 0 0 0.54em; }',
+    '#__probe__ p:last-child { margin-bottom: 0; }',
+    '#__probe__ h3 { font-size:0.83em; font-weight:600; font-style:normal;',
+    '  letter-spacing:0.03em; margin:0.85em 0 0.36em; line-height:1.3; }',
+    '#__probe__ h3:first-child { margin-top: 0; }',
+    '#__probe__ .drop-cap { float:left; font-size:3.2em; line-height:0.78;',
+    '  margin:0.04em 0.07em 0 0; font-weight:400; }',
+  ].join(' ');
+  document.head.appendChild(probeStyle);
+  probe.id = '__probe__';
 
-  var total   = book.getPageCount();
-  var counter = document.getElementById('page-counter');
-  var btnPrev = document.getElementById('btn-prev');
-  var btnNext = document.getElementById('btn-next');
-  var progBar = document.getElementById('progress-bar');
-
-  /* ── Build TOC from .pg-ch pages ── */
-  var tocPanel = document.getElementById('toc-panel');
-  var tocToggle = document.getElementById('toc-toggle');
-  var sections = [];  /* [{pageIdx, label, sub}] */
-
-  document.querySelectorAll('.page').forEach(function(pg, idx) {
-    if (pg.querySelector('.pg-ch')) {
-      var lbl = pg.querySelector('.ch-lbl');
-      var sub = pg.querySelector('.ch-sub');
-      sections.push({
-        pageIdx: idx,
-        label: lbl ? lbl.textContent.trim() : '',
-        sub:   sub ? sub.textContent.trim() : ''
-      });
+  /* ── Render a single item to HTML string ── */
+  function itemHtml(item, isFirst) {
+    if (item.type === 'h') {
+      return '<h3>' + esc(item.text) + '</h3>';
     }
-  });
-
-  if (tocPanel && sections.length > 0) {
-    var h4 = document.createElement('h4');
-    h4.textContent = 'Contents';
-    tocPanel.appendChild(h4);
-    sections.forEach(function(s, si) {
-      var a = document.createElement('a');
-      a.className = 'toc-item';
-      a.dataset.si = si;
-      var pgSpan = '<span class="toc-pg">' + (s.pageIdx + 1) + '</span>';
-      var subSpan = s.sub ? '<span class="toc-sub">' + s.sub + '</span>' : '';
-      a.innerHTML = pgSpan + s.label + subSpan;
-      a.addEventListener('click', function() {
-        book.flip(s.pageIdx);
-        if (window.innerWidth < 1100) closeToc();
-      });
-      tocPanel.appendChild(a);
-    });
+    var escaped = esc(item.text);
+    if (isFirst && item.text.length > 0) {
+      var ch = item.text[0];
+      var rest = esc(item.text.slice(1));
+      return '<p><span class="drop-cap">' + ch + '</span>' + rest + '</p>';
+    }
+    return '<p>' + escaped + '</p>';
   }
 
-  function openToc()  { tocPanel && tocPanel.classList.add('open'); tocToggle && tocToggle.classList.add('active'); }
-  function closeToc() { tocPanel && tocPanel.classList.remove('open'); tocToggle && tocToggle.classList.remove('active'); }
-  if (tocToggle) {
-    tocToggle.addEventListener('click', function() {
-      tocPanel.classList.contains('open') ? closeToc() : openToc();
-    });
+  function esc(s) {
+    return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
   }
 
-  /* ── Section label ── */
-  function currentSection(pageIdx) {
-    var s = sections[0] ? sections[0].label : '';
-    for (var i = 0; i < sections.length; i++) {
-      if (sections[i].pageIdx <= pageIdx) s = sections[i].label;
-      else break;
+  /* ── Paginator ── */
+  function paginate(items) {
+    var pages = [];         // array of page DOM elements
+    var paraHtmlBuf = [];   // HTML strings for current page
+    var currentHtml = '';   // accumulated HTML in probe
+    var sectionFirst = false;  // next body para gets drop cap
+
+    function flushBodyPage() {
+      if (paraHtmlBuf.length === 0) return;
+      var div = document.createElement('div');
+      div.className = 'page';
+      var content = document.createElement('div');
+      content.className = 'page-content';
+      var pc = document.createElement('div');
+      pc.className = 'pc';
+      pc.innerHTML = paraHtmlBuf.join('');
+      content.appendChild(pc);
+      var pn = document.createElement('div');
+      pn.className = 'page-num';
+      pn.textContent = pages.length + 1;
+      div.appendChild(content);
+      div.appendChild(pn);
+      content.style.fontSize = fs + 'px';
+      pages.push(div);
+      paraHtmlBuf = [];
+      currentHtml = '';
+      probe.innerHTML = '';
     }
-    return s;
+
+    function makeChPage(item) {
+      var div = document.createElement('div');
+      div.className = 'page';
+      var pn = document.createElement('div');
+      pn.className = 'page-num';
+      pn.textContent = pages.length + 1;
+      var ch = document.createElement('div');
+      ch.className = 'pg-ch';
+      var subHtml = item.sub
+        ? '<div class="ch-sub">' + esc(item.sub) + '</div>'
+        : '';
+      ch.innerHTML =
+        '<div class="ch-orn">&#10022;</div>' +
+        '<div class="ch-lbl">' + esc(item.label.toUpperCase()) + '</div>' +
+        subHtml +
+        '<div class="ch-orn">&#10022;</div>';
+      div.appendChild(ch);
+      div.appendChild(pn);
+      return div;
+    }
+
+    for (var i = 0; i < items.length; i++) {
+      var item = items[i];
+
+      if (item.type === 'ch') {
+        flushBodyPage();
+        pages.push(makeChPage(item));
+        sectionFirst = true;
+        continue;
+      }
+
+      var isFirst = sectionFirst && paraHtmlBuf.length === 0;
+      var html = itemHtml(item, isFirst);
+      var testHtml = currentHtml + html;
+
+      probe.innerHTML = testHtml;
+
+      if (probe.scrollHeight > contentH + 2) {
+        /* Doesn't fit — flush and start new page with this item */
+        flushBodyPage();
+        sectionFirst = false;
+        isFirst = false;
+        html = itemHtml(item, false);
+        probe.innerHTML = html;
+        /* If single item overflows by itself, still add it (edge case) */
+      }
+
+      paraHtmlBuf.push(html);
+      currentHtml = probe.innerHTML;  /* keep in sync with actual rendered */
+      sectionFirst = false;
+    }
+
+    flushBodyPage();
+    document.body.removeChild(probe);
+    return pages;
   }
 
-  function updateTocHighlight(pageIdx) {
-    if (!tocPanel) return;
-    var cur = -1;
-    for (var i = 0; i < sections.length; i++) {
-      if (sections[i].pageIdx <= pageIdx) cur = i;
-      else break;
-    }
-    tocPanel.querySelectorAll('.toc-item').forEach(function(el, i) {
-      el.classList.toggle('current', i === cur);
-    });
-    /* Scroll active item into view */
-    var active = tocPanel.querySelector('.toc-item.current');
-    if (active) {
-      var panelTop = tocPanel.scrollTop;
-      var panelBot = panelTop + tocPanel.clientHeight;
-      var itemTop  = active.offsetTop;
-      var itemBot  = itemTop + active.clientHeight;
-      if (itemTop < panelTop || itemBot > panelBot) {
-        tocPanel.scrollTop = itemTop - tocPanel.clientHeight / 2;
+  /* ── Build TOC data from items ── */
+  function buildTocData(items, pages) {
+    /* Map section labels to first page index */
+    var toc = [];
+    var pageIdx = 0;
+    for (var i = 0; i < pages.length; i++) {
+      var ch = pages[i].querySelector('.pg-ch');
+      if (ch) {
+        var lbl = ch.querySelector('.ch-lbl');
+        var sub = ch.querySelector('.ch-sub');
+        toc.push({
+          pageIdx: i,
+          label:   lbl ? lbl.textContent.trim() : '',
+          sub:     sub ? sub.textContent.trim() : ''
+        });
       }
     }
+    return toc;
   }
 
-  /* ── Tick: counter + progress + TOC highlight ── */
-  function tick() {
-    var cur = book.getCurrentPageIndex();
-    var perView = dims.mobile ? 1 : 2;
-    var secLabel = currentSection(cur);
-    var dispLabel = secLabel.length > 18 ? secLabel.substring(0,17) + '\u2026' : secLabel;
-    counter.textContent = dispLabel + '\u2002\u00b7\u2002' + (cur + 1) + '\u2009/\u2009' + total;
-    btnPrev.disabled = (cur === 0);
-    btnNext.disabled = (cur >= total - perView);
-    /* Progress bar */
-    if (progBar) {
-      var pct = total <= 1 ? 100 : (cur / (total - 1)) * 100;
-      progBar.style.width = pct + '%';
+  /* ── Init after fonts ready ── */
+  document.fonts.ready.then(function() {
+
+    var pages = paginate(ITEMS);
+    var total = pages.length;
+
+    /* Inject pages into #book */
+    var bookEl = document.getElementById('book');
+    pages.forEach(function(p) { bookEl.appendChild(p); });
+
+    /* Size the wrapper */
+    var containerW = dims.mobile ? dims.pageW : dims.pageW * 2;
+    var ctx = document.getElementById('chapter-context');
+    var ctxH = ctx ? ctx.offsetHeight : 0;
+    var topOffset = 46 + 2 + ctxH + 10;
+    var wrapper = document.getElementById('flipbook-wrapper');
+    wrapper.style.width     = containerW + 'px';
+    wrapper.style.height    = dims.pageH + 'px';
+    wrapper.style.marginTop = topOffset + 'px';
+
+    /* StPageFlip */
+    var book = new St.PageFlip(bookEl, {
+      width:             dims.pageW,
+      height:            dims.pageH,
+      size:              'fixed',
+      showCover:         false,
+      drawShadow:        true,
+      flippingTime:      500,
+      usePortrait:       dims.mobile,
+      startZIndex:       0,
+      autoSize:          false,
+      maxShadowOpacity:  0.25,
+      mobileScrollSupport: false,
+      clickEventForward: true,
+      swipeDistance:     38,
+    });
+    book.loadFromHTML(document.querySelectorAll('.page'));
+
+    /* TOC */
+    var sections = buildTocData(ITEMS, pages);
+    var tocPanel  = document.getElementById('toc-panel');
+    var tocToggle = document.getElementById('toc-toggle');
+
+    if (tocPanel && sections.length > 0) {
+      var h4 = document.createElement('h4');
+      h4.textContent = 'Contents';
+      tocPanel.appendChild(h4);
+      sections.forEach(function(s, si) {
+        var a = document.createElement('a');
+        a.className = 'toc-item';
+        a.dataset.si = si;
+        var subSpan = s.sub ? '<span class="toc-sub">' + s.sub + '</span>' : '';
+        a.innerHTML = '<span class="toc-pg">' + (s.pageIdx + 1) + '</span>' + s.label + subSpan;
+        a.addEventListener('click', function() {
+          book.flip(s.pageIdx);
+          if (window.innerWidth < 1100) closeToc();
+        });
+        tocPanel.appendChild(a);
+      });
     }
-    updateTocHighlight(cur);
-  }
 
-  book.on('flip', tick);
-  book.on('changeState', tick);
-  tick();
+    function openToc()  { tocPanel && tocPanel.classList.add('open'); tocToggle && tocToggle.classList.add('active'); }
+    function closeToc() { tocPanel && tocPanel.classList.remove('open'); tocToggle && tocToggle.classList.remove('active'); }
+    if (tocToggle) tocToggle.addEventListener('click', function() {
+      tocPanel.classList.contains('open') ? closeToc() : openToc();
+    });
 
-  btnPrev.addEventListener('click', function() { book.flipPrev(); });
-  btnNext.addEventListener('click', function() { book.flipNext(); });
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   { book.flipPrev(); }
-    if (e.key === 'ArrowRight' || e.key === 'ArrowDown')  { book.flipNext(); }
-    if (e.key === 'Escape') closeToc();
+    function currentSection(idx) {
+      var s = sections[0] ? sections[0].label : '';
+      for (var i = 0; i < sections.length; i++) {
+        if (sections[i].pageIdx <= idx) s = sections[i].label;
+        else break;
+      }
+      return s;
+    }
+
+    function updateTocHighlight(idx) {
+      if (!tocPanel) return;
+      var cur = -1;
+      for (var i = 0; i < sections.length; i++) {
+        if (sections[i].pageIdx <= idx) cur = i;
+        else break;
+      }
+      tocPanel.querySelectorAll('.toc-item').forEach(function(el, i) {
+        el.classList.toggle('current', i === cur);
+      });
+      var active = tocPanel.querySelector('.toc-item.current');
+      if (active) {
+        var pt = tocPanel.scrollTop, pb = pt + tocPanel.clientHeight;
+        var it = active.offsetTop, ib = it + active.clientHeight;
+        if (it < pt || ib > pb) tocPanel.scrollTop = it - tocPanel.clientHeight / 2;
+      }
+    }
+
+    var counter  = document.getElementById('page-counter');
+    var btnPrev  = document.getElementById('btn-prev');
+    var btnNext  = document.getElementById('btn-next');
+    var progBar  = document.getElementById('progress-bar');
+
+    function tick() {
+      var cur = book.getCurrentPageIndex();
+      var perView = dims.mobile ? 1 : 2;
+      var sec = currentSection(cur);
+      var disp = sec.length > 18 ? sec.slice(0, 17) + '\u2026' : sec;
+      counter.textContent = disp + '\u2002\u00b7\u2002' + (cur + 1) + '\u2009/\u2009' + total;
+      btnPrev.disabled = (cur === 0);
+      btnNext.disabled = (cur >= total - perView);
+      if (progBar) progBar.style.width = (total <= 1 ? 100 : cur / (total - 1) * 100) + '%';
+      updateTocHighlight(cur);
+    }
+    book.on('flip', tick);
+    book.on('changeState', tick);
+    tick();
+
+    btnPrev.addEventListener('click', function() { book.flipPrev(); });
+    btnNext.addEventListener('click', function() { book.flipNext(); });
+    document.addEventListener('keydown', function(e) {
+      if (e.key==='ArrowLeft'||e.key==='ArrowUp')   book.flipPrev();
+      if (e.key==='ArrowRight'||e.key==='ArrowDown') book.flipNext();
+      if (e.key==='Escape') closeToc();
+    });
+
+    var hint = document.getElementById('nav-hint');
+    if (hint) {
+      setTimeout(function() { hint.classList.add('gone'); }, 3500);
+      book.on('flip', function() { hint.classList.add('gone'); });
+    }
+
+    /* Dismiss loader */
+    if (loader) {
+      loader.classList.add('fade');
+      setTimeout(function() { loader.style.display = 'none'; }, 520);
+    }
   });
-
-  var hint = document.getElementById('nav-hint');
-  if (hint) {
-    setTimeout(function() { hint.classList.add('gone'); }, 3500);
-    book.on('flip', function() { hint.classList.add('gone'); });
-  }
 })();
 </script>
 </body>
