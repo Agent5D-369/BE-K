@@ -1188,8 +1188,8 @@ body {
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
           Share Your Result
         </button>
-        <a href="https://rickbroider.substack.com" target="_blank" rel="noopener" class="btn-cta btn-cta-secondary">
-          Get Free Transmissions →
+        <a id="btn-bonus-chapter" href="https://rickbroider.substack.com" target="_blank" rel="noopener" class="btn-cta btn-cta-secondary">
+          Read Your Bonus Chapter →
         </a>
       </div>
 
@@ -1701,6 +1701,19 @@ function showResult(score) {
   if (saveCardLink) {
     saveCardLink.href = 'assets/images/result-' + r.key + '.png';
     saveCardLink.setAttribute('download', 'frequency-finder-' + r.key + '.png');
+  }
+
+  // Band-specific bonus chapter link
+  const chapterMap = {
+    foundation:     'chapter-4.html',
+    'bridge-lower': 'chapter-4.html',
+    'bridge-upper': 'chapter-10.html',
+    awakening:      'chapter-10.html',
+    field:          'chapter-24.html'
+  };
+  const bonusBtn = document.getElementById('btn-bonus-chapter');
+  if (bonusBtn && chapterMap[r.key]) {
+    bonusBtn.href = chapterMap[r.key];
   }
 
   // Update OG/Twitter image for result-specific social cards
