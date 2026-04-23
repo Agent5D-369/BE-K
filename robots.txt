@@ -5,12 +5,14 @@ Allow: /
 Allow: /index.html
 Allow: /consciousness-quiz.html
 Allow: /quiz.html
+Allow: /book-preview.html
 
-# Assets
+# Assets and scripts
 Allow: /assets/
+Allow: /js/
 
-# LLM context file
-Allow: /llms.txt
+# Backup and draft files — do not index
+Disallow: /quizBU.html
 
 Sitemap: https://iwasready.com/sitemap.xml
 
