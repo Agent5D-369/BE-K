@@ -31,9 +31,68 @@ html, body { background: #1a1714; font-family: 'Inter', system-ui, sans-serif; h
   justify-content: space-between; padding: 0 16px;
   z-index: 200; border-bottom: 1px solid rgba(255,255,255,0.06);
 }
-.hdr-title { font-family: 'Lora', Georgia, serif; font-size: 13px; font-style: italic; color: rgba(255,255,255,0.68); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 55vw; }
+.hdr-title { font-family: 'Lora', Georgia, serif; font-size: 13px; font-style: italic; color: rgba(255,255,255,0.68); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 50vw; }
+.hdr-right { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
 .hdr-link  { font-size: 11px; color: rgba(255,255,255,0.36); text-decoration: none; white-space: nowrap; }
 .hdr-link:hover { color: rgba(255,255,255,0.65); }
+
+/* Bookmark button */
+#btn-bookmark {
+  background: none; border: none; cursor: pointer; padding: 4px;
+  color: rgba(255,255,255,0.28); transition: color 0.18s;
+  display: flex; align-items: center; line-height: 1;
+}
+#btn-bookmark:hover { color: rgba(255,255,255,0.65); }
+#btn-bookmark.active { color: #7aaa91; }
+#btn-bookmark svg { display: block; }
+#btn-bookmark.active .bm-fill { opacity: 1 !important; }
+
+/* Toast notification */
+#toast {
+  position: fixed; bottom: 68px; left: 50%; transform: translateX(-50%);
+  background: rgba(18,16,13,0.92); border: 1px solid rgba(255,255,255,0.09);
+  color: rgba(255,255,255,0.78); font-size: 11.5px;
+  font-family: 'Inter', sans-serif; letter-spacing: 0.03em;
+  padding: 7px 16px; border-radius: 18px;
+  pointer-events: none; opacity: 0;
+  transition: opacity 0.22s ease; z-index: 220;
+  white-space: nowrap;
+}
+#toast.show { opacity: 1; }
+
+/* Page-jump overlay */
+#jump-overlay {
+  position: fixed; inset: 0; z-index: 300;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(0,0,0,0.48);
+  opacity: 0; pointer-events: none; transition: opacity 0.18s;
+}
+#jump-overlay.show { opacity: 1; pointer-events: all; }
+#jump-box {
+  background: #1c1916; border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 10px; padding: 18px 22px; text-align: center;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+  min-width: 200px;
+}
+#jump-box label {
+  display: block; font-family: 'Inter', sans-serif;
+  font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: rgba(255,255,255,0.28); margin-bottom: 10px;
+}
+#jump-input {
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 6px; color: rgba(255,255,255,0.85);
+  font-family: 'Lora', Georgia, serif; font-size: 22px;
+  text-align: center; width: 100%; padding: 8px 0;
+  outline: none; -moz-appearance: textfield;
+}
+#jump-input::-webkit-inner-spin-button,
+#jump-input::-webkit-outer-spin-button { -webkit-appearance: none; }
+#jump-input:focus { border-color: rgba(122,170,145,0.5); }
+#jump-hint {
+  margin-top: 8px; font-family: 'Inter', sans-serif;
+  font-size: 10px; color: rgba(255,255,255,0.22); letter-spacing: 0.04em;
+}
 
 /* ── Reading progress bar ── */
 #progress-bar {
@@ -77,7 +136,10 @@ html, body { background: #1a1714; font-family: 'Inter', system-ui, sans-serif; h
 #page-counter {
   font-size: 10.5px; color: rgba(255,255,255,0.28); min-width: 130px;
   text-align: center; font-family: 'Inter', sans-serif; letter-spacing: 0.04em;
+  cursor: pointer; border-radius: 5px; padding: 4px 8px;
+  transition: background 0.14s, color 0.14s;
 }
+#page-counter:hover { background: rgba(255,255,255,0.05); color: rgba(255,255,255,0.5); }
 #toc-toggle {
   position: absolute; right: 14px;
   background: transparent; border: 1px solid rgba(255,255,255,0.08);
@@ -214,7 +276,15 @@ html, body { background: #1a1714; font-family: 'Inter', system-ui, sans-serif; h
 
   <div id="site-header">
     <span class="hdr-title">Chapter 24 — Bridging Earth & Kanaria</span>
-    <a href="https://rickbroider.substack.com" class="hdr-link">← Substack</a>
+    <div class="hdr-right">
+      <button id="btn-bookmark" title="Bookmark this page" aria-label="Bookmark">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path class="bm-outline" d="M3 2h10a1 1 0 0 1 1 1v11l-6-3-6 3V3a1 1 0 0 1 1-1z"/>
+          <path class="bm-fill" d="M3 2h10a1 1 0 0 1 1 1v11l-6-3-6 3V3a1 1 0 0 1 1-1z" fill="currentColor" opacity="0" style="transition:opacity 0.2s"/>
+        </svg>
+      </button>
+      <a href="https://rickbroider.substack.com" class="hdr-link">← Substack</a>
+    </div>
   </div>
   <div id="progress-bar"></div>
   <div id="chapter-context">You're reading <strong>Chapter 24</strong> from <em>Bridging Earth &amp; Kanaria</em> &nbsp;&middot;&nbsp; <a href="https://rickbroider.substack.com">More on Substack &rarr;</a></div>
@@ -230,6 +300,15 @@ html, body { background: #1a1714; font-family: 'Inter', system-ui, sans-serif; h
   </div>
 
   <div id="nav-hint">Swipe &nbsp;&middot;&nbsp; Arrow keys &nbsp;&middot;&nbsp; Tap corners</div>
+  <div id="toast"></div>
+  <!-- Page jump overlay -->
+  <div id="jump-overlay">
+    <div id="jump-box">
+      <label>Go to page</label>
+      <input id="jump-input" type="number" min="1" inputmode="numeric" autocomplete="off">
+      <div id="jump-hint"></div>
+    </div>
+  </div>
   <script>window.__BOOK_ITEMS__ = [{"type":"ch","label":"Chapter 24","sub":""},{"type":"h","text":"SEALING SOUL CONTRACTS"},{"type":"h","text":"PART 1  BEFORE YOU WERE BORN"},{"type":"p","text":"The Silent Agreements"},{"type":"p","text":"You didn't come here by accident."},{"type":"p","text":"Before the body, before the breath,"},{"type":"p","text":"you said yes."},{"type":"p","text":"Yes to remembering through amnesia."},{"type":"p","text":"Yes to walking into a world that forgets."},{"type":"p","text":"Yes to holding a thread"},{"type":"p","text":"that only you could carry through the veil."},{"type":"p","text":"These are the soul contracts not written in ink"},{"type":"p","text":"but etched in vibration."},{"type":"p","text":"Assignments vs. Identities"},{"type":"p","text":"You are not your title."},{"type":"p","text":"You're not your resume."},{"type":"p","text":"Your value isn't measured by how clearly you explain what you do."},{"type":"p","text":"Your essence goes deeper than language allows."},{"type":"p","text":"Your assignment lives in what only you notice."},{"type":"p","text":"In what breaks your heart and calls you to act."},{"type":"p","text":"In the patterns you've lived"},{"type":"p","text":"and the pain you're here to alchemize."},{"type":"p","text":"It doesn't require a business card."},{"type":"p","text":"It requires presence."},{"type":"p","text":"The Sacred Repetition"},{"type":"p","text":"Many of you have done this before."},{"type":"p","text":"On other planets, in other forms."},{"type":"p","text":"Earth is not your first descent."},{"type":"p","text":"This mission echoes the ones that came before."},{"type":"p","text":"But Earth is different."},{"type":"p","text":"Here, the stakes are embodied."},{"type":"p","text":"Here, the lessons are relational."},{"type":"p","text":"Here, love is the curriculum."},{"type":"p","text":"And this time, the contract isn't just to activate."},{"type":"p","text":"It's to integrate."},{"type":"h","text":"PART 2  THE STARSEED MIRROR"},{"type":"p","text":"Reflections from the Edge"},{"type":"p","text":"There are moments when you feel like a stranger here."},{"type":"p","text":"Not just in society, but in the entire way this planet works."},{"type":"p","text":"It's not because you're broken."},{"type":"p","text":"It's because you remember something older."},{"type":"p","text":"A way of living that honored life, not productivity."},{"type":"p","text":"A rhythm that wasn't manufactured, but felt."},{"type":"p","text":"That homesickness you carry?"},{"type":"p","text":"It's not nostalgia."},{"type":"p","text":"It's recognition."},{"type":"p","text":"Signals and Symptoms"},{"type":"p","text":"You've always been more sensitive."},{"type":"p","text":"To sounds, to lies, to energy."},{"type":"p","text":"You spot inconsistencies before others even notice."},{"type":"p","text":"You feel tension that no one else names."},{"type":"p","text":"It's not anxiety."},{"type":"p","text":"It's antennae."},{"type":"p","text":"Tuned to frequencies most ignore."},{"type":"p","text":"And you've likely been told to turn it off."},{"type":"p","text":"To conform."},{"type":"p","text":"To quiet your radar."},{"type":"p","text":"But that system was never meant to hold your clarity."},{"type":"p","text":"Why You Incarnated Now"},{"type":"p","text":"Because Earth is reaching a turning point."},{"type":"p","text":"And evolution doesn't wait."},{"type":"p","text":"It moves through those ready to feel what others avoid."},{"type":"p","text":"You didn't come here to escape."},{"type":"p","text":"You came to guide."},{"type":"p","text":"By embodying integrity,"},{"type":"p","text":"by living in rhythm,"},{"type":"p","text":"by remembering what's real when everything else feels fake."},{"type":"p","text":"You're not here to be saved."},{"type":"p","text":"You're here to activate the blueprint."},{"type":"p","text":"In yourself,"},{"type":"p","text":"and in others who forgot they came with one."},{"type":"h","text":"PART 3  KEYS TO YOUR GALACTIC ASSIGNMENT"},{"type":"p","text":"You Came With Codes"},{"type":"p","text":"You didn't arrive blank."},{"type":"p","text":"You carry imprints that activate through experience."},{"type":"p","text":"Some of them are buried."},{"type":"p","text":"Some are just starting to stir."},{"type":"p","text":"The confusion you've faced?"},{"type":"p","text":"It's part of the awakening."},{"type":"p","text":"Your clarity is encoded in the struggle."},{"type":"p","text":"Your purpose isn't handed to you."},{"type":"p","text":"It reveals itself as you show up for what's in front of you."},{"type":"p","text":"What to Listen For"},{"type":"p","text":"◇ Recurring dreams or symbols"},{"type":"p","text":"◇ Activations from certain constellations or planetary transits"},{"type":"p","text":"◇ Moments of full-body resonance when hearing ancient languages or tones"},{"type":"p","text":"◇ Sudden knowing that bypasses logic but lands like truth"},{"type":"p","text":"◇ Unexplainable grief or love when visiting certain places"},{"type":"p","text":"These are breadcrumbs."},{"type":"p","text":"Not distractions, not fantasies-"},{"type":"p","text":"reminders of where you come from,"},{"type":"p","text":"and what you agreed to carry forward."},{"type":"p","text":"Your Mission Is Not a Role"},{"type":"p","text":"It's not a title."},{"type":"p","text":"It's not a job description."},{"type":"p","text":"It's a frequency you hold."},{"type":"p","text":"You may fulfill it through parenting."},{"type":"p","text":"Or through building tech."},{"type":"p","text":"Or through walking away from patterns that no longer match who you are."},{"type":"p","text":"What matters is how aligned you stay"},{"type":"p","text":"as you move."},{"type":"p","text":"That's what activates others."},{"type":"p","text":"Not your resume."},{"type":"p","text":"Not your content."},{"type":"p","text":"Your presence."}];</script>
   <script src="https://unpkg.com/page-flip@2.0.7/dist/js/page-flip.browser.js"></script>
   <script>
@@ -525,11 +604,118 @@ html, body { background: #1a1714; font-family: 'Inter', system-ui, sans-serif; h
       }
     }
 
-    var counter  = document.getElementById('page-counter');
-    var btnPrev  = document.getElementById('btn-prev');
-    var btnNext  = document.getElementById('btn-next');
-    var progBar  = document.getElementById('progress-bar');
+    var counter     = document.getElementById('page-counter');
+    var btnPrev     = document.getElementById('btn-prev');
+    var btnNext     = document.getElementById('btn-next');
+    var progBar     = document.getElementById('progress-bar');
+    var btnBmark    = document.getElementById('btn-bookmark');
+    var toastEl     = document.getElementById('toast');
+    var jumpOverlay = document.getElementById('jump-overlay');
+    var jumpInput   = document.getElementById('jump-input');
 
+    /* ── localStorage keys (unique per page filename) ── */
+    var PAGE_ID  = location.pathname.replace(/.*\//, '').replace('.html','') || 'book';
+    var POS_KEY  = 'bek_pos_' + PAGE_ID;
+    var BM_KEY   = 'bek_bm_'  + PAGE_ID;
+
+    /* ── Toast helper ── */
+    var toastTimer = null;
+    function showToast(msg) {
+      if (!toastEl) return;
+      toastEl.textContent = msg;
+      toastEl.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(function() { toastEl.classList.remove('show'); }, 2200);
+    }
+
+    /* ── Bookmark ── */
+    function savedBm() {
+      try { return parseInt(localStorage.getItem(BM_KEY), 10); } catch(e) { return NaN; }
+    }
+    function saveBm(n) {
+      try { localStorage.setItem(BM_KEY, n); } catch(e) {}
+    }
+    function clearBm() {
+      try { localStorage.removeItem(BM_KEY); } catch(e) {}
+    }
+    function updateBmIcon(cur) {
+      if (!btnBmark) return;
+      var bm = savedBm();
+      btnBmark.classList.toggle('active', !isNaN(bm) && bm === cur);
+      btnBmark.title = (!isNaN(bm) && bm !== cur)
+        ? 'Jump to bookmark (p.' + (bm + 1) + ')'
+        : 'Bookmark this page';
+    }
+    if (btnBmark) {
+      btnBmark.addEventListener('click', function() {
+        var cur = book.getCurrentPageIndex();
+        var bm  = savedBm();
+        if (!isNaN(bm) && bm === cur) {
+          /* Already bookmarked here — clear it */
+          clearBm();
+          updateBmIcon(cur);
+          showToast('Bookmark removed');
+        } else if (!isNaN(bm) && bm !== cur) {
+          /* Bookmark exists elsewhere — jump to it */
+          book.flip(bm);
+          showToast('Jumped to bookmark');
+        } else {
+          /* No bookmark — save */
+          saveBm(cur);
+          updateBmIcon(cur);
+          showToast('Page ' + (cur + 1) + ' bookmarked');
+        }
+      });
+    }
+
+    /* ── Auto-resume: restore last position ── */
+    function savePos(n) {
+      try { localStorage.setItem(POS_KEY, n); } catch(e) {}
+    }
+    (function restorePos() {
+      try {
+        var saved = parseInt(localStorage.getItem(POS_KEY), 10);
+        if (!isNaN(saved) && saved > 0 && saved < total) {
+          book.flip(saved);
+        }
+      } catch(e) {}
+    })();
+
+    /* ── Page-jump overlay ── */
+    function openJump() {
+      if (!jumpOverlay) return;
+      var cur = book.getCurrentPageIndex();
+      jumpInput.value = cur + 1;
+      jumpInput.max   = total;
+      jumpInput.min   = 1;
+      document.getElementById('jump-hint').textContent = '1 – ' + total;
+      jumpOverlay.classList.add('show');
+      setTimeout(function() { jumpInput.select(); jumpInput.focus(); }, 60);
+    }
+    function closeJump() { jumpOverlay && jumpOverlay.classList.remove('show'); }
+    function commitJump() {
+      var n = parseInt(jumpInput.value, 10);
+      if (!isNaN(n) && n >= 1 && n <= total) {
+        book.flip(n - 1);
+      }
+      closeJump();
+    }
+    if (counter) counter.addEventListener('click', openJump);
+    if (jumpOverlay) {
+      jumpOverlay.addEventListener('click', function(e) {
+        if (e.target === jumpOverlay) closeJump();
+      });
+    }
+    if (jumpInput) {
+      jumpInput.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') commitJump();
+        if (e.key === 'Escape') closeJump();
+      });
+    }
+    var jumpGo = document.getElementById('jump-go');
+    if (jumpGo) jumpGo.addEventListener('click', commitJump);
+
+    /* ── Tick: update counter + progress + TOC + bookmark icon ── */
     function tick() {
       var cur = book.getCurrentPageIndex();
       var perView = dims.mobile ? 1 : 2;
@@ -540,6 +726,8 @@ html, body { background: #1a1714; font-family: 'Inter', system-ui, sans-serif; h
       btnNext.disabled = (cur >= total - perView);
       if (progBar) progBar.style.width = (total <= 1 ? 100 : cur / (total - 1) * 100) + '%';
       updateTocHighlight(cur);
+      updateBmIcon(cur);
+      savePos(cur);
     }
     book.on('flip', tick);
     book.on('changeState', tick);
@@ -548,9 +736,12 @@ html, body { background: #1a1714; font-family: 'Inter', system-ui, sans-serif; h
     btnPrev.addEventListener('click', function() { book.flipPrev(); });
     btnNext.addEventListener('click', function() { book.flipNext(); });
     document.addEventListener('keydown', function(e) {
-      if (e.key==='ArrowLeft'||e.key==='ArrowUp')   book.flipPrev();
+      if (jumpOverlay && jumpOverlay.classList.contains('show')) return;
+      if (e.key==='ArrowLeft'||e.key==='ArrowUp')    book.flipPrev();
       if (e.key==='ArrowRight'||e.key==='ArrowDown') book.flipNext();
       if (e.key==='Escape') closeToc();
+      if (e.key==='b'||e.key==='B') btnBmark && btnBmark.click();
+      if (e.key==='g'||e.key==='G') openJump();
     });
 
     var hint = document.getElementById('nav-hint');
