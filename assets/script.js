@@ -499,12 +499,21 @@ function initResult() {
   updatePageMeta(archetype);
   initShareButtons(archetype);
 
-  if (typeof trackEvent === 'function') {
-    trackEvent('view_result', {
-      quiz_name: 'signal_activation',
-      result_type: typeSlug,
+  // [ANALYTICS] result_view (spec name) + view_result (legacy compat)
+  if (typeof pushIwrEvent === 'function') {
+    // result_view — spec-required event name
+    pushIwrEvent('result_view', {
+      quiz_name:    'signal_activation',
+      result_type:  typeSlug,
       result_label: archetype.name || typeSlug,
-      page_type: 'result'
+      page_type:    'result'
+    });
+    // view_result — legacy name kept for existing GTM triggers
+    pushIwrEvent('view_result', {
+      quiz_name:    'signal_activation',
+      result_type:  typeSlug,
+      result_label: archetype.name || typeSlug,
+      page_type:    'result'
     });
   }
 }
@@ -921,6 +930,13 @@ function initGiftForm() {
       if (response.ok) {
         form.style.display = 'none';
         confirm.textContent = 'Received. You will hear back within a few days.';
+        // [ANALYTICS] form_submit_attempt — Formspree gift request confirmed server-side
+        if (typeof pushIwrEvent === 'function') {
+          pushIwrEvent('form_submit_attempt', {
+            form_name: 'gift_copy_request',
+            offer:     'gifted_audiobook'
+          });
+        }
       } else {
         submitBtn.textContent = 'Request a gifted copy';
         submitBtn.disabled = false;
@@ -959,6 +975,13 @@ function initTestimonialForm() {
       if (response.ok) {
         form.style.display = 'none';
         confirm.style.display = 'block';
+        // [ANALYTICS] form_submit_attempt — Formspree testimonial confirmed server-side
+        if (typeof pushIwrEvent === 'function') {
+          pushIwrEvent('form_submit_attempt', {
+            form_name: 'testimonial_submission',
+            offer:     'print_edition_credit'
+          });
+        }
       } else {
         btn.textContent = 'Submit Your Testimonial';
         btn.disabled = false;

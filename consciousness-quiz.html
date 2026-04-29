@@ -1813,13 +1813,23 @@ function showResult(score) {
 
   showScreen('screen-result');
 
-  if (typeof trackEvent === 'function') {
-    trackEvent('view_result', {
-      quiz_name: 'frequency_finder',
-      result_type: resultKey,
+  // [ANALYTICS] result_view (spec name) + view_result (legacy compat)
+  if (typeof pushIwrEvent === 'function') {
+    // result_view — spec-required event name
+    pushIwrEvent('result_view', {
+      quiz_name:    'frequency_finder',
+      result_type:  resultKey,
       result_label: r.title,
-      score: score,
-      page_type: 'quiz'
+      score:        score,
+      page_type:    'quiz'
+    });
+    // view_result — legacy name kept for existing GTM triggers
+    pushIwrEvent('view_result', {
+      quiz_name:    'frequency_finder',
+      result_type:  resultKey,
+      result_label: r.title,
+      score:        score,
+      page_type:    'quiz'
     });
   }
 
@@ -1920,12 +1930,22 @@ async function submitEmailCapture(e) {
 
   const successEl = document.getElementById('capture-success');
   if (kitOk) {
-    if (typeof trackEvent === 'function') {
-      trackEvent('generate_lead', {
-        form_name: 'frequency_finder_email',
+    // [ANALYTICS] lead_submit (spec name) + generate_lead (legacy compat)
+    if (typeof pushIwrEvent === 'function') {
+      // lead_submit — spec-required event; fires only on confirmed server success
+      pushIwrEvent('lead_submit', {
+        form_name:   'frequency_finder_email',
+        offer:       'frequency_finder',
         result_type: resultKey || '',
-        quiz_name: 'frequency_finder',
-        page_type: 'quiz'
+        quiz_name:   'frequency_finder',
+        page_type:   'quiz'
+      });
+      // generate_lead — legacy name kept for existing GTM triggers
+      pushIwrEvent('generate_lead', {
+        form_name:   'frequency_finder_email',
+        result_type: resultKey || '',
+        quiz_name:   'frequency_finder',
+        page_type:   'quiz'
       });
     }
     e.target.style.display = 'none';
