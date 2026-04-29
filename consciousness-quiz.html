@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZGMHG7VF66"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-ZGMHG7VF66');
+  </script>
+  <script src="js/analytics.js"></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>The Frequency Finder Quiz | 3D 4D 5D Consciousness | IWasReady.com</title>
@@ -23,17 +32,6 @@
 <meta name="robots" content="index, follow" />
 <meta name="author" content="Rick Broider" />
 <meta name="theme-color" content="#04060f" />
-
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','TODO_GTM_CONTAINER_ID');</script>
-<!-- End Google Tag Manager -->
-
-<!-- Analytics + Attribution Layer -->
-<script src="js/analytics.js"></script>
 
 <script type="application/ld+json">
 [
@@ -233,8 +231,8 @@ body {
 #screen-intro {
   justify-content: center;
   text-align: center;
-  padding-top: clamp(32px, 5vh, 56px);
-  padding-bottom: clamp(32px, 5vh, 56px);
+  padding-top: 80px;
+  padding-bottom: 60px;
 }
 .intro-inner {
   max-width: 560px;
@@ -254,11 +252,11 @@ body {
 }
 .intro-title {
   font-family: 'Playfair Display', Georgia, serif;
-  font-size: clamp(34px, 7vw, 54px);
+  font-size: clamp(36px, 8vw, 58px);
   font-weight: 700;
   line-height: 1.12;
   color: rgba(255,255,255,0.95);
-  margin-bottom: 20px;
+  margin-bottom: 28px;
   letter-spacing: -0.01em;
 }
 .intro-title em {
@@ -269,13 +267,13 @@ body {
   width: 60px;
   height: 1.5px;
   background: linear-gradient(to right, transparent, #C9A84C, transparent);
-  margin: 0 auto 20px;
+  margin: 0 auto 28px;
 }
 .intro-body {
   font-size: 17px;
-  line-height: 1.7;
+  line-height: 1.75;
   color: rgba(255,255,255,0.68);
-  margin-bottom: 14px;
+  margin-bottom: 20px;
   font-weight: 300;
 }
 .intro-body strong {
@@ -286,7 +284,7 @@ body {
   font-size: 13px;
   color: rgba(255,255,255,0.35);
   letter-spacing: 0.06em;
-  margin-bottom: 28px;
+  margin-bottom: 44px;
 }
 .btn-start {
   display: inline-flex;
@@ -325,7 +323,7 @@ body {
   display: flex;
   justify-content: center;
   gap: 10px;
-  margin-top: 28px;
+  margin-top: 48px;
   flex-wrap: wrap;
 }
 .pill {
@@ -586,60 +584,26 @@ body {
 
 /* ── Cross-Quiz CTA ───────────────────────────────────────────────────────── */
 .cross-quiz-cta {
-  margin-top: 40px;
-  padding: 28px 28px 24px;
-  border: 1px solid rgba(201,168,76,0.16);
-  border-radius: 14px;
-  background: rgba(201,168,76,0.03);
+  margin-top: 28px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255,255,255,0.06);
   text-align: center;
-  max-width: 480px;
-  margin-left: auto;
-  margin-right: auto;
 }
-.cross-quiz-cta .cqc-eyebrow {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: #C9A84C;
-  opacity: 0.65;
-  margin-bottom: 12px;
-}
-.cross-quiz-cta .cqc-headline {
-  font-family: 'Playfair Display', Georgia, serif;
-  font-size: 18px;
-  font-weight: 600;
-  color: rgba(255,255,255,0.88);
-  line-height: 1.4;
-  margin-bottom: 10px;
-}
-.cross-quiz-cta .cqc-body {
+.cross-quiz-cta p {
   font-size: 13px;
-  color: rgba(255,255,255,0.45);
-  line-height: 1.65;
+  color: rgba(255,255,255,0.38);
   margin-bottom: 10px;
-  letter-spacing: 0;
-}
-.cross-quiz-cta .cqc-meta {
-  font-size: 11px;
-  color: rgba(255,255,255,0.25);
-  letter-spacing: 0.06em;
-  margin-bottom: 16px;
+  letter-spacing: 0.04em;
 }
 .cross-quiz-cta a {
-  display: inline-block;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  font-size: 13px;
   color: #C9A84C;
   text-decoration: none;
-  border: 1px solid rgba(201,168,76,0.35);
-  border-radius: 50px;
-  padding: 10px 22px;
-  transition: all 0.2s;
+  border-bottom: 1px solid rgba(201,168,76,0.3);
+  padding-bottom: 1px;
+  transition: opacity 0.2s;
 }
-.cross-quiz-cta a:hover { background: rgba(201,168,76,0.08); border-color: rgba(201,168,76,0.6); }
+.cross-quiz-cta a:hover { opacity: 0.75; }
 
 /* ── Co-Diagnosis Block ───────────────────────────────────────────────────── */
 .co-diag-block {
@@ -981,13 +945,6 @@ body {
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }
 
-/* ── Paid-Traffic Mode ───────────────────────────────────────────────────── */
-/* Activated via class "paid-mode" on <body> when utm_medium=paid_social or lp=paid */
-body.paid-mode .cross-quiz-cta { display: none !important; }
-body.paid-mode .result-retake  { display: none !important; }
-body.paid-mode #btn-bonus-chapter { display: none !important; }
-body.paid-mode .result-actions a[href*="substack"] { display: none !important; }
-
 /* ── Audiobook CTA Block ─────────────────────────────────────────────────── */
 .audiobook-cta-block {
   margin: 32px 0 0;
@@ -1036,14 +993,13 @@ body.paid-mode .result-actions a[href*="substack"] { display: none !important; }
 /* ── Email Capture Block ─────────────────────────────────────────────────── */
 .email-capture-block {
   width: 100%;
-  max-width: 460px;
-  margin: 40px auto 0;
-  padding: 28px 28px 24px;
-  background: rgba(184,152,232,0.06);
-  border: 1px solid rgba(184,152,232,0.22);
+  max-width: 440px;
+  margin: 8px auto 0;
+  padding: 26px 28px;
+  background: rgba(255,255,255,0.025);
+  border: 1px solid rgba(255,255,255,0.08);
   border-radius: 16px;
   text-align: center;
-  animation: fadeUp 0.6s 0.5s both;
 }
 .email-capture-eyebrow {
   font-size: 10px;
@@ -1105,36 +1061,11 @@ body.paid-mode .result-actions a[href*="substack"] { display: none !important; }
 }
 .email-capture-success {
   display: none;
-  padding: 8px 0 4px;
-  line-height: 1.6;
-  text-align: center;
-}
-.email-capture-success-headline {
-  font-size: 16px;
-  font-weight: 600;
-  color: rgba(184,152,232,0.92);
-  margin-bottom: 10px;
-}
-.email-capture-success-body {
   font-size: 14px;
-  color: rgba(255,255,255,0.6);
-  margin-bottom: 18px;
+  color: rgba(184,152,232,0.8);
+  padding: 6px 0 2px;
+  line-height: 1.5;
 }
-.email-capture-success-cta {
-  display: inline-block;
-  background: linear-gradient(135deg, rgba(201,168,76,0.25), rgba(201,168,76,0.12));
-  border: 1px solid rgba(201,168,76,0.55);
-  color: #E4C46A;
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  padding: 11px 22px;
-  border-radius: 50px;
-  text-decoration: none;
-  transition: all 0.2s;
-}
-.email-capture-success-cta:hover { background: rgba(201,168,76,0.28); transform: translateY(-1px); }
 @media (max-width: 480px) {
   .email-capture-form { flex-direction: column; }
   .audiobook-cta-block { padding: 22px 18px 20px; }
@@ -1144,10 +1075,6 @@ body.paid-mode .result-actions a[href*="substack"] { display: none !important; }
 </style>
 </head>
 <body>
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=TODO_GTM_CONTAINER_ID"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
 
 <canvas id="stars"></canvas>
 
@@ -1178,7 +1105,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         They're frequencies of perception.
       </p>
       <p class="intro-meta">10 questions &nbsp;·&nbsp; 3 minutes &nbsp;·&nbsp; No wrong answers</p>
-      <button class="btn-start" onclick="startQuiz()" data-cta="start_quiz" id="btn-start-quiz">
+      <button class="btn-start" onclick="startQuiz()">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10,8 16,12 10,16"/></svg>
         Begin the Quiz
       </button>
@@ -1265,52 +1192,39 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <!-- 4. UNDERSTANDING — body copy -->
       <div class="result-body" id="result-body"></div>
 
-      <!-- 5. EMAIL CAPTURE — primary conversion, before share or audiobook -->
-      <div class="email-capture-block" id="email-capture-block">
-        <p class="email-capture-eyebrow" id="capture-eyebrow">Your Frequency · Your Inbox</p>
-        <p class="email-capture-title" id="capture-title">Get the next transmissions matched to this result.</p>
-        <p class="email-capture-sub">Occasional dispatches tuned to where you are. No noise. Unsubscribe anytime.</p>
-        <form class="email-capture-form" id="capture-form" onsubmit="submitEmailCapture(event)">
-          <input class="email-capture-input" type="email" placeholder="your@email.com" id="capture-email" required autocomplete="email" />
-          <button class="email-capture-btn" type="submit" data-cta="submit_optin">Send it</button>
-        </form>
-        <p class="email-capture-privacy">No spam. Your signal, your inbox.</p>
-        <div class="email-capture-success" id="capture-success">
-          <p class="email-capture-success-headline">You're in the signal.</p>
-          <p class="email-capture-success-body" id="capture-success-body">Watch for something worth opening.</p>
-          <a id="capture-success-cta" href="https://app.helloaudio.fm/feed/831d2db8-2d73-412e-a0a5-0fe58d744a10/signup" target="_blank" rel="noopener" class="email-capture-success-cta" data-cta="audiobook">
-            Hear the Audiobook →
-          </a>
-        </div>
-      </div>
-
-      <!-- 6. AUDIOBOOK CTA — injected per result type -->
-      <div id="audiobook-cta-slot"></div>
-
-      <!-- 7. SHARE + SECONDARY PATHS -->
       <div class="result-actions">
-        <button class="btn-share" id="btn-share" onclick="shareResult()" data-cta="share_result">
+        <button class="btn-share" id="btn-share" onclick="shareResult()">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
           Share Your Result
         </button>
-        <a id="btn-bonus-chapter" href="book-preview.html" class="btn-cta btn-cta-secondary" data-cta="free_preview">
-          Read Free Preview →
+        <a href="https://rickbroider.substack.com" target="_blank" rel="noopener" class="btn-cta btn-cta-secondary">
+          Get Free Transmissions →
         </a>
-        <a href="https://rickbroider.substack.com" target="_blank" rel="noopener" class="btn-cta btn-cta-secondary" style="margin-top:8px;font-size:12px;opacity:0.6;" data-cta="substack_bonus">
-          3 bonus chapters on Substack →
-        </a>
+      </div>
+
+      <!-- Audiobook CTA — injected per result after share buttons -->
+      <div id="audiobook-cta-slot"></div>
+
+      <!-- Email Capture -->
+      <div class="email-capture-block" id="email-capture-block">
+        <p class="email-capture-eyebrow">Stay in the Field</p>
+        <p class="email-capture-title">Want transmissions matched to your frequency?</p>
+        <p class="email-capture-sub">Occasional dispatches. No noise. Unsubscribe anytime.</p>
+        <form class="email-capture-form" onsubmit="submitEmailCapture(event)">
+          <input class="email-capture-input" type="email" placeholder="your@email.com" id="capture-email" required />
+          <button class="email-capture-btn" type="submit">Send it</button>
+        </form>
+        <p class="email-capture-privacy">No spam. Your frequency, your inbox.</p>
+        <p class="email-capture-success" id="capture-success">You're in. Watch for something worth opening.</p>
       </div>
 
       <div class="cross-quiz-cta">
-        <p class="cqc-eyebrow">There's a second quiz in this ecosystem</p>
-        <p class="cqc-headline">The Frequency Finder showed where you are.<br>This one shows how you lead from there.</p>
-        <p class="cqc-body">The Starseed Leadership Signal Activation is a different test. It doesn't measure frequency — it identifies your signal pattern: the specific way you show up, build, and move energy in a room. Four archetypes. One of them has been running in you for years.</p>
-        <p class="cqc-meta">10 questions &nbsp;·&nbsp; 4 minutes &nbsp;·&nbsp; No email required</p>
-        <a href="quiz.html" data-cta="signal_activation">Take the Signal Activation →</a>
+        <p>Want to know your leadership signal type too?</p>
+        <a href="quiz.html">Take the Signal Activation Quiz →</a>
       </div>
 
       <div class="result-retake">
-        <button class="btn-retake" onclick="retakeQuiz()" data-cta="retake_quiz">Retake the quiz</button>
+        <button class="btn-retake" onclick="retakeQuiz()">Retake the quiz</button>
       </div>
     </div>
   </div>
@@ -1640,13 +1554,6 @@ let answers   = [];
 let resultKey = null;
 let isTransitioning = false;
 
-// ── Paid-Traffic Mode ─────────────────────────────────────────────────────────
-(function applyPaidMode() {
-  if (typeof window.isPaidTrafficMode === 'function' && window.isPaidTrafficMode()) {
-    document.body.classList.add('paid-mode');
-  }
-})();
-
 // ── Screen Transitions ────────────────────────────────────────────────────────
 function showScreen(id) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
@@ -1668,14 +1575,8 @@ function startQuiz() {
   updateProgress();
   renderQuestion(currentQ);
   showScreen('screen-quiz');
-
   if (typeof trackEvent === 'function') {
-    trackEvent('quiz_start', {
-      quiz_name:       'frequency_finder',
-      quiz_version:    '1',
-      page_type:       'quiz',
-      landing_variant: new URLSearchParams(window.location.search).get('lp') || ''
-    });
+    trackEvent('quiz_start', { quiz_name: 'frequency_finder', page_type: 'quiz' });
   }
 }
 
@@ -1695,15 +1596,6 @@ function renderQuestion(index, direction) {
   grid.innerHTML = '';
   grid.classList.remove('selecting');
 
-  if (typeof trackEvent === 'function') {
-    trackEvent('quiz_question_view', {
-      quiz_name:  'frequency_finder',
-      quiz_step:  index + 1,
-      question_id: 'q' + (index + 1),
-      page_type:  'quiz'
-    });
-  }
-
   q.options.forEach((opt, i) => {
     const card = document.createElement('button');
     card.className = 'option-card';
@@ -1712,6 +1604,15 @@ function renderQuestion(index, direction) {
     card.addEventListener('click', () => selectOption(i, opt.score));
     grid.appendChild(card);
   });
+
+  if (typeof trackEvent === 'function') {
+    trackEvent('quiz_question_view', {
+      quiz_name: 'frequency_finder',
+      quiz_step: index + 1,
+      question_id: 'ff_q' + (index + 1),
+      page_type: 'quiz'
+    });
+  }
 
   // Animate in
   if (direction === 'forward' || direction === undefined) {
@@ -1741,12 +1642,12 @@ function selectOption(optIndex, score) {
 
   if (typeof trackEvent === 'function') {
     trackEvent('quiz_answer_select', {
-      quiz_name:   'frequency_finder',
-      quiz_step:   currentQ + 1,
-      question_id: 'q' + (currentQ + 1),
-      answer_id:   'a' + (optIndex + 1),
+      quiz_name: 'frequency_finder',
+      quiz_step: currentQ + 1,
+      question_id: 'ff_q' + (currentQ + 1),
+      answer_id: 'opt_' + (optIndex + 1),
       answer_score: score,
-      page_type:   'quiz'
+      page_type: 'quiz'
     });
   }
 
@@ -1775,9 +1676,9 @@ function goBack() {
 
   if (typeof trackEvent === 'function') {
     trackEvent('quiz_back_click', {
-      quiz_name:  'frequency_finder',
-      quiz_step:  currentQ + 1,
-      page_type:  'quiz'
+      quiz_name: 'frequency_finder',
+      quiz_step: currentQ + 1,
+      page_type: 'quiz'
     });
   }
 
@@ -1803,18 +1704,17 @@ function showCalculating() {
   void bar.offsetWidth;
   bar.style.animation = '';
 
-  const total = answers.reduce((s, v) => s + v, 0);
-
-  if (typeof trackEvent === 'function') {
-    trackEvent('quiz_complete', {
-      quiz_name:    'frequency_finder',
-      quiz_version: '1',
-      quiz_score:   total,
-      page_type:    'quiz'
-    });
-  }
-
   setTimeout(() => {
+    const total = answers.reduce((s, v) => s + v, 0);
+    const resultKey = getResultKey(total);
+    if (typeof trackEvent === 'function') {
+      trackEvent('quiz_complete', {
+        quiz_name: 'frequency_finder',
+        result_type: resultKey,
+        score: total,
+        page_type: 'quiz'
+      });
+    }
     showResult(total);
   }, 1900);
 }
@@ -1850,12 +1750,6 @@ function showResult(score) {
   if (saveCardLink) {
     saveCardLink.href = 'assets/images/result-' + r.key + '.png';
     saveCardLink.setAttribute('download', 'frequency-finder-' + r.key + '.png');
-  }
-
-  // All bands lead to the free preview flipbook
-  const bonusBtn = document.getElementById('btn-bonus-chapter');
-  if (bonusBtn) {
-    bonusBtn.href = 'book-preview.html';
   }
 
   // Update OG/Twitter image for result-specific social cards
@@ -1914,60 +1808,20 @@ function showResult(score) {
   const glow = document.getElementById('result-glow');
   glow.style.background = r.glowColor;
 
-  // Update email capture copy for this result type
-  const captureTitles = {
-    'foundation':   'Get the transmissions for where you are right now.',
-    'bridge-lower': 'Get dispatches for the crossing you\'re in.',
-    'awakening':    'Get transmissions for the awakening you\'re navigating.',
-    'bridge-upper': 'Get the architecture dispatches for this threshold.',
-    'field':        'Get transmissions written for those holding this frequency.'
-  };
-  const captureSuccessBodies = {
-    'foundation':   'Your first transmission is on its way. While you wait — the audiobook begins exactly where the quiz left off.',
-    'bridge-lower': 'Watch your inbox. The audiobook maps the crossing you\'re in with the precision this moment deserves.',
-    'awakening':    'First transmission incoming. The audiobook goes deeper into the integration work at this frequency.',
-    'bridge-upper': 'You\'ll hear from us soon. The audiobook has the architecture you\'re looking for at this threshold.',
-    'field':        'First transmission en route. The audiobook was written for people holding this exact frequency.'
-  };
-  const titleEl = document.getElementById('capture-title');
-  if (titleEl) titleEl.textContent = captureTitles[resultKey] || 'Get transmissions matched to your frequency.';
-  const successBody = document.getElementById('capture-success-body');
-  if (successBody) successBody.textContent = captureSuccessBodies[resultKey] || 'Watch for something worth opening.';
-
-  // Store result type for attribution pickup in email submission
-  window._quizResultKey = resultKey;
-
-  // Form start tracking — fires once on first focus
-  const captureInput = document.getElementById('capture-email');
-  if (captureInput && !captureInput._trackingBound) {
-    captureInput._trackingBound = true;
-    captureInput.addEventListener('focus', function onFocus() {
-      captureInput.removeEventListener('focus', onFocus);
-      if (typeof trackEvent === 'function') {
-        trackEvent('form_start', {
-          quiz_name:   'frequency_finder',
-          result_type: resultKey,
-          result_label: r.title,
-          page_type:   'quiz'
-        });
-      }
-    });
-  }
-
   showScreen('screen-result');
-
-  // Set result-specific URL hash so shared links land on the right result
-  window.location.hash = r.key;
 
   if (typeof trackEvent === 'function') {
     trackEvent('view_result', {
-      quiz_name:    'frequency_finder',
-      result_type:  resultKey,
+      quiz_name: 'frequency_finder',
+      result_type: resultKey,
       result_label: r.title,
-      quiz_score:   score,
-      page_type:    'quiz'
+      score: score,
+      page_type: 'quiz'
     });
   }
+
+  // Set result-specific URL hash so shared links land on the right result
+  window.location.hash = r.key;
 
   // Animate spectrum after screen shows
   requestAnimationFrame(() => {
@@ -1986,16 +1840,6 @@ async function shareResult() {
   const url       = 'https://iwasready.com/consciousness-quiz.html#' + r.key;
   const shareText = r.shareText;
   const fullText  = shareText + '\n\n' + url;
-
-  if (typeof trackEvent === 'function') {
-    trackEvent('result_share_click', {
-      quiz_name:    'frequency_finder',
-      result_type:  resultKey,
-      result_label: r.title,
-      share_method: navigator.share ? 'native' : 'clipboard',
-      page_type:    'quiz'
-    });
-  }
 
   if (navigator.share) {
     try {
@@ -2025,6 +1869,22 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 // ── Email Capture ─────────────────────────────────────────────────────────────
+// Track first interaction with email field
+(function() {
+  document.addEventListener('DOMContentLoaded', function() {
+    var emailInput = document.getElementById('capture-email');
+    if (emailInput) {
+      var formStartFired = false;
+      emailInput.addEventListener('focus', function() {
+        if (!formStartFired && typeof trackEvent === 'function') {
+          formStartFired = true;
+          trackEvent('form_start', { form_name: 'frequency_finder_email', quiz_name: 'frequency_finder', page_type: 'quiz' });
+        }
+      });
+    }
+  });
+})();
+
 async function submitEmailCapture(e) {
   e.preventDefault();
   const email = document.getElementById('capture-email').value.trim();
@@ -2033,102 +1893,46 @@ async function submitEmailCapture(e) {
   btn.textContent = '...';
   btn.disabled = true;
 
-  const currentResultKey = window._quizResultKey || resultKey || '';
-
   if (typeof trackEvent === 'function') {
     trackEvent('form_submit', {
-      quiz_name:   'frequency_finder',
-      result_type: currentResultKey,
-      page_type:   'quiz'
+      form_name: 'frequency_finder_email',
+      result_type: resultKey || '',
+      quiz_name: 'frequency_finder',
+      page_type: 'quiz'
     });
   }
-
-  // Build attribution payload for Kit custom fields
-  // NOTE: these custom field keys must exist in Kit under Subscriber Custom Fields
-  // Create them at: app.convertkit.com > Settings > Custom Fields
-  const attrPayload = typeof getFormAttribution === 'function'
-    ? getFormAttribution({
-        result_type:  currentResultKey,
-        quiz_name:    'frequency_finder',
-        landing_page: window.location.href
-      })
-    : {};
-
-  // Map to Kit custom field keys (create these in Kit if not already present)
-  const kitFields = {
-    result_type:   attrPayload.result_type   || '',
-    orig_source:   attrPayload.orig_source   || '',
-    orig_medium:   attrPayload.orig_medium   || '',
-    orig_campaign: attrPayload.orig_campaign || '',
-    orig_content:  attrPayload.orig_content  || '',
-    last_medium:   attrPayload.last_medium   || '',
-    landing_url:   attrPayload.page_url      || window.location.href
-  };
 
   let kitOk = false;
 
-  // Kit v3 API — subscribe to form 9354202 + add Frequency-Finder tag 19053268
-  // Tag triggers Kit automation → sequence entry
+  // Kit form embed endpoint — uses form UID b50ff46c9e, CORS-safe for third-party embeds
   try {
-    const formRes  = await fetch('https://api.convertkit.com/v3/forms/9354202/subscribe', {
+    const res = await fetch('https://app.convertkit.com/forms/b50ff46c9e/subscriptions', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        api_key: 'rHVnH9w-RQSRS8Fft38AeQ',
-        email: email,
-        fields: kitFields   // attribution passed to Kit subscriber record
-      })
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      credentials: 'omit',
+      body: 'email_address=' + encodeURIComponent(email)
     });
-    const formData = await formRes.json().catch(() => ({}));
-
-    const tagRes  = await fetch('https://api.convertkit.com/v3/tags/19053268/subscribe', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        api_key: 'rHVnH9w-RQSRS8Fft38AeQ',
-        email: email,
-        fields: kitFields
-      })
-    });
-    const tagData = await tagRes.json().catch(() => ({}));
-
-    kitOk = (formRes.ok && formData.subscription != null) ||
-            (tagRes.ok  && tagData.subscription  != null);
-  } catch (err) {
-    console.warn('[Kit] error:', err);
-    kitOk = false;
-  }
+    kitOk = res.ok;
+  } catch (_) { kitOk = false; }
 
   const successEl = document.getElementById('capture-success');
   if (kitOk) {
-    // Fire generate_lead event
     if (typeof trackEvent === 'function') {
       trackEvent('generate_lead', {
-        quiz_name:   'frequency_finder',
-        result_type: currentResultKey,
-        page_type:   'quiz'
+        form_name: 'frequency_finder_email',
+        result_type: resultKey || '',
+        quiz_name: 'frequency_finder',
+        page_type: 'quiz'
       });
     }
-
-    // Show richer success state
-    const captureForm    = document.getElementById('capture-form');
-    const capturePrivacy = document.querySelector('.email-capture-privacy');
-    const captureTitle   = document.getElementById('capture-title');
-    const captureEyebrow = document.getElementById('capture-eyebrow');
-    const captureInput   = document.getElementById('capture-email');
-
-    if (captureForm)    captureForm.style.display    = 'none';
-    if (capturePrivacy) capturePrivacy.style.display = 'none';
-    if (captureTitle)   captureTitle.style.display   = 'none';
-    if (captureEyebrow) captureEyebrow.style.display = 'none';
-    if (captureInput)   captureInput.style.display   = 'none';
-
-    if (successEl) successEl.style.display = 'block';
+    e.target.style.display = 'none';
+    document.querySelector('.email-capture-privacy').style.display = 'none';
+    successEl.textContent = 'You\u2019re in. Watch for something worth opening at ' + email + '.';
+    successEl.style.display = 'block';
   } else {
-    if (successEl) {
-      successEl.innerHTML = '<p style="color:rgba(255,160,100,0.85);font-size:13px;">Something didn\u2019t connect. Try again or email rbroider@gmail.com.</p>';
-      successEl.style.display = 'block';
-    }
+    successEl.textContent = 'Something didn\u2019t connect. Try again or email rbroider@gmail.com directly.';
+    successEl.style.color = 'rgba(255,160,100,0.9)';
+    successEl.style.display = 'block';
     btn.textContent = 'Try again';
     btn.disabled = false;
   }
@@ -2146,20 +1950,16 @@ function retakeQuiz() {
   document.getElementById('spectrum-fill').style.width = '0%';
   document.getElementById('spectrum-marker').style.left = '0%';
   // Reset email capture block to original state
-  const captureForm    = document.getElementById('capture-form');
+  const captureForm = document.querySelector('.email-capture-form');
   const capturePrivacy = document.querySelector('.email-capture-privacy');
   const captureSuccess = document.getElementById('capture-success');
-  const captureBtn     = document.querySelector('.email-capture-btn');
-  const captureTitle   = document.getElementById('capture-title');
-  const captureEyebrow = document.getElementById('capture-eyebrow');
-  const audiobookSlot  = document.getElementById('audiobook-cta-slot');
-  if (audiobookSlot)  audiobookSlot.innerHTML = '';
-  if (captureForm)    { captureForm.style.display = ''; captureForm.reset(); }
+  const captureBtn = document.querySelector('.email-capture-btn');
+  const audiobookSlot = document.getElementById('audiobook-cta-slot');
+  if (audiobookSlot) audiobookSlot.innerHTML = '';
+  if (captureForm) { captureForm.style.display = ''; captureForm.reset(); }
   if (capturePrivacy) capturePrivacy.style.display = '';
-  if (captureTitle)   captureTitle.style.display   = '';
-  if (captureEyebrow) captureEyebrow.style.display = '';
-  if (captureSuccess) captureSuccess.style.display = 'none';
-  if (captureBtn)     { captureBtn.textContent = 'Send it'; captureBtn.disabled = false; }
+  if (captureSuccess) { captureSuccess.style.display = 'none'; captureSuccess.style.color = ''; captureSuccess.textContent = ''; }
+  if (captureBtn) { captureBtn.textContent = 'Send it'; captureBtn.disabled = false; }
   startQuiz();
 }
 

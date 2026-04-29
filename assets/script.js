@@ -162,7 +162,14 @@ You make futures feel possible. Not by overpromising. By being willing to feel t
     shadow: `You may absorb the emotional field of those around you without realizing it. When the mission feels like it's failing, you may go quiet, pull back the signal, and leave the room colder without knowing you were the source of its warmth.
 
 The shadow of the Flamekeeper is extinction, not through failure, but through exhaustion. You give so much that you burn without fuel. And the people who most need your signal often don't think to ask how you are.`,
-    shareSnippet: `"You are an emotional architect. You build the interior field that makes collective motion possible."`
+    shareSnippet: `"You are an emotional architect. You build the interior field that makes collective motion possible."`,
+    twitterText: `I just found out I'm a Flamekeeper.\n\n"You don't just inspire people. You build the interior field that makes collective motion possible."\n\nMost accurate description of how I operate that I've ever read. What's yours?`,
+    whatsappText: `I just found out I'm a Flamekeeper and the description was uncomfortably accurate.\n\n"You carry the vision others forgot they were living. You build the interior field that makes collective motion possible."\n\nFour minutes, no email. What do you get? `,
+    instagramCaption: `I just discovered something I've never been able to name.\n\nI'm a Flamekeeper.\n\n"You carry the vision others forgot they were living."\n\nI've always been the one who stayed when others left. Who held the mission when it got heavy. Who kept the fire lit even when no one was watching.\n\nTurns out there's a name for that.\n\nFree quiz → iwasready.com/quiz.html\nFour minutes. No email needed.`,
+    smsText: `I just discovered I'm a Flamekeeper. The accuracy caught me off guard. Four minutes, no email. What's yours? iwasready.com/quiz.html`,
+    facebookText: `I just discovered I'm a Flamekeeper.\n\n"You carry the vision others forgot they were living. You build the interior field that makes collective motion possible."\n\nTook 4 minutes. No email needed. The accuracy surprised me.\n\nWhat's yours? → iwasready.com/quiz.html`,
+    audiobookPitch: `The audiobook goes deeper into what the Flamekeeper carries — why the fire runs low, and how to sustain the signal without burning through it. Every word was received, not written. You'll hear it in your body before your mind catches up.`,
+    audiobookCta: `Hear the Full Transmission`
   },
   A: {
     slug: 'architect',
@@ -181,7 +188,14 @@ You build things that outlast you. Not because you're trying to leave a legacy, 
     shadow: `Under pressure, you may over-engineer. The plan becomes more real than the people inside it. You may rebuild in your mind what hasn't broken yet, a way of controlling what you can't control.
 
 The shadow of the Architect is building something perfect that no one can enter. A system so refined it has no room for the human. The call is to stay inside the relationships, not just inside the blueprint.`,
-    shareSnippet: `"When you're working, the waste stops and the coherence begins."`
+    shareSnippet: `"When you're working, the waste stops and the coherence begins."`,
+    twitterText: `I just found out I'm an Architect.\n\n"When you're working, the waste stops and the coherence begins."\n\nI've been diagnosing systems my whole life. Finally a name for it. What's yours?`,
+    whatsappText: `I just found out I'm an Architect and it was weirdly on target.\n\n"You see beneath the surface into the load-bearing structures that hold everything else up."\n\nFour minutes, no email. What do you get? `,
+    instagramCaption: `I just discovered something about how I've always operated.\n\nI'm an Architect.\n\n"You build what the new world actually needs to stand on."\n\nI've been diagnosing systems since I was young. Seeing what's wrong before anyone admits it. Building things that outlast me. Not for legacy. Because I build with precision.\n\nTurns out there's a name for that.\n\nFree quiz → iwasready.com/quiz.html\nFour minutes. No email needed.`,
+    smsText: `I just discovered I'm an Architect. The description was weirdly accurate. Four minutes, no email. What's yours? iwasready.com/quiz.html`,
+    facebookText: `I just discovered I'm an Architect.\n\n"You see beneath the surface into the load-bearing structures that hold everything else up. When you're working, the waste stops and the coherence begins."\n\nTook 4 minutes. No email needed. Surprisingly accurate.\n\nWhat's yours? → iwasready.com/quiz.html`,
+    audiobookPitch: `The audiobook gives Architects the wider ethic their structures belong inside — the deeper systems frame connecting what you build to a larger arc of civilization and meaning. Rick narrated it himself. The precision in his voice will register immediately.`,
+    audiobookCta: `Hear the Full Transmission`
   },
   B: {
     slug: 'bridge-walker',
@@ -200,7 +214,14 @@ The Bridge Walker signal is rare precisely because it requires standing in the b
     shadow: `You may feel like you belong nowhere. You carry the patterns of multiple worlds and sometimes lose track of your own center, your native language, your home frequency, your ground.
 
 The shadow of the Bridge Walker is becoming so skilled at translation that you stop knowing what language you actually speak natively. The call is to maintain your own signal even as you carry others'. Your center is the bridge. Without it, nothing holds.`,
-    shareSnippet: `"That feeling of not-quite-fitting? It was never a flaw. It was your function."`
+    shareSnippet: `"That feeling of not-quite-fitting? It was never a flaw. It was your function."`,
+    twitterText: `I just found out I'm a Bridge Walker.\n\n"That feeling of not-quite-fitting? It was never a flaw. It was your function."\n\nI've always belonged to more than one world. That's not a bug. Four minutes, no email. What's yours?`,
+    whatsappText: `I just found out I'm a Bridge Walker and the description stopped me cold.\n\n"That feeling of not-quite-fitting? It was never a flaw. It was your function."\n\nFour minutes, no email. What do you get? `,
+    instagramCaption: `I just discovered something I've been trying to name for years.\n\nI'm a Bridge Walker.\n\n"That feeling of not-quite-fitting? It was never a flaw. It was your function."\n\nI've always belonged to more than one world. The academic and the mystic. The ancient and the emergent. Never quite fitting anywhere. Turns out that was never a flaw. It was the whole point.\n\nFree quiz → iwasready.com/quiz.html\nFour minutes. No email needed.`,
+    smsText: `I just discovered I'm a Bridge Walker. The description was uncomfortably accurate. Four minutes, no email. What's yours? iwasready.com/quiz.html`,
+    facebookText: `I just discovered I'm a Bridge Walker.\n\n"That feeling of not-quite-fitting? It was never a flaw. It was your function."\n\nI've always belonged to more than one world and never had a name for it until now.\n\nTook 4 minutes. No email needed.\n\nWhat's yours? → iwasready.com/quiz.html`,
+    audiobookPitch: `The audiobook gives Bridge Walkers a coherent map so your translation work has a home to return to — a wider frame connecting the worlds you move between. Rick wrote this from inside the liminal space you already know. You'll recognize it.`,
+    audiobookCta: `Hear the Full Transmission`
   },
   S: {
     slug: 'signal-holder',
@@ -221,7 +242,14 @@ The Signal Holder carries something that doesn't require explanation. But its ab
     shadow: `You may be misread as passive. Your leadership style doesn't fit most frameworks, so you may have spent years questioning whether you're leading at all. The doubt itself becomes the shadow, because when you doubt your signal, you shrink the field.
 
 The shadow of the Signal Holder is not weakness. It is self-erasure. And the people who most depend on your frequency often don't know they're depending on it.`,
-    shareSnippet: `"Your presence is a stabilizing field. When you're in a room, things settle."`
+    shareSnippet: `"Your presence is a stabilizing field. When you're in a room, things settle."`,
+    twitterText: `I just found out I'm a Signal Holder.\n\n"Your stillness is a technology. Your presence is a field."\n\nI've spent years wondering if my quiet was a weakness. It's not. What's yours?`,
+    whatsappText: `I just found out I'm a Signal Holder and it reframed something I've wondered about for years.\n\n"Your presence is a stabilizing field. When you're in a room, things settle."\n\nFour minutes, no email. What do you get? `,
+    instagramCaption: `I just discovered something that reframed years of self-doubt.\n\nI'm a Signal Holder.\n\n"Your stillness is a technology. Your presence is a field."\n\nI've known things before they arrived. Been in rooms that shifted when I walked in. Spent years wondering if I was too quiet. Too much. Not enough.\n\nTurns out my presence was never passive. It was the signal.\n\nFree quiz → iwasready.com/quiz.html\nFour minutes. No email needed.`,
+    smsText: `I just discovered I'm a Signal Holder. It reframed something I've wondered about for years. Four minutes, no email. What's yours? iwasready.com/quiz.html`,
+    facebookText: `I just discovered I'm a Signal Holder.\n\n"Your stillness is a technology. Your presence is a field. When you're in a room, things settle."\n\nI spent years wondering if my quiet was a weakness. Turns out it was never passive. It was the signal.\n\nTook 4 minutes. No email needed.\n\nWhat's yours? → iwasready.com/quiz.html`,
+    audiobookPitch: `The audiobook gives Signal Holders language for what their presence actually is — why rooms feel different when you leave, why you carry weight that isn't yours, and how to hold the field without erasing yourself inside it.`,
+    audiobookCta: `Hear the Full Transmission`
   }
 };
 
@@ -244,6 +272,10 @@ function initQuiz() {
   const quizBody = document.getElementById('quiz-body');
   if (!quizBody) return;
 
+  if (typeof trackEvent === 'function') {
+    trackEvent('quiz_start', { quiz_name: 'signal_activation', page_type: 'quiz' });
+  }
+
   renderQuestion(quizState.currentIndex);
 }
 
@@ -260,6 +292,13 @@ function renderQuestion(index) {
     }
     setTimeout(() => {
       const result = calculateResult();
+      if (typeof trackEvent === 'function') {
+        trackEvent('quiz_complete', {
+          quiz_name: 'signal_activation',
+          result_type: result,
+          page_type: 'quiz'
+        });
+      }
       window.location.href = `result.html?type=${result}`;
     }, 2200);
     return;
@@ -311,6 +350,15 @@ function renderQuestion(index) {
 
   quizBody.innerHTML = html;
 
+  if (typeof trackEvent === 'function') {
+    trackEvent('quiz_question_view', {
+      quiz_name: 'signal_activation',
+      quiz_step: index + 1,
+      question_id: 'sa_q' + (index + 1),
+      page_type: 'quiz'
+    });
+  }
+
   // Bind answer buttons
   quizBody.querySelectorAll('.answer-btn').forEach(btn => {
     btn.addEventListener('click', () => handleAnswer(btn.dataset.type, index));
@@ -338,6 +386,13 @@ function renderQuestion(index) {
   if (backBtn) {
     backBtn.addEventListener('click', () => {
       if (quizState.currentIndex > 0) {
+        if (typeof trackEvent === 'function') {
+          trackEvent('quiz_back_click', {
+            quiz_name: 'signal_activation',
+            quiz_step: quizState.currentIndex + 1,
+            page_type: 'quiz'
+          });
+        }
         // Un-score the previous answer
         const prevAnswer = quizState.answers[quizState.currentIndex - 1];
         if (prevAnswer && quizState.scores[prevAnswer] !== undefined) {
@@ -365,6 +420,16 @@ function handleAnswer(type, questionIndex) {
     quizState.scores[type]++;
   }
   quizState.answers[questionIndex] = type;
+
+  if (typeof trackEvent === 'function') {
+    trackEvent('quiz_answer_select', {
+      quiz_name: 'signal_activation',
+      quiz_step: questionIndex + 1,
+      question_id: 'sa_q' + (questionIndex + 1),
+      answer_id: type,
+      page_type: 'quiz'
+    });
+  }
 
   // After first answer: collapse trust row and hero to reduce mobile scroll
   if (questionIndex === 0) {
@@ -433,6 +498,15 @@ function initResult() {
   renderResult(archetype, resultRoot);
   updatePageMeta(archetype);
   initShareButtons(archetype);
+
+  if (typeof trackEvent === 'function') {
+    trackEvent('view_result', {
+      quiz_name: 'signal_activation',
+      result_type: typeSlug,
+      result_label: archetype.name || typeSlug,
+      page_type: 'result'
+    });
+  }
 }
 
 function renderResult(a, root) {
@@ -514,7 +588,21 @@ function renderResult(a, root) {
         </div>
       </div>
 
-      <!-- Share -->
+      <!-- Audiobook CTA — sits at emotional peak, closest to the close -->
+      <div class="result-audiobook-cta animate-fade-up delay-3">
+        <p class="audiobook-cta-eyebrow">The transmission that goes deeper</p>
+        <h2 class="audiobook-cta-title">Bridging Earth &amp; Kanaria</h2>
+        <p class="audiobook-cta-body" id="audiobook-pitch-text"></p>
+        <a
+          href="https://app.helloaudio.fm/feed/831d2db8-2d73-412e-a0a5-0fe58d744a10/signup"
+          class="btn btn-primary btn-lg"
+          target="_blank"
+          rel="noopener"
+        >Hear the Full Transmission</a>
+        <p class="audiobook-cta-meta">Narrated by Rick Broider &nbsp;·&nbsp; Available now</p>
+      </div>
+
+            <!-- Share -->
       <div class="share-section animate-fade-up delay-4">
         <p class="share-eyebrow">This is too accurate not to send</p>
         <h2 class="share-title">Forward this to someone in your field</h2>
@@ -532,9 +620,12 @@ function renderResult(a, root) {
           <a class="share-btn" id="share-whatsapp" href="#" target="_blank" rel="noopener" aria-label="Share on WhatsApp">
             💬 WhatsApp
           </a>
-          <a class="share-btn" id="share-facebook" href="#" target="_blank" rel="noopener" aria-label="Share on Facebook">
-            Share on Facebook
-          </a>
+          <button class="share-btn" id="copy-facebook-btn" aria-label="Copy text for Facebook post">
+            📘 Copy for Facebook
+          </button>
+          <p class="share-fb-hint" id="fb-paste-hint" style="display:none; font-size:12px; color:var(--text-muted); margin-top:4px; margin-bottom:0;">
+            Paste into your Facebook post. The link will preview automatically.
+          </p>
           <button class="share-btn" id="copy-result-btn" aria-label="Copy result text for Instagram">
             📋 Copy for Instagram
           </button>
@@ -556,44 +647,70 @@ function renderResult(a, root) {
 }
 
 function updatePageMeta(archetype) {
-  // Update title
-  document.title = `${archetype.name}, Starseed Leadership Signal | IWasReady.com`;
+  document.title = archetype.name + ' | Starseed Leadership Signal | IWasReady.com';
 
-  // Update OG tags if present
-  const ogTitle = document.querySelector('meta[property="og:title"]');
-  if (ogTitle) ogTitle.setAttribute('content', `${archetype.name}, Your Starseed Leadership Signal`);
+  // Canonical URL includes type param so shared links open the correct result
+  var canonicalUrl = 'https://iwasready.com/result.html?type=' + archetype.slug;
 
-  const ogDesc = document.querySelector('meta[property="og:description"]');
-  if (ogDesc) ogDesc.setAttribute('content', archetype.tagline);
+  var ogUrl = document.querySelector('meta[property="og:url"]');
+  if (ogUrl) ogUrl.setAttribute('content', canonicalUrl);
+
+  var ogTitle = document.querySelector('meta[property="og:title"]');
+  if (ogTitle) ogTitle.setAttribute('content', archetype.name + ' | Your Starseed Leadership Signal');
+
+  var twitterTitle = document.querySelector('meta[name="twitter:title"]');
+  if (twitterTitle) twitterTitle.setAttribute('content', archetype.name + ' | Starseed Leadership Signal');
+
+  var ogDesc = document.querySelector('meta[property="og:description"]');
+  if (ogDesc) ogDesc.setAttribute('content', archetype.tagline + ' Discover your own signal type free at IWasReady.com');
+
+  var twitterDesc = document.querySelector('meta[name="twitter:description"]');
+  if (twitterDesc) twitterDesc.setAttribute('content', archetype.tagline + ' Find yours free — 4 minutes, no email.');
+
+  // Update address bar so the URL reflects the archetype result
+  if (window.history && window.history.replaceState) {
+    window.history.replaceState(null, '', canonicalUrl);
+  }
 }
 
 function initShareButtons(archetype) {
   // Give time for DOM render
   setTimeout(() => {
-    const copyBtn = document.getElementById('copy-link-btn');
-    const twitterBtn = document.getElementById('share-twitter');
-    const whatsappBtn = document.getElementById('share-whatsapp');
-    const facebookBtn = document.getElementById('share-facebook');
-    const copyResultBtn = document.getElementById('copy-result-btn');
-    const confirm = document.getElementById('copy-confirm');
+    const nativeBtn      = document.getElementById('native-share-btn');
+    const copyBtn        = document.getElementById('copy-link-btn');
+    const twitterBtn     = document.getElementById('share-twitter');
+    const whatsappBtn    = document.getElementById('share-whatsapp');
+    const telegramBtn    = document.getElementById('share-telegram');
+    const copyFacebookBtn= document.getElementById('copy-facebook-btn');
+    const fbPasteHint    = document.getElementById('fb-paste-hint');
+    const copyResultBtn  = document.getElementById('copy-result-btn');
+    const confirm        = document.getElementById('copy-confirm');
+
+    // Inject archetype-specific audiobook pitch
+    const pitchEl = document.getElementById('audiobook-pitch-text');
+    if (pitchEl && archetype.audiobookPitch) pitchEl.textContent = archetype.audiobookPitch;
 
     const shareUrl = window.location.href;
-    const shareText = `I just discovered my Starseed Leadership Signal: ${archetype.name}. ${archetype.shareSnippet} Take the free activation at IWasReady.com`;
-    const instagramText = `My Starseed Leadership Signal is ${archetype.name}.\n\n${archetype.tagline}\n\nFind yours free: iwasready.com/quiz.html`;
+
+    // Per-archetype share texts
+    const twitterText   = archetype.twitterText    || ('My signal type is ' + archetype.name + '. ' + archetype.shareSnippet + " What's yours?");
+    const whatsappText  = archetype.whatsappText   || ('I just took this free quiz. My signal type is ' + archetype.name + '. ' + archetype.shareSnippet + ' Four minutes, no email. ');
+    const instagramText = archetype.instagramCaption || ('My Starseed Leadership Signal is ' + archetype.name + '.\n\n' + archetype.tagline + '\n\nFind yours free: iwasready.com/quiz.html');
+    const smsText       = archetype.smsText        || ('My Starseed Leadership Signal is ' + archetype.name + '. Weirdly accurate. What\'s yours? iwasready.com/quiz.html');
 
     function showConfirm(msg) {
       if (confirm) {
-        confirm.textContent = msg || '✓ Copied';
+        confirm.textContent = msg || '\u2713 Copied';
         confirm.style.display = 'block';
-        setTimeout(() => { confirm.style.display = 'none'; }, 2500);
+        setTimeout(function() { confirm.style.display = 'none'; }, 2800);
       }
     }
 
     function copyToClipboard(text, successMsg) {
       if (navigator.clipboard) {
-        navigator.clipboard.writeText(text).then(() => showConfirm(successMsg));
+        navigator.clipboard.writeText(text).then(function() { showConfirm(successMsg); });
       } else {
-        const ta = document.createElement('textarea');
+        var ta = document.createElement('textarea');
         ta.value = text;
         ta.style.cssText = 'position:fixed;opacity:0;pointer-events:none;';
         document.body.appendChild(ta);
@@ -604,27 +721,52 @@ function initShareButtons(archetype) {
       }
     }
 
+    // Native Web Share API — opens OS share sheet on mobile
+    if (nativeBtn) {
+      if (navigator.share) {
+        nativeBtn.style.display = 'inline-flex';
+        nativeBtn.addEventListener('click', function() {
+          navigator.share({
+            title: archetype.name + ' | Starseed Leadership Signal',
+            text: smsText,
+            url: shareUrl
+          }).catch(function(err) {
+            if (err.name !== 'AbortError') copyToClipboard(shareUrl, '\u2713 Link copied');
+          });
+        });
+      }
+    }
+
     if (copyBtn) {
-      copyBtn.addEventListener('click', () => copyToClipboard(shareUrl, '✓ Link copied'));
+      copyBtn.addEventListener('click', function() { copyToClipboard(shareUrl, '\u2713 Link copied'); });
     }
 
     if (twitterBtn) {
-      const tweetUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`;
-      twitterBtn.href = tweetUrl;
+      twitterBtn.href = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(twitterText) + '&url=' + encodeURIComponent(shareUrl);
     }
 
     if (whatsappBtn) {
-      const waUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(shareText + ' ' + shareUrl)}`;
-      whatsappBtn.href = waUrl;
+      whatsappBtn.href = 'https://api.whatsapp.com/send?text=' + encodeURIComponent(whatsappText + shareUrl);
     }
 
-    if (facebookBtn) {
-      const fbUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`;
-      facebookBtn.href = fbUrl;
+    if (telegramBtn) {
+      telegramBtn.href = 'https://t.me/share/url?url=' + encodeURIComponent(shareUrl) + '&text=' + encodeURIComponent(twitterText);
+    }
+
+    // Facebook blocks text pre-population via URL; use dedicated copy button instead
+    const facebookText = archetype.facebookText || ('I just discovered I am ' + archetype.name + '.\n\n' + archetype.shareSnippet + '\n\nFour minutes, no email needed. What\'s yours? → iwasready.com/quiz.html');
+    if (copyFacebookBtn) {
+      copyFacebookBtn.addEventListener('click', function() {
+        copyToClipboard(facebookText + '\n\n' + shareUrl, '\u2713 Copied — paste into your Facebook post');
+        if (fbPasteHint) {
+          fbPasteHint.style.display = 'block';
+          setTimeout(function() { fbPasteHint.style.display = 'none'; }, 4000);
+        }
+      });
     }
 
     if (copyResultBtn) {
-      copyResultBtn.addEventListener('click', () => copyToClipboard(instagramText, '✓ Copied for Instagram'));
+      copyResultBtn.addEventListener('click', function() { copyToClipboard(instagramText, '\u2713 Caption copied'); });
     }
   }, 100);
 }
