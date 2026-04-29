@@ -1,28 +1,22 @@
 /* ============================================================
    IWasReady.com — Shared Analytics + Attribution Layer
-   analytics.js v1.1  |  GA4: G-ZGMHG7VF66
-   Load on every page in <head>, after the Google tag snippet.
+   analytics.js v2.0  |  GTM: GTM-M7TMDNL7 → GA4: G-ZGMHG7VF66
+   Load on every page in <head>, after the GTM snippet.
+   All events route through GTM via dataLayer.push().
    ============================================================ */
 
 'use strict';
 
-// ── Data Layer (shared with gtag.js) ─────────────────────────────────────────
+// ── Data Layer (GTM reads this) ───────────────────────────────────────────────
 window.dataLayer = window.dataLayer || [];
 
 /**
- * Send a named event to GA4 directly via gtag() and to dataLayer.
- * Works with direct gtag.js — no GTM required.
+ * Push a named event to GTM's dataLayer.
+ * GTM routes it to GA4, Meta, TikTok, or any other tag.
  */
 function trackEvent(name, params) {
   var ctx = _getAttributionContext();
   var combined = Object.assign({}, ctx, params || {});
-
-  // Direct GA4 via gtag (primary path)
-  if (typeof gtag === 'function') {
-    gtag('event', name, combined);
-  }
-
-  // dataLayer push for future GTM compatibility
   window.dataLayer.push(Object.assign({ event: name }, combined));
 }
 
